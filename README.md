@@ -1,41 +1,79 @@
-# Analysis Pipeline
+# Hovercraft Data Analysis Pipeline
 
-A data analysis pipeline for processing and analyzing research data collected from various experiments.
+A data analysis pipeline for processing, analyzing, and visualizing data collected from hovercraft experiments.
 
 ## Overview
 
-This repository contains tools and scripts for data collection, processing, and analysis of experimental data, including:
+This repository contains the data and tools for analyzing hovercraft performance based on GPS and IMU sensor readings collected during various test maneuvers. Key components include:
 
-- GPS data processing
-- IMU/sensor data analysis
-- Data visualization tools
-- Jupyter notebooks for analysis workflows
+- Raw experimental data stored in `02_Evaluation_Experiments/`.
+- A Dash web application for interactive visualization (`hovercraft_data_analysis/dashboard_app/`).
+- Supporting Python modules and potentially Jupyter notebooks for specific analyses.
 
-## Project Structure
+## Data Structure (`02_Evaluation_Experiments/`)
 
-- `src/`: Python source code including data processing utilities and classes
-  - `classes.py`: Core data structures and classes
-  - `data_processing.py`: Data processing functionality
-  - `plotting.py`: Visualization utilities
+Experimental data is organized within the `02_Evaluation_Experiments/` directory using a nested structure:
 
-- `notebooks/`: Jupyter notebooks for analysis
-  - Analysis notebooks for various experiment types
+```
+Category/
+└── TimeSlot/
+    └── ExperimentRun/
+        ├── GPS/
+        │   └── *.csv (GPS data)
+        └── IMU/
+            ├── Sensor_*/
+            │   └── *.csv (IMU data for specific sensor)
+            └── ...
+```
 
-- `02_Evaluation_Experiments/`: Experimental data organized by test type
-  - Minimum radius turn tests
-  - Acceleration/deceleration tests
-  - Climb tests
-  - Level flight tests
+- **Category:** Broad type of experiment (e.g., `1a_1_Minimum_Radius_Turn`).
+- **TimeSlot:** Time of day the experiment was run (e.g., `afternoon`, `morning`).
+- **ExperimentRun:** Specific instance of the experiment (e.g., `007_Fast_stbd_turn_1`).
+- **GPS/IMU:** Subdirectories containing the respective sensor data files in CSV format.
 
-- `GPS testing/`: GPS calibration and verification data
+A `sensor_orientations.json` file (if present in the root) defines the orientation offsets for specific sensors used in the analysis.
+
+## Visualization Dashboard (`hovercraft_data_analysis/dashboard_app/`)
+
+A Dash application provides an interactive way to explore the collected data.
+
+**Features:**
+
+- Select experiments based on their folder path.
+- View synchronized plots of GPS track and IMU sensor readings (accelerometer, gyroscope, magnetometer, orientation).
+- Select specific IMU sensors for plotting.
+
+**Running the App:**
+
+1.  Ensure you have the necessary Python packages installed (primarily `dash`, `plotly`, `pandas`). You might need to create a `requirements.txt` based on imports in the `dashboard_app` files.
+2.  Navigate to the repository root in your terminal.
+3.  Run the application using:
+    ```bash
+    python hovercraft_data_analysis/dashboard_app/app.py
+    ```
+4.  Open your web browser and go to the address provided (usually `http://127.0.0.1:8050/`).
+
+**Application Structure:**
+
+- `app.py`: Main application entry point, defines the Dash app instance.
+- `config.py`: Configuration settings (e.g., path to data).
+- `data_loader.py`: Functions for finding and loading experiment data.
+- `layout.py`: Defines the structure and components of the web interface.
+- `callbacks.py`: Contains the Dash callbacks that handle user interactions and update plots.
+
+## Other Components
+
+- `src/`: May contain legacy or supplementary Python source code (check relevance).
+- `notebooks/`: May contain legacy or supplementary Jupyter notebooks (check relevance).
+- `Experimental setup/`: Contains information about the experimental hardware and setup.
+- `experiment_details_real_world_data.ipynb`: Notebook potentially detailing the experiments.
 
 ## Getting Started
 
-To use this repository:
-
-1. Clone the repository
-2. Navigate to the notebooks directory to explore analysis examples
-3. Use the src modules for your own data processing scripts
+1.  Clone the repository.
+2.  Set up a Python environment and install necessary dependencies (see Visualization Dashboard section).
+3.  Run the Dash application to visualize the data.
+4.  Explore the data structure and notebooks/source code for deeper analysis if needed.
 
 ## Requirements
 
