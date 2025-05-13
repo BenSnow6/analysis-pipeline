@@ -6,7 +6,6 @@ import config # Changed from relative import
 
 def get_experiment_folders(data_repo_path):
     """Scans the data_repo_path recursively for valid experiment folders."""
-    print(f"Debug: Scanning for experiments in: {data_repo_path}") # Added Debug print
     experiments = {}
     if not os.path.isdir(data_repo_path):
         print(f"Error: Data repository path not found: {data_repo_path}")
@@ -26,7 +25,6 @@ def get_experiment_folders(data_repo_path):
             relative_path = os.path.relpath(experiment_path, data_repo_path)
             # Use forward slashes for display consistency across OS
             display_name = relative_path.replace(os.sep, '/')
-            print(f"Debug: Found potential experiment: {display_name} at {experiment_path}") # Added Debug print
             experiments[display_name] = experiment_path # Store display name and full path
 
             # Optional: Prevent os.walk from descending further into GPS/IMU folders
@@ -46,14 +44,12 @@ def find_file_in_experiment(experiment_base_path, data_type_subdir, file_prefix_
              specific_tag: e.g., "007_Fast_stbd_turn_1" (optional, tries to match if provided)
     """
     search_dir = os.path.join(experiment_base_path, data_type_subdir)
-    print(f"Debug FindFile: Searching in '{search_dir}' for pattern '{file_prefix_pattern}' with tag '{specific_tag}'")
     if not os.path.isdir(search_dir):
         print(f"Warning: Data directory not found: {search_dir}")
         return None
 
     candidate_files = []
     files_in_dir = os.listdir(search_dir)
-    print(f"Debug FindFile: Files found in dir: {files_in_dir}")
     for fname in files_in_dir:
         # Check both start and end, allowing for variable tags in the middle
         prefix = file_prefix_pattern.split('*')[0]
@@ -63,12 +59,8 @@ def find_file_in_experiment(experiment_base_path, data_type_subdir, file_prefix_
         if suffix:
             is_match = is_match and fname.endswith(suffix)
 
-        print(f"Debug FindFile: Checking '{fname}'. StartsWith('{prefix}'): {fname.startswith(prefix)}. EndsWith('{suffix}'): {fname.endswith(suffix) if suffix else 'N/A'}. Overall match: {is_match}")
-
         if is_match:
-            print(f"Debug FindFile: '{fname}' matches pattern. Checking tag '{specific_tag}'. Tag in fname: {specific_tag in fname if specific_tag else 'N/A'}")
             if specific_tag and specific_tag in fname:
-                print(f"Debug FindFile: Tag found! Returning exact match: {os.path.join(search_dir, fname)}")
                 return os.path.join(search_dir, fname) # Prioritize file with specific tag
             candidate_files.append(fname)
 
@@ -139,8 +131,6 @@ def load_gps_data(experiment_path, experiment_file_tag=None):
 
     if gps_file_relative:
         gps_file_absolute = os.path.abspath(gps_file_relative)
-        # Optional: Add debug print for path resolution if needed
-        # print(f"Debug GPS Load: Resolved relative path '{gps_file_relative}' to absolute path '{gps_file_absolute}'")
         if os.path.exists(gps_file_absolute):
             try:
                 df = pd.read_csv(gps_file_absolute) # Load using absolute path
@@ -166,13 +156,6 @@ def load_gps_data(experiment_path, experiment_file_tag=None):
             except Exception as e:
                 print(f"Error loading or processing GPS data from {gps_file_absolute}: {e}")
                 return pd.DataFrame()
-        # else: # Optional: Add debug print if absolute path check fails
-        #     print(f"Debug GPS Load: Absolute path check failed for {gps_file_absolute}")
-
-    # If gps_file_relative was None or os.path.exists failed:
-    # ... (existing debug logic for not found) ...
-    # if not gps_file_relative:
-    #     print(f"Debug: GPS file not found for experiment '{os.path.basename(experiment_path)}' ...")
 
     return pd.DataFrame()
 
@@ -193,15 +176,11 @@ def load_imu_data(experiment_path, sensor_name_user, measurement_type, experimen
 
     if imu_file_relative:
         imu_file_absolute = os.path.abspath(imu_file_relative)
-        # Optional: Add debug print for path resolution if needed
-        # print(f"Debug IMU Load: Resolved relative path '{imu_file_relative}' to absolute path '{imu_file_absolute}'")
         if os.path.exists(imu_file_absolute):
             try:
                 df = pd.read_csv(imu_file_absolute) # Load using absolute path
-                # Debug prints remain for now
-                print(f"Debug IMU Load: File {os.path.basename(imu_file_absolute)} loaded. Shape: {df.shape}. Dtypes:\\n{df.dtypes}")
                 if not df.empty:
-                    print(f"Debug IMU Load: Head:\\n{df.head()}")
+                    pass
 
                 if 'time_from_sync' in df.columns:
                     original_len = len(df)
@@ -225,13 +204,6 @@ def load_imu_data(experiment_path, sensor_name_user, measurement_type, experimen
             except Exception as e:
                 print(f"Error loading or processing IMU data from {imu_file_absolute}: {e}")
                 return pd.DataFrame()
-        # else: # Optional: Add debug print if absolute path check fails
-        #     print(f"Debug IMU Load: Absolute path check failed for {imu_file_absolute}")
-
-    # If imu_file_relative was None or os.path.exists failed:
-    # ... (existing debug logic for not found) ...
-    # if not imu_file_relative:
-    #     print(f"Debug: IMU file not found for experiment '{os.path.basename(experiment_path)}' ...")
 
     return pd.DataFrame()
 
@@ -245,7 +217,6 @@ def get_imu_sensors_for_experiment(experiment_path, orientations):
         known_orientation_sensors = [key for key in orientations.keys()
                                      if key != 'gps' and key.lower() in config.SENSOR_DIR_MAP]
         if known_orientation_sensors:
-            #print(f"Debug: Found sensors in orientations file: {known_orientation_sensors}")
             return sorted(known_orientation_sensors) # Sort for consistent order
 
     # Priority 2: Fallback - check subdirectories in the IMU folder of the specific experiment run
@@ -260,7 +231,6 @@ def get_imu_sensors_for_experiment(experiment_path, orientations):
                     found_sensors.append(user_friendly_key) # Add the user-friendly key
                     break # Move to the next item in listdir
     if found_sensors:
-        #print(f"Debug: Found sensors by scanning IMU directory: {found_sensors}")
         return sorted(found_sensors) # Sort for consistent order
 
     # Priority 3: Absolute fallback - return default list from config
