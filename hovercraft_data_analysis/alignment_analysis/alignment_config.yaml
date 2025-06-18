@@ -1,23 +1,23 @@
 # Alignment configuration for hovercraft sensor data
 # This file defines the reference sensor, target rate, and tolerance values
 
-reference_sensor: sensor_3  # Primary time base (200 Hz, zero jitter)
+reference_sensor: Sensor_3  # Primary time base (200 Hz, zero jitter)
 target_rate: 200           # Target alignment rate in Hz
 
 # Tolerance values for nearest-neighbor matching (in milliseconds)
 tolerances:
-  200: 2.5  # For 200 Hz sensors (sensor_3, sensor_4, sensor_5)
-  100: 5.0  # For 100 Hz sensor (sensor_wb) - allows for 2:1 downsampling
+  200: 2.5  # For 200 Hz sensors (Sensor_3, Sensor_4, Sensor_5)
+  100: 5.0  # For 100 Hz sensor (Sensor_wb) - allows for 2:1 downsampling
   1: 20.0   # For GPS (1 Hz) - future implementation
 
 # Sensor specifications
 sensor_rates:
-  sensor_3: 200
-  sensor_4: 200
-  sensor_5: 200
-  sensor_wb: 100
+  Sensor_3: 200
+  Sensor_4: 200
+  Sensor_5: 200
+  Sensor_wb: 100
   gps: 1
-  sensor_wnb: null  # Excluded due to timing issues
+  Sensor_wnb: null  # Excluded due to timing issues
 
 # Cross-sensor validation
 max_cross_sensor_offset_ms: 1.0  # Maximum allowed offset between aligned sensors

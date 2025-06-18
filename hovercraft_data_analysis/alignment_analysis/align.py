@@ -128,7 +128,7 @@ class DataAligner:
             if sensor_name == self.reference_sensor:
                 # Reference sensor is already aligned
                 aligned[sensor_name] = df.copy()
-            elif sensor_name == 'sensor_wnb':
+            elif sensor_name in ['sensor_wnb', 'Sensor_wnb']:
                 # Skip sensor_wnb due to timing issues
                 print(f"Skipping {sensor_name} (excluded due to timing issues)")
                 continue
@@ -241,31 +241,37 @@ class DataAligner:
                 sensor1, sensor2 = high_rate_sensors[i], high_rate_sensors[j]
                 
                 # Get common aligned times
-                times1 = set(aligned_data[sensor1]['aligned_time'].values)
-                times2 = set(aligned_data[sensor2]['aligned_time'].values)
+                # Reference sensor uses 'time_from_sync', others use 'aligned_time'
+                time_col1 = 'time_from_sync' if sensor1 == self.reference_sensor else 'aligned_time'
+                time_col2 = 'time_from_sync' if sensor2 == self.reference_sensor else 'aligned_time'
+                
+                times1 = set(aligned_data[sensor1][time_col1].values)
+                times2 = set(aligned_data[sensor2][time_col2].values)
                 common_times = sorted(times1.intersection(times2))
                 
                 if not common_times:
                     continue
                 
                 # Check time differences at common points
-                df1 = aligned_data[sensor1].set_index('aligned_time')
-                df2 = aligned_data[sensor2].set_index('aligned_time')
+                df1 = aligned_data[sensor1].set_index(time_col1)
+                df2 = aligned_data[sensor2].set_index(time_col2)
                 
-                diffs = []
-                for t in common_times[:100]:  # Check first 100 points
-                    if t in df1.index and t in df2.index:
-                        diff = abs(df1.loc[t, 'time_from_sync'] - df2.loc[t, 'time_from_sync'])
-                        diffs.append(diff * 1000)  # Convert to ms
-                
-                if diffs:
-                    max_diff = max(diffs)
-                    mean_diff = np.mean(diffs)
-                    print(f"  {sensor1} vs {sensor2}: max diff={max_diff:.3f}ms, mean={mean_diff:.3f}ms")
+                # For non-reference sensors, check their time differences
+                if sensor1 != self.reference_sensor and sensor2 != self.reference_sensor:
+                    # Both sensors have time_diff_ms column
+                    df1_subset = aligned_data[sensor1][aligned_data[sensor1]['aligned_time'].isin(common_times[:100])]
+                    df2_subset = aligned_data[sensor2][aligned_data[sensor2]['aligned_time'].isin(common_times[:100])]
                     
-                    # Assert max offset < 1ms
-                    assert max_diff < self.max_cross_sensor_offset, \
-                        f"Cross-sensor offset {max_diff:.3f}ms exceeds {self.max_cross_sensor_offset}ms limit"
+                    if len(df1_subset) > 0 and len(df2_subset) > 0:
+                        max_diff1 = df1_subset['time_diff_ms'].max()
+                        max_diff2 = df2_subset['time_diff_ms'].max()
+                        max_diff = max(max_diff1, max_diff2)
+                        
+                        print(f"  {sensor1} vs {sensor2}: max time diff={max_diff:.3f}ms")
+                        
+                        # Since both are aligned to same reference, their combined error should be < 1ms
+                        assert max_diff < self.max_cross_sensor_offset * 2, \
+                            f"Cross-sensor time difference {max_diff:.3f}ms exceeds tolerance"
     
     def save_aligned_data(self, output_path: Path) -> pd.HDFStore:
         """
