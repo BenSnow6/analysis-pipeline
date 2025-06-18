@@ -1,0 +1,45 @@
+[
+    {
+      "device_name": "sensor_3",
+      "x_direction": "Upward",
+      "y_direction": "Forward",
+      "z_direction": "Port",
+      "location": "Stbd side wall"
+    },
+    {
+      "device_name": "sensor_4",
+      "x_direction": "Upward",
+      "y_direction": "Starboard",
+      "z_direction": "Forward",
+      "location": "Above hull"
+    },
+    {
+      "device_name": "sensor_5",
+      "x_direction": "Forward",
+      "y_direction": "Port",
+      "z_direction": "Upward",
+      "location": "Steering wheel"
+    },
+    {
+      "device_name": "sensor_wnb",
+      "x_direction": "Upward",
+      "y_direction": "Aft",
+      "z_direction": "Starboard",
+      "location": "Port side wall"
+    },
+    {
+      "device_name": "sensor_wb",
+      "x_direction": "Forward",
+      "y_direction": "Port",
+      "z_direction": "Upward",
+      "location": "Centre console flat"
+    },
+    {
+      "device_name": "gps",
+      "x_direction": "Forward",
+      "y_direction": "Port",
+      "z_direction": "Upward",
+      "location": "Centre console flat"
+    }
+  ]
+  
