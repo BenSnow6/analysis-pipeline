@@ -1,0 +1,72 @@
+# RPM Estimation Configuration
+# This file defines all parameters for RPM estimation from vibration data
+
+# Sampling frequency from IMU data
+fs: 200  # Hz
+
+# High-pass filter parameters
+# Remove quasi-static motion and gravity components
+hp_cutoff: 5  # Hz - below idle fundamental frequency
+
+# Welch Power Spectral Density parameters
+# For steady-state RPM estimation with high frequency resolution
+welch:
+  win_sec: 6      # Window length in seconds (1200 samples @ 200Hz)
+  overlap: 0.5    # Overlap fraction (0-1), 50% overlap
+  window: 'hann'  # Window function
+  detrend: 'linear'  # Remove linear trends
+  
+# Short-Time Fourier Transform parameters
+# For transient analysis during RPM sweeps
+stft:
+  win_sec: 1.0    # Window length in seconds (200 samples @ 200Hz)
+  hop_sec: 0.25   # Hop size in seconds (75% overlap)
+  window: 'hann'  # Window function
+  
+# SNR threshold for confidence gating
+snr_thresh_db: 10  # dB - threshold for valid RPM estimates
+
+# Anti-aliasing filter parameters
+# Prevent aliasing of high-frequency content
+anti_alias:
+  cutoff_hz: 85     # Hz - low-pass cutoff (< Nyquist/2)
+  order: 4          # Filter order
+  type: "butterworth"  # IIR filter type
+
+# Frequency analysis parameters
+frequency:
+  min_rpm: 600      # Minimum expected RPM
+  max_rpm: 3000     # Maximum expected RPM
+  min_freq_hz: 10   # Minimum frequency (600 RPM / 60)
+  max_freq_hz: 50   # Maximum frequency (3000 RPM / 60)
+  
+# Peak detection parameters
+peak_detection:
+  prominence_db: 3  # Minimum peak prominence in dB
+  distance_hz: 2    # Minimum distance between peaks
+  harmonic_tolerance: 0.02  # 2% tolerance for harmonic detection
+  
+# Multi-sensor fusion parameters
+fusion:
+  min_sensors: 1    # Minimum sensors for valid estimate
+  max_deviation_rpm: 50  # Maximum deviation between sensors
+  interpolation_window_s: 5  # Window for interpolation
+  
+# Output parameters
+output:
+  save_intermediate: true  # Save intermediate results
+  plot_results: true      # Generate visualization plots
+  format: 'csv'          # Output format (csv, hdf5)
+  
+# Sensor selection
+# Based on orientation validation results
+sensors:
+  primary: ['Sensor_3', 'Sensor_4', 'Sensor_wb']  # Best validated sensors
+  exclude: ['Sensor_5']  # Has 40° mounting angle
+  
+# Engine specifications (Deutz)
+engine:
+  cylinders: 6
+  idle_rpm: 700
+  max_rpm: 2400
+  expected_harmonics: [0.5, 1.0, 2.0, 3.0]  # Common harmonic orders
