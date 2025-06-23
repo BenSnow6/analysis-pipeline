@@ -1,0 +1,72 @@
+# ---------------------------------------------------------------------------
+# Hovercraft 2000TD  ·  Orientation-Validation Configuration
+# Origin: craft centre-of-gravity on centre-line, Z = skirt baseline
+# Body frame:  +X forward · +Y starboard · +Z down
+# ---------------------------------------------------------------------------
+
+craft:
+  length_m: 13.25
+  beam_m:   6.18
+  height_m: 4.90
+
+gravity_reference_m_s2: [0.0, 0.0, 9.80665]
+
+static_detection:
+  angular_rate_threshold_rad_s: 0.05   # |ω| below this → “static”
+  accel_std_threshold_m_s2:     0.05   # σ(acc) below this → “static”
+  min_duration_s:               1.0
+
+validation_tolerances_deg:
+  primary_sensors: 3     # sensor_3 / 4 / 5
+  secondary_sensors: 5   # sensor_wb / wnb
+
+sensors:
+  - device_name: sensor_3
+    role: primary
+    position_m:  {x: -0.684,  y: -0.8436, z:  0.4332}
+    x_direction: [-1.0,  0.0,   0.0]
+    y_direction: [ 0.0,  0.0,  -1.0]
+    z_direction: [ 0.0, -1.0,   0.0]
+    accel_bias_m_s2:  [0.0, 0.0, 0.0]     # ← fill after bias-estimation
+    gyro_bias_rad_s:  [0.0, 0.0, 0.0]      # ← fill after bias-estimation
+
+  - device_name: sensor_4
+    role: primary
+    position_m:  {x: -2.6284, y:  0.0,    z: -0.8658}
+    x_direction: [ 0.0,  -1.0,  0.0]
+    y_direction: [-0.2588, 0.0, -0.9659]
+    z_direction: [ 0.9659, 0.0, -0.2588]
+    accel_bias_m_s2:  [0.0, 0.0, 0.0]
+    gyro_bias_rad_s:  [0.0, 0.0, 0.0]
+
+  - device_name: sensor_5
+    role: primary
+    position_m:  {x: -4.8059, y:  0.51,   z: -0.27}
+    x_direction: [ 0.7071, 0.0,  0.7071]
+    y_direction: [ 0.0,    1.0,  0.0]
+    z_direction: [-0.7071, 0.0,  0.7071]
+    accel_bias_m_s2:  [0.0, 0.0, 0.0]
+    gyro_bias_rad_s:  [0.0, 0.0, 0.0]
+
+  - device_name: sensor_wb
+    role: secondary
+    position_m:  {x: -4.81,  y: -0.78,   z: -0.15}
+    x_direction: [ 0.0,  1.0,  0.0]
+    y_direction: [-1.0,  0.0,  0.0]
+    z_direction: [ 0.0,  0.0,  1.0]
+    accel_bias_m_s2:  [0.0, 0.0, 0.0]
+    gyro_bias_rad_s:  [0.0, 0.0, 0.0]
+
+  - device_name: sensor_wnb
+    role: secondary
+    position_m:  {x: -0.684, y:  0.8436, z:  0.4332}
+    x_direction: [ 1.0,  0.0,  0.0]
+    y_direction: [ 0.0,  0.0, -1.0]
+    z_direction: [ 0.0,  1.0,  0.0]
+    accel_bias_m_s2:  [0.0, 0.0, 0.0]      # may stay unused if sensor excluded
+    gyro_bias_rad_s:  [0.0, 0.0, 0.0]
+
+  - device_name: gps
+    role: reference
+    position_m:  {x: -4.81,  y: -0.85,   z: -0.15}
+    notes: "Orientation not critical for GPS; axes supplied for completeness."

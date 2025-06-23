@@ -1,0 +1,28 @@
+{
+  "experiment": "007_Fast_stbd_turn_1",
+  "session": "afternoon",
+  "processing_time_s": 0.047439,
+  "total_frames": 8,
+  "sensor_contributions": {
+    "Sensor_3": 0.5,
+    "Sensor_4": 0.375,
+    "Sensor_wb": 0.125
+  },
+  "quality_statistics": {
+    "availability": 100.0,
+    "interpolated_fraction": 0.0,
+    "high_snr_fraction": 0.0,
+    "mean_snr_db": 10.564436913356795,
+    "sensor_agreement_mean": 1.0
+  },
+  "method_usage": {
+    "welch": 0.0,
+    "stft": 1.0,
+    "stft_smoothed": 0.0
+  },
+  "time_range": {
+    "start": 800.5016668240229,
+    "end": 908.2516668240229,
+    "duration_s": 107.75
+  }
+}

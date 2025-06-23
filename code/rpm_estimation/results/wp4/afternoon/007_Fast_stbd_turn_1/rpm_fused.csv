@@ -1,0 +1,9 @@
+time,rpm,snr_db,sensor_id,method,quality,rpm_valid
+800.5016668240229,1140.0,10.291504308585653,fused_Sensor_4,stft_smoothed,measured,True
+806.75,1560.0,10.604690238637321,fused_Sensor_3,stft_smoothed,measured,True
+809.25,1560.0,10.385514761194369,fused_Sensor_3,stft_smoothed,measured,True
+813.75,1560.0,10.385198363207111,fused_Sensor_3,stft_smoothed,measured,True
+839.008333325386,1140.0,10.477341597271499,fused_Sensor_wb,stft_smoothed,measured,True
+887.7516668240229,1620.0,11.181151967462096,fused_Sensor_4,stft_smoothed,measured,True
+892.75,1140.0,10.665780253321483,fused_Sensor_3,stft_smoothed,measured,True
+908.2516668240229,1140.0,10.524313817174827,fused_Sensor_4,stft_smoothed,measured,True

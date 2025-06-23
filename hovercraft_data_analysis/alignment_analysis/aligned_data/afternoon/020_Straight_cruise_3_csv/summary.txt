@@ -1,0 +1,2 @@
+Aligned data exported from: 020_Straight_cruise_3_aligned.h5
+Export timestamp: 2025-06-18 23:48:10.942296

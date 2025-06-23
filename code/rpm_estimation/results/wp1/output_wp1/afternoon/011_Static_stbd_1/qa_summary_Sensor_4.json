@@ -1,0 +1,128 @@
+{
+  "experiment": "011_Static_stbd_1",
+  "session": "afternoon",
+  "sensor_id": "Sensor_4",
+  "processing_timestamp": "2025-06-20T12:25:07.071177Z",
+  "config_version": "1.0",
+  "summary": {
+    "sensor_id": "Sensor_4",
+    "total_windows": 2,
+    "clipped_windows": 0,
+    "clipping_percentage": 0.0,
+    "overall_quality": "excellent",
+    "quality_score": 1.0,
+    "duration_seconds": 54.99499988555908,
+    "sample_count": 11000
+  },
+  "parameters_used": {
+    "window_sec": 30.0,
+    "window_handling": "process_partial",
+    "clipping_threshold": 0.95,
+    "max_g_range": 16.0
+  },
+  "windows": [
+    {
+      "window_id": 0,
+      "start_time": 1255.001666824023,
+      "end_time": 1284.996666709582,
+      "is_partial": false,
+      "metrics": {
+        "rms": 0.1488038151882738,
+        "peak": 0.6590046655307334,
+        "mean": 0.11699802146091891,
+        "std": 0.09194584486977267,
+        "kurtosis": 2.0528543665289565,
+        "skewness": 1.5089770661109665,
+        "peak_to_rms": 4.428681245147706,
+        "max_value": 0.6590046655307334,
+        "min_value": 0.0069283383356284175,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    },
+    {
+      "window_id": 1,
+      "start_time": 1285.001666824023,
+      "end_time": 1309.996666709582,
+      "is_partial": true,
+      "metrics": {
+        "rms": 0.27852349169796076,
+        "peak": 0.961879966701973,
+        "mean": 0.24211292296080433,
+        "std": 0.13768321598146832,
+        "kurtosis": -0.14514983295416917,
+        "skewness": 0.5549160708011872,
+        "peak_to_rms": 3.4534967260322316,
+        "max_value": 0.961879966701973,
+        "min_value": 0.00980340438898887,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    }
+  ],
+  "processing_log": {
+    "warnings": [],
+    "errors": [],
+    "info": [
+      "Processed 55.0 seconds of data"
+    ]
+  },
+  "axes_quality": {
+    "x": {
+      "metrics": {
+        "rms": 0.0806904734177486,
+        "peak": 0.40539395974996545,
+        "mean": -4.3021142204224816e-19,
+        "std": 0.0806904734177486,
+        "kurtosis": 1.4605811592537243,
+        "skewness": -0.07169918555895831,
+        "peak_to_rms": 5.024062229145323,
+        "max_value": 0.35687996525372456,
+        "min_value": -0.40539395974996545,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "y": {
+      "metrics": {
+        "rms": 0.19374038891400197,
+        "peak": 0.9558183067488459,
+        "mean": -6.075947825675857e-18,
+        "std": 0.19374038891400197,
+        "kurtosis": 0.6639674432115799,
+        "skewness": -0.1859068350173616,
+        "peak_to_rms": 4.933500506046353,
+        "max_value": 0.6730105770522818,
+        "min_value": -0.9558183067488459,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "z": {
+      "metrics": {
+        "rms": 0.057384612175149424,
+        "peak": 0.22727431525273425,
+        "mean": 1.3183898417423734e-19,
+        "std": 0.057384612175149424,
+        "kurtosis": 0.39724224889840665,
+        "skewness": -0.06405610018414207,
+        "peak_to_rms": 3.960544589184417,
+        "max_value": 0.20642398837168754,
+        "min_value": -0.22727431525273425,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    }
+  }
+}

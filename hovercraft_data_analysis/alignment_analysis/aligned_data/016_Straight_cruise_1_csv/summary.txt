@@ -1,0 +1,10 @@
+Aligned data export from: 016_Straight_cruise_1_aligned.h5
+Export timestamp: 2025-06-19 13:32:44.743334
+
+Files in this directory:
+  - Sensor_3.csv
+  - Sensor_4.csv
+  - Sensor_5.csv
+  - Sensor_wb.csv
+  - gps.csv
+  - metadata.csv

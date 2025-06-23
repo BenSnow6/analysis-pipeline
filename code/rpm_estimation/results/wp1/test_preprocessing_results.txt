@@ -1,0 +1,21 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0 -- /mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/venv/bin/python
+cachedir: .pytest_cache
+rootdir: /mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/rpm_estimation
+configfile: pytest.ini
+plugins: cov-6.2.1
+collecting ... collected 11 items
+
+code/rpm_estimation/tests/test_preprocessing.py::TestHighPassFilter::test_dc_removal PASSED [  9%]
+code/rpm_estimation/tests/test_preprocessing.py::TestHighPassFilter::test_passband_signal PASSED [ 18%]
+code/rpm_estimation/tests/test_preprocessing.py::TestHighPassFilter::test_stopband_signal PASSED [ 27%]
+code/rpm_estimation/tests/test_preprocessing.py::TestVibrationMagnitude::test_magnitude_calculation PASSED [ 36%]
+code/rpm_estimation/tests/test_preprocessing.py::TestVibrationMagnitude::test_zero_inputs PASSED [ 45%]
+code/rpm_estimation/tests/test_preprocessing.py::TestGravityRemoval::test_constant_gravity PASSED [ 54%]
+code/rpm_estimation/tests/test_preprocessing.py::TestQualityMetrics::test_metrics_calculation PASSED [ 63%]
+code/rpm_estimation/tests/test_preprocessing.py::TestQualityMetrics::test_clipping_detection PASSED [ 72%]
+code/rpm_estimation/tests/test_preprocessing.py::TestDetrending::test_linear_detrend PASSED [ 81%]
+code/rpm_estimation/tests/test_preprocessing.py::TestSyntheticData::test_25hz_sine_burst PASSED [ 90%]
+code/rpm_estimation/tests/test_preprocessing.py::test_anti_alias_filter PASSED [100%]
+
+============================== 11 passed in 5.43s ==============================

@@ -1,0 +1,2 @@
+Aligned data exported from: 007_Fast_stbd_turn_1_aligned.h5
+Export timestamp: 2025-06-18 23:48:05.410152

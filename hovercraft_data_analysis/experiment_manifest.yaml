@@ -1,0 +1,160 @@
+# Experiment Manifest for Hovercraft Data Analysis
+# This file tracks all experiments with their session (morning/afternoon) designation
+# and identifies which experiments contain static data suitable for orientation validation
+
+evaluation_experiments:
+  morning:
+    - name: "006_Departure"
+      path: "1b_4_Normal_Take_off/morning/006_Departure"
+      type: "dynamic"
+      description: "Departure from port"
+      
+    - name: "007_Downwind_max_speed_1"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/morning/007_Downwind_max_speed_1"
+      type: "dynamic"
+      description: "Downwind maximum speed run 1"
+      
+    - name: "008_Into_wind_max_speed"
+      path: "1d_1_Level_Flight_Acceleration/morning/008_Into_wind_max_speed"
+      type: "dynamic"
+      description: "Into wind maximum speed"
+      
+    - name: "009_Downwind_max_speed_2"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/morning/009_Downwind_max_speed_2"
+      type: "dynamic"
+      description: "Downwind maximum speed run 2"
+      
+    - name: "010_Downwind_max_speed_3"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/morning/010_Downwind_max_speed_3"
+      type: "dynamic"
+      description: "Downwind maximum speed run 3"
+      
+    - name: "013_Yaw_speed_3"
+      path: "1b_4_Normal_Take_off/morning/013_Yaw_speed_3"
+      type: "dynamic"
+      description: "Yaw speed test 3"
+      
+    - name: "014_Floating_on_sea_and_takeoff"
+      path: "1c_1_Normal_Climb_All_Engines_Operating/morning/014_Floating_on_sea_and_takeoff"
+      type: "mixed"
+      description: "Floating on sea (static) and takeoff (dynamic)"
+      
+    - name: "015_Skirt_shift_turns"
+      path: "1a_1_Minimum_Radius_Turn/morning/015_Skirt_shift_turns"
+      type: "dynamic"
+      description: "Skirt shift turns"
+      
+    - name: "016_Plough_in"
+      path: "1c_1_Normal_Climb_All_Engines_Operating/morning/016_Plough_in"
+      type: "dynamic"
+      description: "Plough in maneuver"
+
+  afternoon:
+    - name: "007_Fast_stbd_turn_1"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/007_Fast_stbd_turn_1"
+      type: "dynamic"
+      description: "Fast starboard turn 1"
+      
+    - name: "009_Fast_port_turn_1"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/009_Fast_port_turn_1"
+      type: "dynamic"
+      description: "Fast port turn 1"
+      
+    - name: "011_Static_stbd_1"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/011_Static_stbd_1"
+      type: "static_turn"
+      description: "Static starboard turn 1 (may contain motion)"
+      
+    - name: "012_Static_port_1"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/012_Static_port_1"
+      type: "static_turn"
+      description: "Static port turn 1 (may contain motion)"
+      
+    - name: "013_Static_port_2"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/013_Static_port_2"
+      type: "static_turn"
+      description: "Static port turn 2 (may contain motion)"
+      
+    - name: "014_Static_stbd_2"
+      path: "1a_1_Minimum_Radius_Turn/afternoon/014_Static_stbd_2"
+      type: "static_turn"
+      description: "Static starboard turn 2 (may contain motion)"
+      
+    - name: "016_Straight_cruise_1"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/016_Straight_cruise_1"
+      type: "dynamic"
+      description: "Straight cruise 1"
+      
+    - name: "018_Straight_cruise_2"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/018_Straight_cruise_2"
+      type: "dynamic"
+      description: "Straight cruise 2"
+      
+    - name: "020_Straight_cruise_3"
+      path: "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/020_Straight_cruise_3"
+      type: "dynamic"
+      description: "Straight cruise 3"
+      
+    - name: "021_Quarter_turn_port"
+      path: "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/021_Quarter_turn_port"
+      type: "dynamic"
+      description: "Quarter turn to port"
+      
+    - name: "022_Quarter_turn_stbd"
+      path: "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/022_Quarter_turn_stbd"
+      type: "dynamic"
+      description: "Quarter turn to starboard"
+      
+    - name: "023_Eigth_turn_port"
+      path: "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/023_Eigth_turn_port"
+      type: "dynamic"
+      description: "Eighth turn to port"
+      
+    - name: "024_Eigth_turn_stbd"
+      path: "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/024_Eigth_turn_stbd"
+      type: "dynamic"
+      description: "Eighth turn to starboard"
+      
+    - name: "026_Engine_rpm_sweep"
+      path: "1b_4_Normal_Take_off/afternoon/026_Engine_rpm_sweep"
+      type: "mixed"
+      description: "Engine RPM sweep (contains static periods)"
+
+# Static experiments from all_expts folder (best for orientation validation)
+static_experiments:
+  morning:
+    - name: "002_Setup"
+      path: "all_expts/morning/Experiments/002_Setup"
+      description: "Initial setup - sensors installed and waiting"
+      
+    - name: "004_Setup_2"
+      path: "all_expts/morning/Experiments/004_Setup_2"
+      description: "Second setup period"
+      
+  afternoon:
+    - name: "002_Setup"
+      path: "all_expts/afternoon/Experiments/002_Setup"
+      description: "Initial setup - sensors installed and waiting"
+      
+    - name: "003_Waiting_for_departure"
+      path: "all_expts/afternoon/Experiments/003_Waiting_for_departure"
+      description: "Waiting for departure - static on ground"
+      
+    - name: "010_Waiting_for_static_turns"
+      path: "all_expts/afternoon/Experiments/010_Waiting_for_static_turns"
+      description: "Waiting between static turn experiments"
+
+# Analysis configuration
+analysis_config:
+  # Never mix morning and afternoon data
+  separate_sessions: true
+  
+  # Use static experiments for orientation validation
+  orientation_validation_experiments:
+    morning: ["002_Setup", "004_Setup_2"]
+    afternoon: ["002_Setup", "003_Waiting_for_departure"]
+  
+  # Apply separate bias corrections
+  bias_correction:
+    morning: "Calculate from morning static experiments"
+    afternoon: "Calculate from afternoon static experiments"

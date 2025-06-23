@@ -1,0 +1,6 @@
+002_Setup:
+  error: 'Failed to load data: No aligned data found for 002_Setup'
+003_Waiting_for_departure:
+  error: 'Failed to load data: No aligned data found for 003_Waiting_for_departure'
+010_Waiting_for_static_turns:
+  error: 'Failed to load data: No aligned data found for 010_Waiting_for_static_turns'

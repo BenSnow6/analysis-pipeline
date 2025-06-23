@@ -1,0 +1,2 @@
+Aligned data exported from: 026_Engine_rpm_sweep_aligned.h5
+Export timestamp: 2025-06-18 23:48:14.414678

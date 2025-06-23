@@ -1,0 +1,23 @@
+experiment: 002_Setup
+sensors:
+  Sensor_3:
+    error: Missing accelerometer or gyroscope data
+    experiment: 002_Setup
+    sensor: Sensor_3
+    timestamp: '2025-06-19T13:20:49.423984'
+  Sensor_4:
+    error: Missing accelerometer or gyroscope data
+    experiment: 002_Setup
+    sensor: Sensor_4
+    timestamp: '2025-06-19T13:20:49.423987'
+  Sensor_5:
+    error: Missing accelerometer or gyroscope data
+    experiment: 002_Setup
+    sensor: Sensor_5
+    timestamp: '2025-06-19T13:20:49.423988'
+  Sensor_wb:
+    error: Missing accelerometer or gyroscope data
+    experiment: 002_Setup
+    sensor: Sensor_wb
+    timestamp: '2025-06-19T13:20:49.423989'
+timestamp: '2025-06-19T13:20:49.423974'
