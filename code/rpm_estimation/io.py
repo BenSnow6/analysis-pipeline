@@ -8,11 +8,14 @@ and saving results.
 import pandas as pd
 import numpy as np
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, Union
 import yaml
 import logging
+import pyarrow as pa
+import pyarrow.parquet as pq
+from .logging_config import get_logger, ProcessingError
 
-logger = logging.getLogger(__name__)
+logger = get_logger("io")
 
 
 def load_config(config_path: Path) -> dict:
@@ -186,3 +189,204 @@ def list_available_experiments(base_path: Optional[Path] = None) -> Dict[str, Li
                     experiments[session].append(exp_name)
     
     return experiments
+
+
+def load_orientation_config(config_path: Optional[Path] = None) -> Dict[str, np.ndarray]:
+    """
+    Load orientation configuration with rotation matrices.
+    
+    Args:
+        config_path: Path to orientation_config.yaml 
+                    (defaults to searching common locations)
+        
+    Returns:
+        Dictionary mapping sensor IDs to rotation matrices (R_bs)
+        
+    Raises:
+        FileNotFoundError: If orientation config not found
+        ValueError: If rotation matrices are invalid
+    """
+    if config_path is None:
+        # Search for orientation config in common locations
+        module_path = Path(__file__).parent
+        search_paths = [
+            module_path.parent.parent / 'hovercraft_data_analysis' / 'alignment_analysis' / 'orientation_config.yaml',
+            module_path.parent.parent / 'config' / 'orientation_config.yaml',
+            module_path / 'orientation_config.yaml'
+        ]
+        
+        for path in search_paths:
+            if path.exists():
+                config_path = path
+                break
+        else:
+            raise FileNotFoundError(
+                "orientation_config.yaml not found. Searched: " + 
+                ", ".join(str(p) for p in search_paths)
+            )
+    
+    try:
+        with open(config_path, 'r') as f:
+            orientation_data = yaml.safe_load(f)
+    except Exception as e:
+        logger.error(
+            f"Failed to load orientation config from {config_path}",
+            error_type=ProcessingError.CONFIG
+        )
+        raise
+    
+    # Extract rotation matrices
+    rotation_matrices = {}
+    
+    for sensor_id, sensor_data in orientation_data.items():
+        if isinstance(sensor_data, dict) and 'R_bs' in sensor_data:
+            R_bs = np.array(sensor_data['R_bs'])
+            
+            # Validate rotation matrix
+            if R_bs.shape != (3, 3):
+                raise ValueError(f"Invalid rotation matrix shape for {sensor_id}: {R_bs.shape}")
+            
+            # Check if it's a valid rotation matrix (orthogonal with det=1)
+            if not np.allclose(np.linalg.det(R_bs), 1.0, atol=1e-6):
+                logger.warning(
+                    f"Rotation matrix for {sensor_id} has determinant {np.linalg.det(R_bs):.6f} (expected 1.0)"
+                )
+            
+            rotation_matrices[sensor_id] = R_bs
+            logger.debug(f"Loaded rotation matrix for {sensor_id}")
+    
+    logger.info(f"Loaded orientation data for {len(rotation_matrices)} sensors from {config_path}")
+    return rotation_matrices
+
+
+def apply_body_rotation(accel_data: Union[pd.DataFrame, np.ndarray], 
+                       R_bs: np.ndarray,
+                       accel_cols: Tuple[str, str, str] = ('x', 'y', 'z')) -> np.ndarray:
+    """
+    Apply body-frame rotation to acceleration data.
+    
+    Args:
+        accel_data: DataFrame or array with acceleration data
+        R_bs: 3x3 rotation matrix (body to sensor transform)
+        accel_cols: Column names for x, y, z accelerations
+        
+    Returns:
+        Rotated accelerations as Nx3 array
+    """
+    # Extract acceleration vectors
+    if isinstance(accel_data, pd.DataFrame):
+        accel_sensor = accel_data[list(accel_cols)].values
+    else:
+        accel_sensor = accel_data
+    
+    # Validate dimensions
+    if accel_sensor.shape[1] != 3:
+        raise ValueError(f"Expected 3D acceleration data, got shape {accel_sensor.shape}")
+    
+    # Apply rotation: a_body = R_bs^T @ a_sensor
+    # Note: R_bs transforms from body to sensor, so we use transpose for sensor to body
+    accel_body = accel_sensor @ R_bs.T
+    
+    return accel_body
+
+
+def load_aligned_data(experiment: str, session: str, sensor_id: str,
+                     base_path: Optional[Path] = None,
+                     apply_rotation: bool = True) -> pd.DataFrame:
+    """
+    Load aligned sensor data with optional rotation to body frame.
+    
+    Args:
+        experiment: Experiment name
+        session: 'morning' or 'afternoon'
+        sensor_id: Sensor identifier
+        base_path: Base directory for data
+        apply_rotation: Whether to apply body-frame rotation
+        
+    Returns:
+        DataFrame with aligned data, optionally rotated to body frame
+    """
+    # Load raw sensor data
+    df = load_sensor_data(experiment, session, sensor_id, base_path)
+    
+    if apply_rotation:
+        try:
+            # Load rotation matrices
+            rotation_matrices = load_orientation_config()
+            
+            if sensor_id in rotation_matrices:
+                # Apply rotation
+                R_bs = rotation_matrices[sensor_id]
+                accel_body = apply_body_rotation(df, R_bs)
+                
+                # Add body-frame columns
+                df['x_body'] = accel_body[:, 0]
+                df['y_body'] = accel_body[:, 1]
+                df['z_body'] = accel_body[:, 2]
+                
+                logger.info(
+                    f"Applied body-frame rotation to {sensor_id}",
+                    sensor=sensor_id,
+                    processing_step="rotation"
+                )
+            else:
+                logger.warning(
+                    f"No rotation matrix found for {sensor_id}, using sensor frame",
+                    sensor=sensor_id,
+                    error_type=ProcessingError.RECOVERABLE
+                )
+                # Copy sensor frame as body frame
+                df['x_body'] = df['x']
+                df['y_body'] = df['y']
+                df['z_body'] = df['z']
+                
+        except Exception as e:
+            logger.error(
+                f"Failed to apply rotation for {sensor_id}: {str(e)}",
+                sensor=sensor_id,
+                error_type=ProcessingError.RECOVERABLE
+            )
+            # Fallback to sensor frame
+            df['x_body'] = df['x']
+            df['y_body'] = df['y']
+            df['z_body'] = df['z']
+    
+    return df
+
+
+def save_processed_data(df: pd.DataFrame, output_path: Path,
+                       compression: str = 'snappy',
+                       schema_version: str = '1.0') -> None:
+    """
+    Save processed data as Parquet file with metadata.
+    
+    Args:
+        df: DataFrame with processed data
+        output_path: Path to save Parquet file
+        compression: Compression algorithm
+        schema_version: Schema version for compatibility tracking
+    """
+    # Ensure output directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Add metadata - PyArrow expects bytes for metadata values
+    metadata = {
+        b'schema_version': str(schema_version).encode('utf-8'),
+        b'processing_timestamp': pd.Timestamp.now().isoformat().encode('utf-8'),
+        b'columns': str(list(df.columns)).encode('utf-8'),
+        b'shape': f"{df.shape[0]} x {df.shape[1]}".encode('utf-8')
+    }
+    
+    # Convert to PyArrow table with metadata
+    table = pa.Table.from_pandas(df)
+    table = table.replace_schema_metadata(metadata)
+    
+    # Write Parquet file
+    pq.write_table(table, output_path, compression=compression)
+    
+    logger.info(
+        f"Saved processed data to {output_path}",
+        rows=df.shape[0],
+        columns=df.shape[1],
+        compression=compression
+    )

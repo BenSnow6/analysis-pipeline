@@ -1,0 +1,731 @@
+{
+  "module_categories": {
+    "root_modules": [
+      "align",
+      "align_additional_data",
+      "ast",
+      "base64",
+      "bias_estimator",
+      "callbacks",
+      "classes",
+      "cli",
+      "config",
+      "csv",
+      "dash_bootstrap_components",
+      "data_loader",
+      "data_utils",
+      "dynamic_validator",
+      "folium",
+      "frame_definitions",
+      "fusion",
+      "io",
+      "layout",
+      "logging_config",
+      "main",
+      "math",
+      "orientation_check",
+      "plot_orientation",
+      "preprocess",
+      "quality",
+      "rotation_validator",
+      "rpm_estimation",
+      "schema",
+      "spectral",
+      "static_detector",
+      "statistics",
+      "tempfile",
+      "timestamp_analyzer",
+      "tqdm",
+      "traceback",
+      "tracking",
+      "visualizer",
+      "wp2_process",
+      "wp3_process",
+      "wp4_process"
+    ],
+    "code": [
+      "code.rpm_estimation.cli"
+    ],
+    "concurrent": [
+      "concurrent.futures"
+    ],
+    "hovercraft_data_analysis": [
+      "hovercraft_data_analysis.timestamp_analysis",
+      "hovercraft_data_analysis.timestamp_analysis.main"
+    ],
+    "mpl_toolkits": [
+      "mpl_toolkits.mplot3d"
+    ],
+    "plotting": [
+      "plotting.experiment_plots"
+    ],
+    "rpm_estimation": [
+      "rpm_estimation.cli",
+      "rpm_estimation.fusion",
+      "rpm_estimation.io",
+      "rpm_estimation.preprocess",
+      "rpm_estimation.quality",
+      "rpm_estimation.schema",
+      "rpm_estimation.spectral",
+      "rpm_estimation.tracking"
+    ]
+  },
+  "file_categories": {
+    "root": [
+      "analyze_imports.py",
+      "basic_timestamp_analysis.py",
+      "dashboard_app.py",
+      "data_sync.py",
+      "data_utils.py",
+      "export_static_experiments_to_csv.py",
+      "frame_definitions.py",
+      "preprocess_data.py",
+      "repo_tree.py",
+      "run_timestamp_analysis_standalone.py",
+      "test_timestamp_analysis.py"
+    ],
+    "code": [
+      "code/__init__.py",
+      "code/rpm_estimation/check_wp2_results.py",
+      "code/rpm_estimation/cli.py",
+      "code/rpm_estimation/create_unit_test_summary.py",
+      "code/rpm_estimation/fusion.py",
+      "code/rpm_estimation/generate_wp3_test_plots.py",
+      "code/rpm_estimation/io.py",
+      "code/rpm_estimation/logging_config.py",
+      "code/rpm_estimation/preprocess.py",
+      "code/rpm_estimation/quality.py",
+      "code/rpm_estimation/run_wp2_tests.py",
+      "code/rpm_estimation/run_wp3_simple.py",
+      "code/rpm_estimation/schema.py",
+      "code/rpm_estimation/spectral.py",
+      "code/rpm_estimation/test_wp2_processing.py",
+      "code/rpm_estimation/test_wp3_run.py",
+      "code/rpm_estimation/test_wp4_integration.py",
+      "code/rpm_estimation/tracking.py",
+      "code/rpm_estimation/validate_wp2.py",
+      "code/rpm_estimation/visualize_unit_tests.py",
+      "code/rpm_estimation/wp2_process.py",
+      "code/rpm_estimation/wp3_process.py",
+      "code/rpm_estimation/wp4_process.py",
+      "code/rpm_estimation/__init__.py",
+      "code/rpm_estimation/results/wp1/check_parquet.py",
+      "code/rpm_estimation/results/wp1/run_wp1.py",
+      "code/rpm_estimation/tests/test_cli.py",
+      "code/rpm_estimation/tests/test_config.py",
+      "code/rpm_estimation/tests/test_dataclass.py",
+      "code/rpm_estimation/tests/test_fusion.py",
+      "code/rpm_estimation/tests/test_imports.py",
+      "code/rpm_estimation/tests/test_io.py",
+      "code/rpm_estimation/tests/test_preprocessing.py",
+      "code/rpm_estimation/tests/test_quality.py",
+      "code/rpm_estimation/tests/test_schema.py",
+      "code/rpm_estimation/tests/test_spectral.py",
+      "code/rpm_estimation/tests/test_stft.py",
+      "code/rpm_estimation/tests/__init__.py"
+    ],
+    "hovercraft_data_analysis": [
+      "hovercraft_data_analysis/process_all_experiments.py",
+      "hovercraft_data_analysis/run_static_orientation_analysis.py",
+      "hovercraft_data_analysis/run_week1_complete.py",
+      "hovercraft_data_analysis/alignment_analysis/align.py",
+      "hovercraft_data_analysis/alignment_analysis/align_additional_all.py",
+      "hovercraft_data_analysis/alignment_analysis/align_additional_data.py",
+      "hovercraft_data_analysis/alignment_analysis/analyze_alignment_simple.py",
+      "hovercraft_data_analysis/alignment_analysis/convert_hdf5_compat.py",
+      "hovercraft_data_analysis/alignment_analysis/export_all_to_csv.py",
+      "hovercraft_data_analysis/alignment_analysis/export_static_to_csv.py",
+      "hovercraft_data_analysis/alignment_analysis/export_to_csv.py",
+      "hovercraft_data_analysis/alignment_analysis/plot_alignment_simple.py",
+      "hovercraft_data_analysis/alignment_analysis/run_alignment.py",
+      "hovercraft_data_analysis/alignment_analysis/test_align.py",
+      "hovercraft_data_analysis/alignment_analysis/__init__.py",
+      "hovercraft_data_analysis/dashboard_app/app.py",
+      "hovercraft_data_analysis/dashboard_app/callbacks.py",
+      "hovercraft_data_analysis/dashboard_app/config.py",
+      "hovercraft_data_analysis/dashboard_app/data_loader.py",
+      "hovercraft_data_analysis/dashboard_app/layout.py",
+      "hovercraft_data_analysis/orientation_analysis/add_gyro_to_csv.py",
+      "hovercraft_data_analysis/orientation_analysis/add_gyro_to_static_experiments.py",
+      "hovercraft_data_analysis/orientation_analysis/analyze_gravity.py",
+      "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro.py",
+      "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+      "hovercraft_data_analysis/orientation_analysis/bias_estimator.py",
+      "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+      "hovercraft_data_analysis/orientation_analysis/check_rotation_matrix.py",
+      "hovercraft_data_analysis/orientation_analysis/check_sensor3_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/check_sensor5_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/debug_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/debug_rotation_validation.py",
+      "hovercraft_data_analysis/orientation_analysis/deduce_sensor_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/dynamic_validator.py",
+      "hovercraft_data_analysis/orientation_analysis/orientation_check.py",
+      "hovercraft_data_analysis/orientation_analysis/plot_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/rotation_validator.py",
+      "hovercraft_data_analysis/orientation_analysis/run_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/static_detector.py",
+      "hovercraft_data_analysis/orientation_analysis/test_fixes.py",
+      "hovercraft_data_analysis/orientation_analysis/test_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/test_orientation_simple.py",
+      "hovercraft_data_analysis/orientation_analysis/test_unit_conversion.py",
+      "hovercraft_data_analysis/orientation_analysis/__init__.py",
+      "hovercraft_data_analysis/timestamp_analysis/data_loader.py",
+      "hovercraft_data_analysis/timestamp_analysis/main.py",
+      "hovercraft_data_analysis/timestamp_analysis/report_generator.py",
+      "hovercraft_data_analysis/timestamp_analysis/timestamp_analyzer.py",
+      "hovercraft_data_analysis/timestamp_analysis/visualizer.py",
+      "hovercraft_data_analysis/timestamp_analysis/__init__.py",
+      "hovercraft_data_analysis/timestamp_analysis/__main__.py"
+    ],
+    "src": [
+      "src/classes.py",
+      "src/data_processing.py",
+      "src/plotting.py"
+    ],
+    "thesis_analysis": [
+      "thesis_analysis/plotting/experiment_plots.py",
+      "thesis_analysis/plotting/__init__.py",
+      "thesis_analysis/scripts/analyze_experiments.py",
+      "thesis_analysis/scripts/simulator_validation.py"
+    ]
+  },
+  "path_issues": {
+    "hovercraft_data_analysis/dashboard_app/config.py": [
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/dashboard_app/config.py",
+        "path": "../../02_Evaluation_Experiments",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/dashboard_app/config.py",
+        "reference": "../../02_Evaluation_Experiments",
+        "severity": "medium"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py": [
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "path": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "path": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "path": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+        "reference": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py": [
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "path": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "path": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "path": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/010_Waiting_for_static_turns/IMU/Sensor_3/gyro_010_Waiting_for_static_turns.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/011_Static_stbd_1/IMU/Sensor_3/gyro_011_Static_stbd_1.csv",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+        "reference": "../../all_expts/afternoon/Experiments/012_Static_port_1/IMU/Sensor_3/gyro_012_Static_port_1.csv",
+        "severity": "medium"
+      }
+    ],
+    "thesis_analysis/scripts/simulator_validation.py": [
+      {
+        "type": "hardcoded_path",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "path": "/path/to/real/experiment/data",
+        "severity": "high"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "path": "/path/to/simulator/output/data",
+        "severity": "high"
+      },
+      {
+        "type": "hardcoded_path",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "path": "/path/to/validation/results",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "reference": "/path/to/real/experiment/data",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "reference": "/path/to/simulator/output/data",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "thesis_analysis/scripts/simulator_validation.py",
+        "reference": "/path/to/validation/results",
+        "severity": "high"
+      }
+    ],
+    "analyze_imports.py": [
+      {
+        "type": "file_reference",
+        "file": "analyze_imports.py",
+        "reference": "/]+/[^",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "analyze_imports.py",
+        "reference": "/]+)[",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "analyze_imports.py",
+        "reference": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline",
+        "severity": "high"
+      }
+    ],
+    "data_utils.py": [
+      {
+        "type": "file_reference",
+        "file": "data_utils.py",
+        "reference": "\n    def __init__(self, experiment_name: str, experiment_type: str,\n                 base_path: Path, full_path: Path, time_of_day: Optional[str] = None):\n        self.experiment_name: str = experiment_name\n        self.experiment_type: str = experiment_type\n        self.base_path: Path = base_path # e.g., .../02_Evaluation_Experiments\n        self.full_path: Path = full_path # Full path to specific experiment folder\n        self.time_of_day: Optional[str] = time_of_day\n\n        self.gps_data: Optional[pd.DataFrame] = None\n        # Lazy loading implementation - store file paths instead of data\n        self.imu_data: Dict[str, Dict[str, pd.DataFrame]] = {sensor: {} for sensor in SENSOR_NAMES}\n        self._imu_file_paths: Dict[str, Dict[str, Path]] = {sensor: {} for sensor in SENSOR_NAMES}\n        self._loaded_imu: Dict[str, Dict[str, bool]] = {sensor: {} for sensor in SENSOR_NAMES}\n        \n        self.available_sensors: List[str] = []\n        self.available_imu_types: Dict[str, List[str]] = {sensor: [] for sensor in SENSOR_NAMES}\n\n        self.misc_files: Dict[str, Path] = {} # For other files like .json, .log, .html\n        self.file_structure_type: Optional[str] = None  # Track detected structure type\n\n    def __repr__(self) -> str:\n        gps_loaded = ",
+        "severity": "medium"
+      },
+      {
+        "type": "file_reference",
+        "file": "data_utils.py",
+        "reference": "\n    Finds the path to a specific experiment directory.\n\n    Returns:\n        Tuple (base_path, experiment_dir_path, time_of_day) or None if not found.\n        base_path is the .../02_Evaluation_Experiments part.\n    ",
+        "severity": "medium"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/analyze_gravity.py": [
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_gravity.py",
+        "reference": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline",
+        "severity": "high"
+      },
+      {
+        "type": "file_reference",
+        "file": "hovercraft_data_analysis/orientation_analysis/analyze_gravity.py",
+        "reference": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline",
+        "severity": "high"
+      }
+    ],
+    "thesis_analysis/plotting/experiment_plots.py": [
+      {
+        "type": "file_reference",
+        "file": "thesis_analysis/plotting/experiment_plots.py",
+        "reference": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/02_Evaluation_Experiments",
+        "severity": "high"
+      }
+    ],
+    "run_timestamp_analysis_standalone.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "run_timestamp_analysis_standalone.py",
+        "manipulation": "sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)",
+        "severity": "high"
+      }
+    ],
+    "test_timestamp_analysis.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "test_timestamp_analysis.py",
+        "manipulation": "sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/cli.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/cli.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      },
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/cli.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      },
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/cli.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/generate_wp3_test_plots.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/generate_wp3_test_plots.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/run_wp2_tests.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/run_wp2_tests.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/test_wp3_run.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/test_wp3_run.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/test_wp4_integration.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/test_wp4_integration.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/validate_wp2.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/validate_wp2.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/visualize_unit_tests.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/visualize_unit_tests.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/wp2_process.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/wp2_process.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/results/wp1/check_parquet.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/results/wp1/check_parquet.py",
+        "manipulation": "sys.path.insert(0, str(project_root)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/results/wp1/run_wp1.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/results/wp1/run_wp1.py",
+        "manipulation": "sys.path.insert(0, str(project_root)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_cli.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_cli.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_fusion.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_fusion.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_preprocessing.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_preprocessing.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_quality.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_quality.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_schema.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_schema.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "code/rpm_estimation/tests/test_stft.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "code/rpm_estimation/tests/test_stft.py",
+        "manipulation": "sys.path.insert(0, str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/process_all_experiments.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/process_all_experiments.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/run_static_orientation_analysis.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/run_static_orientation_analysis.py",
+        "manipulation": "sys.path.append(\"{base_path / 'alignment_analysis'}\")",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/alignment_analysis/align_additional_all.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/alignment_analysis/align_additional_all.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/bias_estimator.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/bias_estimator.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/check_sensor3_orientation.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_sensor3_orientation.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/check_sensor5_orientation.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/check_sensor5_orientation.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/debug_rotation_validation.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/debug_rotation_validation.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/deduce_sensor_orientation.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/deduce_sensor_orientation.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/dynamic_validator.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/dynamic_validator.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/orientation_check.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/orientation_check.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/rotation_validator.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/rotation_validator.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/test_orientation_simple.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/test_orientation_simple.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "hovercraft_data_analysis/orientation_analysis/test_unit_conversion.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "hovercraft_data_analysis/orientation_analysis/test_unit_conversion.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ],
+    "thesis_analysis/scripts/analyze_experiments.py": [
+      {
+        "type": "sys_path_manipulation",
+        "file": "thesis_analysis/scripts/analyze_experiments.py",
+        "manipulation": "sys.path.append(str(Path(__file__)",
+        "severity": "high"
+      }
+    ]
+  },
+  "critical_files": {
+    "with_hardcoded_paths": [
+      "hovercraft_data_analysis/dashboard_app/config.py",
+      "hovercraft_data_analysis/orientation_analysis/analyze_static_gyro_simple.py",
+      "hovercraft_data_analysis/orientation_analysis/check_gyro_units.py",
+      "thesis_analysis/scripts/simulator_validation.py"
+    ],
+    "with_sys_path_changes": [
+      "run_timestamp_analysis_standalone.py",
+      "test_timestamp_analysis.py",
+      "code/rpm_estimation/cli.py",
+      "code/rpm_estimation/generate_wp3_test_plots.py",
+      "code/rpm_estimation/run_wp2_tests.py",
+      "code/rpm_estimation/test_wp3_run.py",
+      "code/rpm_estimation/test_wp4_integration.py",
+      "code/rpm_estimation/validate_wp2.py",
+      "code/rpm_estimation/visualize_unit_tests.py",
+      "code/rpm_estimation/wp2_process.py",
+      "code/rpm_estimation/results/wp1/check_parquet.py",
+      "code/rpm_estimation/results/wp1/run_wp1.py",
+      "code/rpm_estimation/tests/test_cli.py",
+      "code/rpm_estimation/tests/test_fusion.py",
+      "code/rpm_estimation/tests/test_preprocessing.py",
+      "code/rpm_estimation/tests/test_quality.py",
+      "code/rpm_estimation/tests/test_schema.py",
+      "code/rpm_estimation/tests/test_stft.py",
+      "hovercraft_data_analysis/process_all_experiments.py",
+      "hovercraft_data_analysis/run_static_orientation_analysis.py",
+      "hovercraft_data_analysis/alignment_analysis/align_additional_all.py",
+      "hovercraft_data_analysis/orientation_analysis/bias_estimator.py",
+      "hovercraft_data_analysis/orientation_analysis/check_sensor3_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/check_sensor5_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/debug_rotation_validation.py",
+      "hovercraft_data_analysis/orientation_analysis/deduce_sensor_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/dynamic_validator.py",
+      "hovercraft_data_analysis/orientation_analysis/orientation_check.py",
+      "hovercraft_data_analysis/orientation_analysis/rotation_validator.py",
+      "hovercraft_data_analysis/orientation_analysis/test_orientation_simple.py",
+      "hovercraft_data_analysis/orientation_analysis/test_unit_conversion.py",
+      "thesis_analysis/scripts/analyze_experiments.py"
+    ],
+    "with_many_imports": [
+      "code/rpm_estimation/cli.py",
+      "code/rpm_estimation/test_wp4_integration.py",
+      "code/rpm_estimation/tests/test_imports.py",
+      "hovercraft_data_analysis/orientation_analysis/test_orientation.py",
+      "hovercraft_data_analysis/orientation_analysis/__init__.py"
+    ]
+  }
+}

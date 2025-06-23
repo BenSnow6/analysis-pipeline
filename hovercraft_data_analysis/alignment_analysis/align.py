@@ -58,11 +58,24 @@ class DataAligner:
         if not experiment_path:
             raise ValueError(f"Experiment {experiment_name} not found in {base_path}")
         
-        # Load IMU data
+        # Load IMU data - check both IMU subfolder and direct sensor folders
         imu_path = experiment_path / "IMU"
         if imu_path.exists():
+            # Afternoon structure: experiment/IMU/Sensor_X/
             for sensor_dir in imu_path.iterdir():
                 if sensor_dir.is_dir():
+                    sensor_name = sensor_dir.name
+                    # Load accelerometer data as primary (contains timestamps)
+                    accel_file = sensor_dir / f"accel_{experiment_name}.csv"
+                    if accel_file.exists():
+                        df = pd.read_csv(accel_file)
+                        if 'time_from_sync' in df.columns:
+                            sensor_data[sensor_name] = df
+                            print(f"Loaded {sensor_name}: {len(df)} samples")
+        else:
+            # Morning structure: experiment/Sensor_X/
+            for sensor_dir in experiment_path.iterdir():
+                if sensor_dir.is_dir() and sensor_dir.name.startswith('Sensor_'):
                     sensor_name = sensor_dir.name
                     # Load accelerometer data as primary (contains timestamps)
                     accel_file = sensor_dir / f"accel_{experiment_name}.csv"
