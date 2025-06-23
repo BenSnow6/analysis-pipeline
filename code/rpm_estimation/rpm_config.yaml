@@ -45,6 +45,14 @@ peak_detection:
   prominence_db: 3  # Minimum peak prominence in dB
   distance_hz: 2    # Minimum distance between peaks
   harmonic_tolerance: 0.02  # 2% tolerance for harmonic detection
+  noise_floor_db: 3.0  # Peaks must be 3 dB above noise floor
+  max_harmonics: 5     # Number of harmonics to extract
+  max_peaks: 10        # Maximum peaks to consider
+
+# SNR calculation parameters
+snr:
+  band_hz: 3.0      # ±3 Hz band for noise calculation
+  exclude_hz: 0.5   # ±0.5 Hz exclusion around peak
   
 # Multi-sensor fusion parameters
 fusion:
@@ -70,3 +78,159 @@ engine:
   idle_rpm: 700
   max_rpm: 2400
   expected_harmonics: [0.5, 1.0, 2.0, 3.0]  # Common harmonic orders
+
+# WP-1 Specific Parameters
+# Raw data audit and orientation processing
+wp1:
+  # Sensor Configuration
+  sensors:
+    default: ["Sensor_3", "Sensor_4", "Sensor_wb"]  # Validated sensors
+    max_g_range: 16.0  # Sensor range in g
+    
+  # Filtering Parameters
+  filters:
+    highpass_cutoff: 5.0  # Hz
+    highpass_order: 4
+    filter_type: "butterworth"
+    
+  # Quality Assessment
+  quality:
+    window_sec: 30.0  # Window size for metrics
+    window_handling: "process_partial"  # Options: drop, pad, process_partial
+    clipping_threshold: 0.95  # Fraction of max range
+    
+    # Overall quality thresholds
+    thresholds:
+      excellent: 0.01  # <1% windows clipped
+      good: 0.05      # <5% windows clipped
+      fair: 0.10      # <10% windows clipped
+      poor: 1.0       # >10% windows clipped
+      
+  # Processing Options
+  processing:
+    remove_gravity: true
+    detrend_method: "linear"
+    parallel_sensors: true  # Process sensors in parallel
+    
+  # Output Configuration
+  output:
+    parquet_compression: "snappy"
+    include_raw_data: false  # Only processed data
+    schema_version: "1.0"
+
+# WP-2 Specific Parameters
+# Welch PSD core implementation
+wp2:
+  # Processing parameters
+  processing:
+    window_overlap: 0.5  # 50% overlap for Welch
+    min_data_seconds: 6.0  # Minimum data length for processing
+    
+  # RPM extraction
+  rpm_extraction:
+    harmonic_check: true  # Check for harmonic relationships
+    prefer_fundamental: true  # Prefer fundamental over harmonics
+    
+  # Output configuration
+  output:
+    save_psd: true  # Save PSD data for diagnostics
+    save_harmonics: true  # Save harmonic analysis
+    format: 'hdf5'  # HDF5 for time series data
+    
+  # Validation thresholds
+  validation:
+    min_snr_db: 10.0  # Minimum SNR for valid estimate
+    max_freq_error_hz: 0.5  # Maximum frequency estimation error
+    
+  # Batch processing
+  batch:
+    process_all: true
+    experiments_per_batch: 5
+    save_intermediate: true
+
+# WP-3 Specific Parameters
+# STFT + Order tracking for transients
+wp3:
+  # STFT parameters
+  stft:
+    win_sec: 1.0        # Window length in seconds (200 samples @ 200Hz)
+    hop_sec: 0.25       # Hop size in seconds (4 Hz update rate)
+    window: 'hann'      # Window function
+    padding: 'zero'     # Padding for incomplete windows
+    edge_method: 'mirror'  # Edge handling method
+    
+  # Quality control
+  quality:
+    min_snr_db: 10.0    # Early gating threshold
+    require_antialiasing: false  # Verify anti-alias filter was applied
+    
+  # Smoothing parameters
+  smoothing:
+    enabled: true
+    method: 'polynomial'  # Options: polynomial, median, moving_avg
+    window_size: 5        # Window size in samples
+    high_rate_threshold: 150  # RPM/s threshold for applying smoothing
+    poly_order: 2         # Polynomial order for polynomial smoothing
+    
+  # Output configuration
+  output:
+    format: 'hdf5'
+    include_smoothed: true
+    sparse_output: true   # Only save valid bins (NaN for gated)
+    save_spectrogram: false  # Save full STFT spectrogram (large files)
+    
+  # Processing options
+  processing:
+    min_data_seconds: 2.0  # Minimum data length for STFT
+    max_freq_hz: 100.0     # Maximum frequency to analyze
+    parallel_sensors: true  # Process sensors in parallel
+    
+  # Validation
+  validation:
+    compare_with_wp2: true  # Compare steady segments with WP-2
+    steady_threshold: 50    # RPM/s threshold for steady state
+
+# WP-4 Specific Parameters
+# Multi-sensor fusion and confidence gating
+wp4:
+  # Fusion strategy
+  fusion:
+    strategy: 'snr_max'  # Options: snr_max, median, weighted
+    min_sensors_required: 1
+    agreement_threshold_rpm: 50
+    
+  # Interpolation
+  interpolation:
+    max_gap_s: 5.0
+    method: 'median'  # Options: median, linear, spline
+    lookback_window_s: 5.0
+    
+  # Quality control  
+  quality:
+    confidence_weights:
+      measured: 1.0
+      interpolated: 0.5
+      extrapolated: 0.3
+    
+  # Method blending
+  method_selection:
+    steady_state_threshold: 50  # RPM/s
+    blend_window_s: 2.0
+    prefer_stft_above: 150  # RPM/s
+    
+  # Output
+  output:
+    format: 'csv'
+    include_all_sensors: false
+    save_fusion_report: true
+    
+  # Processing
+  processing:
+    batch_size: 10  # Experiments per batch
+    parallel: true
+    
+  # Validation
+  validation:
+    target_availability: 95.0  # %
+    max_nan_fraction: 0.02    # 2%
+    sensor_agreement_threshold: 15  # RPM std dev

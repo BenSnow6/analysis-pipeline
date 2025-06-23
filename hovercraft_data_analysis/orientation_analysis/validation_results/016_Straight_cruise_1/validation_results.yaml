@@ -1,0 +1,744 @@
+experiment: 016_Straight_cruise_1
+sensors:
+  Sensor_3:
+    bias_estimation:
+      error: No static segments found
+      sensor: Sensor_3
+    bias_valid: false
+    dynamic_valid: &id001 !!python/object/apply:numpy._core.multiarray.scalar
+    - &id002 !!python/object/apply:numpy.dtype
+      args:
+      - b1
+      - false
+      - true
+      state: !!python/tuple
+      - 3
+      - '|'
+      - null
+      - null
+      - null
+      - -1
+      - -1
+      - 0
+    - !!binary |
+      AA==
+    dynamic_validation:
+      acceleration_stable: *id001
+      expected_pattern: Mainly gravity (+Z), minimal lateral acceleration
+      experiment: 016_Straight_cruise_1
+      forward_accel_small: &id003 !!python/object/apply:numpy._core.multiarray.scalar
+      - *id002
+      - !!binary |
+        AQ==
+      gravity_dominant: *id003
+      lateral_accel_small: *id003
+      mean_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - &id004 !!python/name:numpy.ndarray ''
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - &id005 !!python/object/apply:numpy.dtype
+          args:
+          - f8
+          - false
+          - true
+          state: !!python/tuple
+          - 3
+          - <
+          - null
+          - null
+          - null
+          - -1
+          - -1
+          - 0
+        - false
+        - !!binary |
+          43rshCz+yT9VNpQewnCXv9AoxVwCniNA
+      pattern_valid: *id001
+      sensor: Sensor_3
+      std_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          wO/gtBBy4z92MjKR9F/0PytqLbwQaQVA
+    experiment: 016_Straight_cruise_1
+    overall_valid: false
+    rotation_error_deg: !!python/object/apply:numpy._core.multiarray.scalar
+    - *id005
+    - !!binary |
+      SNHsMaF29D8=
+    rotation_matrix_source: config
+    rotation_validation:
+      R_bs_config: &id007 !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - &id006 !!python/object/apply:numpy.dtype
+          args:
+          - i8
+          - false
+          - true
+          state: !!python/tuple
+          - 3
+          - <
+          - null
+          - null
+          - null
+          - -1
+          - -1
+          - 0
+        - false
+        - !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+      R_bs_config_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8L8=
+        is_proper_rotation: *id001
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id001
+      R_bs_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////////////////8A
+          AAAAAAAAAAAAAAAAAAAA
+      R_bs_current_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8D8=
+        is_proper_rotation: *id003
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id003
+      config_matrix_valid: *id003
+      current_matrix_valid: *id001
+      error_config_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        SNHsMaF29D8=
+      error_current_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        wNZspnSCVkA=
+      gravity_body_config: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          Gq7jlEEBzD8G/QT/UOZ6P5dCbgHBmyNA
+      gravity_body_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          Gq7jlEEBzL+XQm4BwZsjQAb9BP9Q5nq/
+      gravity_sensor: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          ws2GivX97z/QPRO4q/FFPyx8sEN82JY/
+      num_static_segments: 0
+      recommended_R_bs: *id007
+      recommended_matrix: config
+      sensor: Sensor_3
+      tolerance_deg: 3.0
+      total_static_duration: 0
+      warning: Using low-motion periods instead of true static segments
+    sensor: Sensor_3
+    static_valid: *id003
+    timestamp: '2025-06-19T13:36:13.450182'
+  Sensor_4:
+    bias_estimation:
+      error: No static segments found
+      sensor: Sensor_4
+    bias_valid: false
+    dynamic_valid: *id001
+    dynamic_validation:
+      acceleration_stable: *id001
+      expected_pattern: Mainly gravity (+Z), minimal lateral acceleration
+      experiment: 016_Straight_cruise_1
+      forward_accel_small: *id003
+      gravity_dominant: *id001
+      lateral_accel_small: *id003
+      mean_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          5EePSWU30L/yBIt4oUzKvxwZ5bFVliPA
+      pattern_valid: *id001
+      sensor: Sensor_4
+      std_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          MBWWTOWP6z/BH4QG4WwFQC0bagf13gZA
+    experiment: 016_Straight_cruise_1
+    overall_valid: false
+    rotation_error_deg: !!python/object/apply:numpy._core.multiarray.scalar
+    - *id005
+    - !!binary |
+      VnQ0jM1o/T8=
+    rotation_matrix_source: current
+    rotation_validation:
+      R_bs_config: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAA
+      R_bs_config_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8L8=
+        is_proper_rotation: *id001
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id001
+      R_bs_current: &id008 !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA//////////8A
+          AAAAAAAAAAAAAAAAAAAA
+      R_bs_current_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8D8=
+        is_proper_rotation: *id003
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id003
+      config_matrix_valid: *id003
+      current_matrix_valid: *id003
+      error_config_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        VnQ0jM1o/T8=
+      error_current_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        VnQ0jM1o/T8=
+      gravity_body_config: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          empcFn0Ahb87cTCE2B7Uv/DvrtlrmiNA
+      gravity_body_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          empcFn0AhT87cTCE2B7Uv/DvrtlrmiNA
+      gravity_sensor: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          QRQ+7sj77z9ji1y262mgvxHP7Xz+IVG/
+      num_static_segments: 0
+      recommended_R_bs: *id008
+      recommended_matrix: current
+      sensor: Sensor_4
+      tolerance_deg: 3.0
+      total_static_duration: 0
+      warning: Using low-motion periods instead of true static segments
+    sensor: Sensor_4
+    static_valid: *id003
+    timestamp: '2025-06-19T13:36:14.353906'
+  Sensor_5:
+    bias_estimation:
+      error: No static segments found
+      sensor: Sensor_5
+    bias_valid: false
+    dynamic_valid: *id001
+    dynamic_validation:
+      acceleration_stable: *id001
+      expected_pattern: Mainly gravity (+Z), minimal lateral acceleration
+      experiment: 016_Straight_cruise_1
+      forward_accel_small: *id001
+      gravity_dominant: *id001
+      lateral_accel_small: *id001
+      mean_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          A5iAoCbIC8CYj2GRTE4VwFt7gAlTORxA
+      pattern_valid: *id001
+      sensor: Sensor_5
+      std_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          Hs60W0SHB0DxDJ0yJbMHQKuIxceOWAFA
+    experiment: 016_Straight_cruise_1
+    overall_valid: *id001
+    rotation_error_deg: !!python/object/apply:numpy._core.multiarray.scalar
+    - *id005
+    - !!binary |
+      d6DgbDpxRUA=
+    rotation_matrix_source: config
+    rotation_validation:
+      R_bs_config: &id009 !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAEAAAAAAAAA
+      R_bs_config_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8L8=
+        is_proper_rotation: *id001
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id001
+      R_bs_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAP//////////
+      R_bs_current_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8D8=
+        is_proper_rotation: *id003
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id003
+      config_matrix_valid: *id001
+      current_matrix_valid: *id001
+      error_config_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        d6DgbDpxRUA=
+      error_current_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        4tfHZLEjYUA=
+      gravity_body_config: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          DX/CjcTWDcCLAsq64CIWwCZIWFkKvhxA
+      gravity_body_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          DX/CjcTWDcCLAsq64CIWwCZIWFkKvhzA
+      gravity_sensor: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          KProEoBX2L8m4EHC4g7iP0qMCZF9cuc/
+      num_static_segments: 0
+      recommended_R_bs: *id009
+      recommended_matrix: config
+      sensor: Sensor_5
+      tolerance_deg: 3.0
+      total_static_duration: 0
+      warning: Using low-motion periods instead of true static segments
+    sensor: Sensor_5
+    static_valid: *id001
+    timestamp: '2025-06-19T13:36:15.297835'
+  Sensor_wb:
+    bias_estimation:
+      error: No static segments found
+      sensor: Sensor_wb
+    bias_valid: false
+    dynamic_valid: *id001
+    dynamic_validation:
+      acceleration_stable: *id001
+      expected_pattern: Mainly gravity (+Z), minimal lateral acceleration
+      experiment: 016_Straight_cruise_1
+      forward_accel_small: *id001
+      gravity_dominant: *id003
+      lateral_accel_small: *id003
+      mean_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          TwkvZEBq3z/eHSvn/a/LP3lr4NKrzCNA
+      pattern_valid: *id001
+      sensor: Sensor_wb
+      std_acceleration: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          IxswupXJyT+gY1HCa5zUP6ET+V9E0f4/
+    experiment: 016_Straight_cruise_1
+    overall_valid: false
+    rotation_error_deg: !!python/object/apply:numpy._core.multiarray.scalar
+    - *id005
+    - !!binary |
+      hgnX/RK/CUA=
+    rotation_matrix_source: config
+    rotation_validation:
+      R_bs_config: &id010 !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAEAAAAAAAAA
+      R_bs_config_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8L8=
+        is_proper_rotation: *id001
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id001
+      R_bs_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+          - 3
+        - *id006
+        - false
+        - !!binary |
+          AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//////////wAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAP//////////
+      R_bs_current_validation:
+        determinant: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAA8D8=
+        is_proper_rotation: *id003
+        orthonormality_error: !!python/object/apply:numpy._core.multiarray.scalar
+        - *id005
+        - !!binary |
+          AAAAAAAAAAA=
+        valid: *id003
+      config_matrix_valid: *id003
+      current_matrix_valid: *id001
+      error_config_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        hgnX/RK/CUA=
+      error_current_deg: !!python/object/apply:numpy._core.multiarray.scalar
+      - *id005
+      - !!binary |
+        2qMItAMZZkA=
+      gravity_body_config: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          oecsfuOU3z8YQdZlnT/PP16r5QoWlSNA
+      gravity_body_current: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          oecsfuOU3z8YQdZlnT/PP16r5QoWlSPA
+      gravity_sensor: !!python/object/apply:numpy._core.multiarray._reconstruct
+        args:
+        - *id004
+        - !!python/tuple
+          - 0
+        - !!binary |
+          Yg==
+        state: !!python/tuple
+        - 1
+        - !!python/tuple
+          - 3
+        - *id005
+        - false
+        - !!binary |
+          ZnMBAm/DqT9gsjib3n2Zv9Ggco0U8+8/
+      num_static_segments: 0
+      recommended_R_bs: *id010
+      recommended_matrix: config
+      sensor: Sensor_wb
+      tolerance_deg: 5.0
+      total_static_duration: 0
+      warning: Using low-motion periods instead of true static segments
+    sensor: Sensor_wb
+    static_valid: *id003
+    timestamp: '2025-06-19T13:36:16.203144'
+timestamp: '2025-06-19T13:36:13.450172'

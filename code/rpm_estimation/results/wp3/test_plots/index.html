@@ -1,0 +1,52 @@
+
+    <html>
+    <head>
+        <title>WP-3 STFT Test Results</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1 { color: #333; }
+            .plot { margin: 20px 0; border: 1px solid #ddd; padding: 10px; }
+            img { max-width: 100%; height: auto; }
+        </style>
+    </head>
+    <body>
+        <h1>WP-3 STFT Implementation Test Results</h1>
+        
+        <div class="plot">
+            <h2>1. Basic STFT Functionality</h2>
+            <p>Demonstrates STFT tracking of frequency step change (1500 → 2400 RPM)</p>
+            <img src="stft_basic_functionality.png">
+        </div>
+        
+        <div class="plot">
+            <h2>2. Edge Handling Comparison</h2>
+            <p>Shows different edge handling methods (mirror, wrap, trim)</p>
+            <img src="stft_edge_handling_comparison.png">
+        </div>
+        
+        <div class="plot">
+            <h2>3. SNR Gating Behavior</h2>
+            <p>Demonstrates early SNR gating removing low-confidence estimates</p>
+            <img src="stft_snr_gating_behavior.png">
+        </div>
+        
+        <div class="plot">
+            <h2>4. Triangular Ramp Test</h2>
+            <p>Key validation: 500→2000→500 RPM tracking over 10 seconds</p>
+            <img src="stft_triangular_ramp_test.png">
+        </div>
+        
+        <div class="plot">
+            <h2>5. Smoothing Methods Comparison</h2>
+            <p>Comparison of polynomial, median, and moving average smoothing</p>
+            <img src="stft_smoothing_methods_comparison.png">
+        </div>
+        
+        <div class="plot">
+            <h2>6. Feature Summary</h2>
+            <p>Overview of all WP-3 features and processing pipeline</p>
+            <img src="wp3_feature_summary.png">
+        </div>
+    </body>
+    </html>
+    

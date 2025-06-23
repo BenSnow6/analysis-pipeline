@@ -1,0 +1,140 @@
+# Orientation Analysis Configuration
+# This file defines sensor positions, expected orientations, and validation parameters
+
+# Craft specifications
+craft:
+  dimensions:
+    length_m: 13.25    # Overall length
+    beam_m: 6.18       # Overall width
+    height_m: 4.90     # Overall height
+  
+  # Body frame definition
+  # Origin: Center of Gravity (CG) on centerline at skirt baseline
+  # X: Forward (bow direction)
+  # Y: Starboard (right when facing forward)
+  # Z: Downward (towards ground)
+  frame:
+    origin: "CG at centerline, skirt baseline"
+    x_axis: "Forward (bow)"
+    y_axis: "Starboard (right)"
+    z_axis: "Downward"
+
+# Sensor specifications
+sensors:
+  Sensor_3:
+    position_m: [0.0, 2.5, 1.2]  # Starboard side wall
+    expected_axes:
+      x_direction: "Downward"  # Sensor X points down
+      y_direction: "Starboard"  # Corrected from Forward
+      z_direction: "Forward"  # Corrected from Port
+    location_description: "Stbd side wall"
+    type: "primary"
+    accel_bias_m_s2: [0.0, 0.0, 0.0]  # To be estimated
+    gyro_bias_rad_s: [0.0, 0.0, 0.0]  # To be estimated
+    
+  Sensor_4:
+    position_m: [2.0, 0.0, 2.5]  # Above hull
+    expected_axes:
+      x_direction: "Downward"  # Changed from Upward - sensor X points down
+      y_direction: "Starboard"
+      z_direction: "Forward"
+    location_description: "Above hull"
+    type: "primary"
+    accel_bias_m_s2: [0.0, 0.0, 0.0]
+    gyro_bias_rad_s: [0.0, 0.0, 0.0]
+    
+  Sensor_5:
+    position_m: [3.5, -0.3, 1.8]  # Steering wheel
+    expected_axes:
+      x_direction: "Forward"
+      y_direction: "Port"
+      z_direction: "Downward"  # Changed from Upward - sensor Z points down
+    location_description: "Steering wheel"
+    type: "primary"
+    accel_bias_m_s2: [0.0, 0.0, 0.0]
+    gyro_bias_rad_s: [0.0, 0.0, 0.0]
+    physical_mounting_note: "Mounted on steering wheel at ~40° angle to body frame"
+    expected_static_error_deg: 40.0
+    
+  Sensor_wb:
+    position_m: [3.0, 0.0, 1.5]  # Center console flat
+    expected_axes:
+      x_direction: "Forward"
+      y_direction: "Port"
+      z_direction: "Downward"  # Changed from Upward - sensor Z points down
+    location_description: "Centre console flat"
+    type: "secondary"
+    accel_bias_m_s2: [0.0, 0.0, 0.0]
+    gyro_bias_rad_s: [0.0, 0.0, 0.0]
+    
+  Sensor_wnb:
+    position_m: [0.0, -2.5, 1.2]  # Port side wall
+    expected_axes:
+      x_direction: "Upward"
+      y_direction: "Aft"
+      z_direction: "Starboard"
+    location_description: "Port side wall"
+    type: "secondary"
+    accel_bias_m_s2: [0.0, 0.0, 0.0]
+    gyro_bias_rad_s: [0.0, 0.0, 0.0]
+    
+  gps:
+    position_m: [3.0, 0.0, 1.5]  # Same as sensor_wb
+    expected_axes:
+      x_direction: "Forward"
+      y_direction: "Port"
+      z_direction: "Upward"
+    location_description: "Centre console flat"
+    type: "gps"
+
+# Physical constants
+physics:
+  gravity_m_s2: 9.80665  # Standard gravity
+  gravity_body_frame: [0.0, 0.0, 9.80665]  # In body frame (downward is +Z)
+
+# Validation parameters
+validation:
+  tolerances:
+    primary_sensors_deg: 3.0     # For sensors 3, 4, 5
+    secondary_sensors_deg: 5.0   # For sensors wb, wnb
+    orthogonality_threshold: 0.001  # ||R*R^T - I|| threshold
+    cross_sensor_dcm_deg: 2.0    # Max relative DCM error between sensors
+    
+# Static detection parameters
+static_detection:
+  gyro_threshold_rad_s: 0.05     # Maximum angular velocity
+  accel_std_threshold_m_s2: 0.05  # Maximum acceleration std dev
+  min_duration_s: 1.0             # Minimum static period duration
+  window_size_s: 1.0              # Sliding window size
+  
+# Bias estimation parameters  
+bias_estimation:
+  static_duration_s: 30.0         # Use first 30s of static data
+  outlier_threshold_sigma: 3.0    # Reject outliers beyond 3 sigma
+  
+# Known maneuver validation
+maneuver_validation:
+  experiments:
+    "007_Fast_stbd_turn_1":
+      description: "Fast starboard turn with forward acceleration"
+      expected_pattern: "Forward acceleration (+X) with gravity (+Z)"
+      
+    "016_Straight_cruise_1":
+      description: "Straight line cruise at constant speed"
+      expected_pattern: "Mainly gravity (+Z), minimal lateral acceleration"
+      
+    "021_Quarter_turn_port":
+      description: "Quarter turn to port"
+      expected_pattern: "Centripetal acceleration towards starboard (+Y) during turn"
+
+# Plotting parameters
+plotting:
+  figure_size: [10, 8]
+  gravity_vector_color: "red"
+  sensor_axes_colors:
+    x: "blue"
+    y: "green"
+    z: "orange"
+  vector_scale: 0.3
+  save_format: "png"
+  dpi: 150

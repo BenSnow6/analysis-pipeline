@@ -1,0 +1,148 @@
+{
+  "experiment": "007_Fast_stbd_turn_1",
+  "session": "afternoon",
+  "sensor_id": "Sensor_wb",
+  "processing_timestamp": "2025-06-20T12:27:04.530411Z",
+  "config_version": "1.0",
+  "summary": {
+    "sensor_id": "Sensor_wb",
+    "total_windows": 3,
+    "clipped_windows": 0,
+    "clipping_percentage": 0.0,
+    "overall_quality": "excellent",
+    "quality_score": 1.0,
+    "duration_seconds": 129.99000000953674,
+    "sample_count": 12922
+  },
+  "parameters_used": {
+    "window_sec": 30.0,
+    "window_handling": "process_partial",
+    "clipping_threshold": 0.95,
+    "max_g_range": 16.0
+  },
+  "windows": [
+    {
+      "window_id": 0,
+      "start_time": 790.008333325386,
+      "end_time": 850.3583334684372,
+      "is_partial": false,
+      "metrics": {
+        "rms": 0.13025096004906372,
+        "peak": 0.5048067758874663,
+        "mean": 0.10822492320026449,
+        "std": 0.07247536541473691,
+        "kurtosis": 1.6309441586080684,
+        "skewness": 1.2124432788640294,
+        "peak_to_rms": 3.875647255861397,
+        "max_value": 0.5048067758874663,
+        "min_value": 0.002969786319474289,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    },
+    {
+      "window_id": 1,
+      "start_time": 850.3683334589005,
+      "end_time": 910.7233334779738,
+      "is_partial": false,
+      "metrics": {
+        "rms": 0.13170917417797043,
+        "peak": 0.5433756544854662,
+        "mean": 0.10867075134280405,
+        "std": 0.07441756758476728,
+        "kurtosis": 1.9806330252323372,
+        "skewness": 1.2803189145759564,
+        "peak_to_rms": 4.1255717976884165,
+        "max_value": 0.5433756544854662,
+        "min_value": 0.004554334537351844,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    },
+    {
+      "window_id": 2,
+      "start_time": 910.7333334684372,
+      "end_time": 919.9983333349228,
+      "is_partial": true,
+      "metrics": {
+        "rms": 0.10572843243132732,
+        "peak": 0.2831473789713852,
+        "mean": 0.09019253752370697,
+        "std": 0.05517071324009195,
+        "kurtosis": 0.26316031431622067,
+        "skewness": 0.8881572913543951,
+        "peak_to_rms": 2.678062773278086,
+        "max_value": 0.2831473789713852,
+        "min_value": 0.005226413446044705,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    }
+  ],
+  "processing_log": {
+    "warnings": [],
+    "errors": [],
+    "info": [
+      "Processed 130.0 seconds of data"
+    ]
+  },
+  "axes_quality": {
+    "x": {
+      "metrics": {
+        "rms": 0.018192054151980455,
+        "peak": 0.08293534322303683,
+        "mean": -8.05474451003006e-21,
+        "std": 0.018192054151980455,
+        "kurtosis": 0.14273167154453636,
+        "skewness": -0.08555060975625285,
+        "peak_to_rms": 4.558877327990373,
+        "max_value": 0.07068738854629342,
+        "min_value": -0.08293534322303683,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "y": {
+      "metrics": {
+        "rms": 0.026138691263245886,
+        "peak": 0.12452098223326721,
+        "mean": 5.2087347831527715e-20,
+        "std": 0.026138691263245886,
+        "kurtosis": 0.11629884047327455,
+        "skewness": -0.060858065832861546,
+        "peak_to_rms": 4.763856804428405,
+        "max_value": 0.11149850466527604,
+        "min_value": -0.12452098223326721,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "z": {
+      "metrics": {
+        "rms": 0.12536189163094416,
+        "peak": 0.5426407871181825,
+        "mean": -3.7803600900407747e-19,
+        "std": 0.12536189163094416,
+        "kurtosis": 0.23478380770705876,
+        "skewness": 0.03054205652543601,
+        "peak_to_rms": 4.3285944401323775,
+        "max_value": 0.5426407871181825,
+        "min_value": -0.5045512762625859,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    }
+  }
+}

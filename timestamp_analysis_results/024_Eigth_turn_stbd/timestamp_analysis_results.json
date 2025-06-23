@@ -1,0 +1,25 @@
+{
+  "gps": {
+    "within_spec": false,
+    "num_samples": 86,
+    "duration_seconds": 89.0,
+    "expected_rate_hz": 1.0,
+    "actual_rate_hz": 0.9550561797752809,
+    "rate_deviation_percent": 4.49438202247191,
+    "mean_jitter_ms": 47.05882352941177,
+    "max_jitter_ms": 4000.0,
+    "jitter_threshold_ms": 100.0,
+    "jitter_violations": 1,
+    "num_gaps": 1,
+    "gap_threshold_ms": 2000.0,
+    "issues": [
+      "Jitter violations: 1 samples exceed 100ms threshold"
+    ],
+    "gaps": [
+      {
+        "index": 80,
+        "start_time": 2520.0,
+        "end_time": 2525.0,
+        "duration_ms": 5000.0,
+        "samples_before": 81,
+        "samples_after": 

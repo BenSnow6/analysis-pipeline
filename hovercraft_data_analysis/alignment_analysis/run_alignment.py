@@ -129,9 +129,9 @@ def process_experiment(aligner, experiment_name, base_path, output_dir, dry_run=
         
         # Check performance target
         if elapsed > 1.0:
-            print(f"  ⚠️  Warning: Exceeded 1-second target (took {elapsed:.3f}s)")
+            print(f"  [WARNING] Exceeded 1-second target (took {elapsed:.3f}s)")
         else:
-            print(f"  ✓ Within 1-second target")
+            print(f"  [OK] Within 1-second target")
         
         return True, elapsed, total_samples
         

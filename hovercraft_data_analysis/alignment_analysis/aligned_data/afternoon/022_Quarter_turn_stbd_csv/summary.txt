@@ -1,0 +1,2 @@
+Aligned data exported from: 022_Quarter_turn_stbd_aligned.h5
+Export timestamp: 2025-06-18 23:48:12.086374

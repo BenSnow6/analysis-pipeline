@@ -1,0 +1,108 @@
+{
+  "experiment": "011_Static_stbd_1",
+  "session": "afternoon",
+  "sensor_id": "Sensor_wb",
+  "processing_timestamp": "2025-06-20T12:25:07.069786Z",
+  "config_version": "1.0",
+  "summary": {
+    "sensor_id": "Sensor_wb",
+    "total_windows": 1,
+    "clipped_windows": 0,
+    "clipping_percentage": 0.0,
+    "overall_quality": "excellent",
+    "quality_score": 1.0,
+    "duration_seconds": 54.99000000953674,
+    "sample_count": 5465
+  },
+  "parameters_used": {
+    "window_sec": 30.0,
+    "window_handling": "process_partial",
+    "clipping_threshold": 0.95,
+    "max_g_range": 16.0
+  },
+  "windows": [
+    {
+      "window_id": 0,
+      "start_time": 1255.0033334493637,
+      "end_time": 1309.9933334589005,
+      "is_partial": true,
+      "metrics": {
+        "rms": 0.10493958415654712,
+        "peak": 0.3951026242609674,
+        "mean": 0.08928524716437745,
+        "std": 0.055140375059887475,
+        "kurtosis": 1.2107016880139225,
+        "skewness": 1.1529981174927049,
+        "peak_to_rms": 3.7650485032565015,
+        "max_value": 0.3951026242609674,
+        "min_value": 0.003123505758474315,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      }
+    }
+  ],
+  "processing_log": {
+    "warnings": [],
+    "errors": [],
+    "info": [
+      "Processed 55.0 seconds of data"
+    ]
+  },
+  "axes_quality": {
+    "x": {
+      "metrics": {
+        "rms": 0.024016554123288743,
+        "peak": 0.07827432638810836,
+        "mean": -5.053393913550003e-19,
+        "std": 0.024016554123288743,
+        "kurtosis": -0.5853621492084584,
+        "skewness": -0.0830039784790406,
+        "peak_to_rms": 3.259182228486563,
+        "max_value": 0.06423683225654551,
+        "min_value": -0.07827432638810836,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "y": {
+      "metrics": {
+        "rms": 0.027212102007021153,
+        "peak": 0.12139176241629096,
+        "mean": 5.396212093614954e-19,
+        "std": 0.027212102007021153,
+        "kurtosis": -0.0030994798018793013,
+        "skewness": 0.0807381025286151,
+        "peak_to_rms": 4.460947646931867,
+        "max_value": 0.12139176241629096,
+        "min_value": -0.10069187770725596,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    },
+    "z": {
+      "metrics": {
+        "rms": 0.0984633076600195,
+        "peak": 0.3739523489566259,
+        "mean": -1.5236363558442222e-20,
+        "std": 0.0984633076600195,
+        "kurtosis": 0.03340240113039483,
+        "skewness": -0.030426736169116026,
+        "peak_to_rms": 3.797885302084639,
+        "max_value": 0.3108070892776337,
+        "min_value": -0.3739523489566259,
+        "clipping_samples": 0,
+        "clipping_ratio": 0.0,
+        "clipping_detected": false
+      },
+      "issues": [],
+      "quality": "good"
+    }
+  }
+}
