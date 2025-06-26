@@ -1,0 +1,25 @@
+# Requirements for hovercraft data alignment analysis
+# Install in conda environment with: pip install -r requirements.txt
+
+# Core data processing
+numpy>=2.0.0
+pandas>=2.0.0
+tables>=3.8.0  # PyTables for HDF5 support
+
+# Configuration
+pyyaml>=6.0
+
+# Progress bars and CLI
+tqdm>=4.65.0
+
+# Testing
+pytest>=7.0.0
+
+# Visualization (for debug notebook)
+matplotlib>=3.5.0
+jupyter>=1.0.0
+notebook>=6.5.0
+
+# Optional but recommended
+scipy>=1.10.0  # For future signal processing
+h5py>=3.8.0    # Alternative HDF5 interface

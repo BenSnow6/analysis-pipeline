@@ -1,0 +1,22 @@
+# RPM Estimation Requirements
+# Core scientific computing
+numpy==1.24.3
+scipy==1.11.1
+pandas==2.0.3
+
+# Configuration
+PyYAML==6.0.1
+
+# Visualization
+matplotlib==3.7.2
+
+# Data formats
+h5py==3.9.0
+pyarrow==12.0.1  # For Parquet support
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Python version requirement
+# Requires Python >= 3.8
