@@ -362,6 +362,12 @@ def extract_rpm_from_vibration(vibration_magnitude: np.ndarray,
         exclude_hz=config.get('snr', {}).get('exclude_hz', 0.5)
     )
     
+    # Check if SNR meets minimum threshold
+    min_snr_db = config.get('snr', {}).get('min_snr_db', 10.0)
+    if snr_db < min_snr_db:
+        logger.debug(f"SNR too low for sensor {sensor_id}: {snr_db:.1f} dB < {min_snr_db} dB")
+        return None
+    
     # Extract harmonics for validation
     harmonics = extract_harmonics(
         freqs, psd,

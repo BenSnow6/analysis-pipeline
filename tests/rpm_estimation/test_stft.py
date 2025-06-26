@@ -81,8 +81,8 @@ class TestSTFTCore:
             )
             results[method] = (times, magnitude)
         
-        # Verify different methods produce different results
-        assert not np.array_equal(results['mirror'][0], results['wrap'][0])
+        # Verify different methods produce different results (compare magnitudes, not times)
+        assert not np.array_equal(results['mirror'][1], results['wrap'][1])
         
         # Verify time alignment
         for method, (times, _) in results.items():

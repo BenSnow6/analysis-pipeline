@@ -110,7 +110,8 @@ def validate_parquet_schema(file_path: Path,
                 critical_columns = ['time_from_sync', 'a_hp_mag']
                 for col_name in critical_columns:
                     if col_name in actual_columns:
-                        col_idx = actual_columns.index(col_name)
+                        # Convert set to list to use index()
+                        col_idx = list(actual_schema.names).index(col_name)
                         column_chunk = row_group.column(col_idx)
                         
                         if column_chunk.statistics and column_chunk.statistics.null_count > 0:

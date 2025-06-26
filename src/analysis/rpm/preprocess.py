@@ -14,7 +14,7 @@ from pathlib import Path
 import time
 from .logging_config import get_logger, ProcessingError, log_processing_start, log_quality_summary
 from .io import load_aligned_data, save_processed_data
-from .quality import assess_signal_quality, generate_quality_report, save_quality_report, check_multi_axis_quality
+from .quality import assess_signal_quality, generate_quality_report, check_multi_axis_quality
 from .schema import create_parquet_metadata
 
 logger = get_logger("preprocess")
@@ -356,7 +356,9 @@ def process_sensor_wp1(experiment: str, session: str, sensor_id: str,
         
         # Save quality report
         quality_path = output_dir / f"qa_summary_{sensor_id}.json"
-        save_quality_report(quality_report, quality_path)
+        import json
+        with open(quality_path, 'w') as f:
+            json.dump(quality_report, f, indent=2)
         
         # Calculate processing time
         processing_time = time.time() - start_time

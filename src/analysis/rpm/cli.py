@@ -125,11 +125,21 @@ def validate_args(args):
     """Validate command-line arguments."""
     # Check if config file exists
     if not args.config.exists():
-        # If default config doesn't exist in current dir, check module dir
+        # If default config doesn't exist in current dir, check standard locations
         module_dir = Path(__file__).parent
-        default_config = module_dir / 'rpm_config.yaml'
-        if default_config.exists():
-            args.config = default_config
+        project_root = module_dir.parent.parent.parent
+        
+        # Check multiple standard locations
+        possible_locations = [
+            module_dir / 'rpm_config.yaml',  # In the module directory
+            project_root / 'config' / 'processing' / 'rpm_config.yaml',  # Standard config location
+            project_root / 'config' / 'rpm_config.yaml',  # Alternative location
+        ]
+        
+        for location in possible_locations:
+            if location.exists():
+                args.config = location
+                break
         else:
             raise FileNotFoundError(f"Configuration file not found: {args.config}")
     
@@ -639,11 +649,21 @@ def main():
     try:
         # Load configuration
         if not args.config.exists():
-            # Check module directory
+            # Check standard locations
             module_dir = Path(__file__).parent
-            default_config = module_dir / 'rpm_config.yaml'
-            if default_config.exists():
-                args.config = default_config
+            project_root = module_dir.parent.parent.parent
+            
+            # Check multiple standard locations
+            possible_locations = [
+                module_dir / 'rpm_config.yaml',  # In the module directory
+                project_root / 'config' / 'processing' / 'rpm_config.yaml',  # Standard config location
+                project_root / 'config' / 'rpm_config.yaml',  # Alternative location
+            ]
+            
+            for location in possible_locations:
+                if location.exists():
+                    args.config = location
+                    break
             else:
                 raise FileNotFoundError(f"Configuration file not found: {args.config}")
         

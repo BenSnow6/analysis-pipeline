@@ -192,10 +192,11 @@ def interpolate_missing_frames(series: RPMTimeSeries,
             
             if gap_ok and not np.isnan(interp_rpms[i]):
                 # Create interpolated frame
+                # Use minimum valid SNR to ensure frame is valid
                 interp_frame = RPMFrame(
                     time=frame.time,
                     rpm=float(interp_rpms[i]),
-                    snr_db=0.0,  # Mark as interpolated
+                    snr_db=10.0,  # Minimum valid SNR for interpolated frames
                     sensor_id=frame.sensor_id,
                     method='interpolated',
                     confidence=0.5

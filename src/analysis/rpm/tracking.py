@@ -44,7 +44,8 @@ class RPMFrame:
         Returns:
             True if estimate is valid, False otherwise
         """
-        return self.snr_db >= snr_threshold
+        # Check for NaN RPM values and SNR threshold
+        return not np.isnan(self.rpm) and self.snr_db >= snr_threshold
     
     def __post_init__(self):
         """Validate fields after initialization."""

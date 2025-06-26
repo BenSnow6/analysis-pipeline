@@ -1,351 +1,325 @@
 """
-Quality assessment module for vibration data.
+Signal quality assessment for RPM estimation.
 
-Provides functions for computing signal quality metrics, detecting clipping,
-and generating quality reports for processed IMU data.
+This module provides functions for assessing signal quality,
+detecting clipping, and validating time alignment.
 """
 
 import numpy as np
-import pandas as pd
-from scipy import stats
-from typing import Dict, List, Tuple, Optional, Any
-from pathlib import Path
-import json
-from datetime import datetime
-from .logging_config import get_logger
+from typing import Dict, List, Tuple, Any, Optional
+import logging
 
-logger = get_logger("quality")
+logger = logging.getLogger(__name__)
 
 
-def process_quality_windows(data: np.ndarray, 
-                          window_size: int, 
-                          handling: str = "process_partial") -> List[Dict[str, Any]]:
+def process_quality_windows(data: np.ndarray, window_size: int, 
+                          strategy: str = "process_partial") -> List[Dict[str, Any]]:
     """
-    Process data in windows with configurable edge handling.
+    Process data into windows for quality assessment.
     
     Args:
-        data: Time series data
-        window_size: Window size in samples
-        handling: How to handle partial windows
-            - "drop": Ignore incomplete windows
-            - "pad": Pad with zeros to complete window
+        data: Input data array
+        window_size: Size of each window
+        strategy: How to handle the last partial window
+            - "pad": Pad the last window to full size
             - "process_partial": Process as-is
+            - "drop": Drop partial windows
             
     Returns:
-        List of window dictionaries with start/end indices and data
+        List of window dictionaries
     """
-    n_samples = len(data)
     windows = []
+    total_samples = len(data)
     
-    for start in range(0, n_samples, window_size):
-        end = min(start + window_size, n_samples)
+    for start in range(0, total_samples, window_size):
+        end = min(start + window_size, total_samples)
         window_data = data[start:end]
         
-        if len(window_data) < window_size:
-            if handling == "drop":
+        is_partial = (end - start) < window_size
+        
+        if is_partial:
+            if strategy == "drop":
                 continue
-            elif handling == "pad":
-                window_data = np.pad(window_data, 
-                                   (0, window_size - len(window_data)),
-                                   mode='constant')
-            # "process_partial" uses data as-is
-            
+            elif strategy == "pad":
+                # Pad with zeros to full window size
+                padded = np.zeros(window_size)
+                padded[:len(window_data)] = window_data
+                window_data = padded
+        
         windows.append({
-            "start_idx": start,
-            "end_idx": end,
-            "is_partial": len(window_data) < window_size,
-            "data": window_data
+            'data': window_data,
+            'start': start,
+            'end': end,
+            'is_partial': is_partial
         })
     
     return windows
 
 
-def compute_window_metrics(window_data: np.ndarray, 
-                         max_value: float = None) -> Dict[str, float]:
+def compute_window_metrics(signal: np.ndarray, max_value: float = 16.0) -> Dict[str, Any]:
     """
-    Compute quality metrics for a data window.
+    Compute metrics for a signal window.
     
     Args:
-        window_data: Array of signal values
+        signal: Signal array
         max_value: Maximum expected value for clipping detection
         
     Returns:
-        Dictionary of computed metrics
+        Dictionary with window metrics
     """
-    # Basic statistics
-    rms = np.sqrt(np.mean(window_data**2))
-    peak = np.max(np.abs(window_data))
-    
     metrics = {
-        "rms": float(rms),
-        "peak": float(peak),
-        "mean": float(np.mean(window_data)),
-        "std": float(np.std(window_data)),
-        "kurtosis": float(stats.kurtosis(window_data)),
-        "skewness": float(stats.skew(window_data)),
-        "peak_to_rms": float(peak / rms) if rms > 0 else np.inf,
-        "max_value": float(np.max(window_data)),
-        "min_value": float(np.min(window_data))
+        'mean': float(np.mean(signal)),
+        'std': float(np.std(signal)),
+        'rms': float(np.sqrt(np.mean(signal**2))),
+        'peak': float(np.max(np.abs(signal))),
+        'min': float(np.min(signal)),
+        'max': float(np.max(signal))
     }
     
+    # Peak-to-RMS ratio
+    metrics['peak_to_rms'] = metrics['peak'] / metrics['rms'] if metrics['rms'] > 0 else 0
+    
     # Clipping detection
-    if max_value is not None:
-        clipping_samples = np.sum(np.abs(window_data) > 0.95 * max_value)
-        clipping_ratio = clipping_samples / len(window_data)
-        metrics["clipping_samples"] = int(clipping_samples)
-        metrics["clipping_ratio"] = float(clipping_ratio)
-        metrics["clipping_detected"] = bool(clipping_ratio > 0.01)  # >1% samples clipped
-    else:
-        metrics["clipping_samples"] = 0
-        metrics["clipping_ratio"] = 0.0
-        metrics["clipping_detected"] = False
+    clipping_threshold = max_value * 0.95
+    clipped_samples = np.sum(np.abs(signal) >= clipping_threshold)
+    
+    metrics['clipping_detected'] = clipped_samples > 0
+    metrics['clipping_samples'] = int(clipped_samples)
+    metrics['clipping_ratio'] = float(clipped_samples / len(signal))
     
     return metrics
 
 
-def assess_signal_quality(signal: np.ndarray,
-                         time: np.ndarray,
-                         config: Dict[str, Any],
-                         sensor_id: str) -> Dict[str, Any]:
+def compute_window_quality(signal: np.ndarray, max_g: float = 16.0,
+                         clipping_threshold: float = 0.95) -> Dict[str, Any]:
     """
-    Perform comprehensive quality assessment on a signal.
+    Compute quality metrics for a signal window.
     
     Args:
-        signal: Signal data (vibration magnitude or axis)
-        time: Time vector
-        config: Configuration dictionary with WP1 parameters
+        signal: Signal array
+        max_g: Maximum g-range of the sensor
+        clipping_threshold: Fraction of max range to consider clipping
+        
+    Returns:
+        Dictionary with quality metrics
+    """
+    # Calculate clipping bounds
+    clip_level = max_g * clipping_threshold
+    
+    # Count clipped samples
+    clipped = np.abs(signal) >= clip_level
+    clipping_ratio = np.sum(clipped) / len(signal)
+    
+    # Calculate other metrics
+    rms = np.sqrt(np.mean(signal**2))
+    peak = np.max(np.abs(signal))
+    peak_to_rms = peak / rms if rms > 0 else 0
+    
+    # DC offset
+    dc_offset = np.mean(signal)
+    
+    # Variance
+    variance = np.var(signal)
+    
+    # Quality flag: 0=good, 1=warning, 2=bad
+    if clipping_ratio > 0.01:  # >1% clipping
+        quality_flag = 2
+    elif clipping_ratio > 0.001:  # >0.1% clipping
+        quality_flag = 1
+    else:
+        quality_flag = 0
+    
+    # Determine if window is partial (for edge handling)
+    is_partial = getattr(signal, '_is_partial', False)
+    
+    return {
+        'clipping_ratio': float(clipping_ratio),
+        'rms': float(rms),
+        'peak': float(peak),
+        'peak_to_rms': float(peak_to_rms),
+        'dc_offset': float(dc_offset),
+        'variance': float(variance),
+        'quality_flag': int(quality_flag),
+        'is_partial': is_partial,
+        'sample_count': len(signal)
+    }
+
+
+def assess_signal_quality(signal: np.ndarray, time: np.ndarray,
+                        config: dict, sensor_id: str) -> Dict[str, Any]:
+    """
+    Assess signal quality over the full duration.
+    
+    Args:
+        signal: Signal array
+        time: Time array
+        config: Configuration dictionary
         sensor_id: Sensor identifier
         
     Returns:
         Dictionary with quality assessment results
     """
-    # Extract config parameters
-    wp1_config = config.get('wp1', {})
-    quality_config = wp1_config.get('quality', {})
-    
-    window_sec = quality_config.get('window_sec', 30.0)
-    window_handling = quality_config.get('window_handling', 'process_partial')
-    clipping_threshold = quality_config.get('clipping_threshold', 0.95)
-    max_g_range = wp1_config.get('sensors', {}).get('max_g_range', 16.0)
-    
-    # Convert to samples
     fs = config.get('fs', 200)
+    quality_config = config.get('wp1', {}).get('quality', {})
+    window_sec = quality_config.get('window_sec', 30.0)
+    max_g = config.get('wp1', {}).get('sensors', {}).get('max_g_range', 16.0)
+    clipping_threshold = quality_config.get('clipping_threshold', 0.95)
+    
+    # Calculate window size
     window_samples = int(window_sec * fs)
-    max_value = max_g_range * 9.80665  # Convert g to m/s²
     
     # Process windows
-    windows = process_quality_windows(signal, window_samples, window_handling)
+    windows = []
+    total_samples = len(signal)
     
-    # Compute metrics for each window
-    window_results = []
-    clipped_windows = 0
+    for start in range(0, total_samples, window_samples):
+        end = min(start + window_samples, total_samples)
+        window_signal = signal[start:end]
+        window_time = time[start:end]
+        
+        # Mark partial windows
+        if end - start < window_samples:
+            window_signal = np.array(window_signal)
+            window_signal._is_partial = True
+        
+        # Compute window quality
+        window_quality = compute_window_quality(
+            window_signal, max_g, clipping_threshold
+        )
+        
+        # Add window info
+        window_quality['window_id'] = len(windows)
+        window_quality['start_time'] = float(window_time[0])
+        window_quality['end_time'] = float(window_time[-1])
+        
+        windows.append(window_quality)
     
-    for i, window in enumerate(windows):
-        # Get time bounds
-        start_time = time[window['start_idx']]
-        end_time = time[window['end_idx'] - 1] if window['end_idx'] > 0 else time[0]
-        
-        # Compute metrics
-        metrics = compute_window_metrics(window['data'], max_value)
-        
-        # Track clipping
-        if metrics['clipping_detected']:
-            clipped_windows += 1
-        
-        window_result = {
-            "window_id": i,
-            "start_time": float(start_time),
-            "end_time": float(end_time),
-            "is_partial": window['is_partial'],
-            "metrics": metrics
-        }
-        
-        window_results.append(window_result)
+    # Calculate summary statistics
+    clipped_windows = sum(1 for w in windows if w['quality_flag'] >= 2)
+    warning_windows = sum(1 for w in windows if w['quality_flag'] == 1)
+    good_windows = sum(1 for w in windows if w['quality_flag'] == 0)
     
-    # Compute overall quality
-    total_windows = len(window_results)
-    clipping_percentage = 100.0 * clipped_windows / total_windows if total_windows > 0 else 0.0
+    total_clipped_samples = sum(w['clipping_ratio'] * w['sample_count'] for w in windows)
+    total_samples_processed = sum(w['sample_count'] for w in windows)
+    
+    overall_clipping_ratio = total_clipped_samples / total_samples_processed if total_samples_processed > 0 else 0
     
     # Classify overall quality
-    thresholds = quality_config.get('thresholds', {})
-    overall_quality = classify_overall_quality(clipping_percentage / 100.0, thresholds)
-    quality_score = 1.0 - (clipping_percentage / 100.0)
+    thresholds = quality_config.get('thresholds', {
+        'excellent': 0.01,
+        'good': 0.05,
+        'fair': 0.10,
+        'poor': 1.0
+    })
     
-    # Generate summary
+    overall_quality = classify_overall_quality(overall_clipping_ratio, thresholds)
+    quality_score = 1.0 - overall_clipping_ratio
+    
     summary = {
-        "sensor_id": sensor_id,
-        "total_windows": total_windows,
-        "clipped_windows": clipped_windows,
-        "clipping_percentage": round(clipping_percentage, 2),
-        "overall_quality": overall_quality,
-        "quality_score": round(quality_score, 3),
-        "duration_seconds": float(time[-1] - time[0]) if len(time) > 0 else 0.0,
-        "sample_count": len(signal)
+        'sensor_id': sensor_id,
+        'total_windows': len(windows),
+        'good_windows': good_windows,
+        'warning_windows': warning_windows,
+        'clipped_windows': clipped_windows,
+        'clipping_percentage': overall_clipping_ratio * 100,
+        'overall_quality': overall_quality,
+        'quality_score': quality_score,
+        'duration_seconds': float(time[-1] - time[0]),
+        'sample_count': total_samples_processed
     }
     
     return {
-        "summary": summary,
-        "windows": window_results,
-        "parameters_used": {
-            "window_sec": window_sec,
-            "window_handling": window_handling,
-            "clipping_threshold": clipping_threshold,
-            "max_g_range": max_g_range
+        'summary': summary,
+        'windows': windows,
+        'parameters_used': {
+            'window_sec': window_sec,
+            'max_g': max_g,
+            'clipping_threshold': clipping_threshold,
+            'fs': fs
         }
     }
 
 
-def classify_overall_quality(clipping_ratio: float, 
+def classify_overall_quality(clipping_ratio: float,
                            thresholds: Dict[str, float]) -> str:
     """
-    Classify overall signal quality based on clipping ratio.
+    Classify overall quality based on clipping ratio.
     
     Args:
-        clipping_ratio: Fraction of windows with clipping (0-1)
+        clipping_ratio: Fraction of samples clipped
         thresholds: Dictionary of quality thresholds
         
     Returns:
         Quality classification string
     """
-    # Default thresholds if not provided
-    if not thresholds:
-        thresholds = {
-            "excellent": 0.01,
-            "good": 0.05,
-            "fair": 0.10,
-            "poor": 1.0
-        }
-    
-    # Classify based on thresholds
-    if clipping_ratio <= thresholds.get("excellent", 0.01):
-        return "excellent"
-    elif clipping_ratio <= thresholds.get("good", 0.05):
-        return "good"
-    elif clipping_ratio <= thresholds.get("fair", 0.10):
-        return "fair"
+    if clipping_ratio <= thresholds.get('excellent', 0.01):
+        return 'excellent'
+    elif clipping_ratio <= thresholds.get('good', 0.05):
+        return 'good'
+    elif clipping_ratio <= thresholds.get('fair', 0.10):
+        return 'fair'
     else:
-        return "poor"
+        return 'poor'
 
 
-def generate_quality_report(quality_results: Dict[str, Any],
-                          experiment: str,
-                          session: str,
-                          config_version: str = "1.0") -> Dict[str, Any]:
+def check_multi_axis_quality(x: np.ndarray, y: np.ndarray, z: np.ndarray,
+                           config: dict) -> Dict[str, Dict[str, Any]]:
     """
-    Generate a comprehensive quality report.
+    Check quality across three axes.
     
     Args:
-        quality_results: Results from assess_signal_quality
-        experiment: Experiment name
-        session: Session (morning/afternoon)
-        config_version: Configuration version
-        
-    Returns:
-        Complete quality report dictionary
-    """
-    report = {
-        "experiment": experiment,
-        "session": session,
-        "sensor_id": quality_results["summary"]["sensor_id"],
-        "processing_timestamp": datetime.utcnow().isoformat() + "Z",
-        "config_version": config_version,
-        "summary": quality_results["summary"],
-        "parameters_used": quality_results["parameters_used"],
-        "windows": quality_results["windows"],
-        "processing_log": {
-            "warnings": [],
-            "errors": [],
-            "info": []
-        }
-    }
-    
-    # Add processing notes
-    if quality_results["summary"]["overall_quality"] == "poor":
-        report["processing_log"]["warnings"].append(
-            f"High clipping detected: {quality_results['summary']['clipping_percentage']}% of windows affected"
-        )
-    
-    if quality_results["summary"]["total_windows"] == 0:
-        report["processing_log"]["errors"].append("No valid windows processed")
-    
-    info_msg = f"Processed {quality_results['summary']['duration_seconds']:.1f} seconds of data"
-    report["processing_log"]["info"].append(info_msg)
-    
-    return report
-
-
-def save_quality_report(report: Dict[str, Any], output_path: Path) -> None:
-    """
-    Save quality report to JSON file.
-    
-    Args:
-        report: Quality report dictionary
-        output_path: Path to save JSON file
-    """
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w') as f:
-        json.dump(report, f, indent=2)
-    
-    logger.info(
-        f"Saved quality report to {output_path}",
-        sensor=report.get("sensor_id"),
-        quality=report["summary"]["overall_quality"]
-    )
-
-
-def check_multi_axis_quality(accel_x: np.ndarray, 
-                           accel_y: np.ndarray,
-                           accel_z: np.ndarray,
-                           config: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    Check quality across all three acceleration axes.
-    
-    Args:
-        accel_x: X-axis acceleration
-        accel_y: Y-axis acceleration
-        accel_z: Z-axis acceleration
+        x, y, z: Acceleration arrays for each axis
         config: Configuration dictionary
         
     Returns:
-        Dictionary with per-axis quality metrics
+        Dictionary with quality results for each axis
     """
-    max_g_range = config.get('wp1', {}).get('sensors', {}).get('max_g_range', 16.0)
-    max_value = max_g_range * 9.80665
+    max_g = config.get('wp1', {}).get('sensors', {}).get('max_g_range', 16.0)
     
-    axes_quality = {}
+    results = {}
     
-    for axis_name, axis_data in [('x', accel_x), ('y', accel_y), ('z', accel_z)]:
-        # Compute basic metrics
-        metrics = compute_window_metrics(axis_data, max_value)
+    for axis_name, axis_data in [('x', x), ('y', y), ('z', z)]:
+        # Check for DC offset
+        dc_offset = np.mean(axis_data)
+        dc_threshold = 0.5  # g
         
-        # Check for issues
+        # Check for saturation
+        saturation_ratio = np.sum(np.abs(axis_data) >= max_g * 0.95) / len(axis_data)
+        
+        # Determine quality
         issues = []
-        if metrics['clipping_detected']:
-            issues.append("clipping")
-        if metrics['peak_to_rms'] > 10:
-            issues.append("high_peaks")
-        if abs(metrics['mean']) > 2.0:  # >2 m/s² DC offset
-            issues.append("dc_offset")
+        if abs(dc_offset) > dc_threshold:
+            issues.append('dc_offset')
+        if saturation_ratio > 0.01:
+            issues.append('saturation')
         
-        axes_quality[axis_name] = {
-            "metrics": metrics,
-            "issues": issues,
-            "quality": "good" if len(issues) == 0 else "poor"
+        # Overall quality
+        if len(issues) == 0:
+            quality = 'good'
+        elif len(issues) == 1:
+            quality = 'fair'
+        else:
+            quality = 'poor'
+        
+        results[axis_name] = {
+            'quality': quality,
+            'issues': issues,
+            'dc_offset': float(dc_offset),
+            'saturation_ratio': float(saturation_ratio)
         }
     
-    return axes_quality
+    return results
 
 
-def validate_time_alignment(time: np.ndarray, fs: float, 
-                          tolerance: float = 0.01) -> Tuple[bool, List[str]]:
+def validate_time_alignment(time: np.ndarray, expected_fs: float,
+                          tolerance: float = 0.05) -> Tuple[bool, List[str]]:
     """
-    Validate time vector for proper alignment and sampling.
+    Validate time vector for proper alignment.
     
     Args:
-        time: Time vector
-        fs: Expected sampling frequency
-        tolerance: Tolerance for sampling rate deviation (fraction)
+        time: Time array
+        expected_fs: Expected sampling frequency
+        tolerance: Tolerance for sampling rate (fraction)
         
     Returns:
         Tuple of (is_valid, list_of_issues)
@@ -353,137 +327,136 @@ def validate_time_alignment(time: np.ndarray, fs: float,
     issues = []
     
     # Check monotonicity
-    if not np.all(np.diff(time) > 0):
-        issues.append("Time vector is not monotonically increasing")
+    time_diff = np.diff(time)
+    if not np.all(time_diff > 0):
+        issues.append("Time vector is not monotonic")
     
     # Check sampling rate
-    dt = np.diff(time)
-    expected_dt = 1.0 / fs
+    actual_fs = 1.0 / np.median(time_diff)
+    fs_error = abs(actual_fs - expected_fs) / expected_fs
     
-    if len(dt) > 0:
-        mean_dt = np.mean(dt)
-        if abs(mean_dt - expected_dt) / expected_dt > tolerance:
-            actual_fs = 1.0 / mean_dt
-            issues.append(f"Sampling rate mismatch: expected {fs} Hz, got {actual_fs:.1f} Hz")
-        
-        # Check for gaps
-        max_gap = np.max(dt)
-        if max_gap > 2 * expected_dt:
-            issues.append(f"Time gaps detected: max gap = {max_gap:.3f} s")
+    if fs_error > tolerance:
+        issues.append(f"Sampling rate mismatch: expected {expected_fs} Hz, got {actual_fs:.1f} Hz")
+    
+    # Check for gaps
+    expected_dt = 1.0 / expected_fs
+    max_gap = np.max(time_diff) if len(time_diff) > 0 else 0
+    
+    if max_gap > 2 * expected_dt:
+        issues.append(f"Time gaps detected: max gap = {max_gap*1000:.1f} ms")
     
     is_valid = len(issues) == 0
     return is_valid, issues
 
 
-def verify_antialiasing_filter(qa_summary: Dict[str, Any], 
-                              config: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
+def generate_quality_report(quality_results: Dict[str, Any],
+                          experiment: str, session: str) -> List[Dict[str, Any]]:
     """
-    Verify that anti-aliasing filter was applied in WP-1.
-    
-    This function checks the quality assessment summary from WP-1 to ensure
-    proper anti-aliasing filtering was applied before spectral analysis.
+    Generate quality report entries.
     
     Args:
-        qa_summary: Quality assessment summary from WP-1 JSON file
-        config: Configuration dictionary
+        quality_results: Quality assessment results
+        experiment: Experiment name
+        session: Session name
         
     Returns:
-        Tuple of (filter_verified, verification_details)
+        List of report entries
     """
-    verification_details = {
-        "filter_verified": False,
-        "filter_type": None,
-        "cutoff_hz": None,
-        "order": None,
-        "warnings": [],
-        "processing_timestamp": qa_summary.get("processing_timestamp", "unknown")
+    reports = []
+    
+    # Summary report
+    summary = quality_results.get('summary', {})
+    
+    summary_report = {
+        'experiment': experiment,
+        'session': session,
+        'sensor_id': summary.get('sensor_id', 'unknown'),
+        'report_type': 'quality_summary',
+        'overall_quality': summary.get('overall_quality', 'unknown'),
+        'quality_score': summary.get('quality_score', 0.0),
+        'clipping_percentage': summary.get('clipping_percentage', 0.0),
+        'duration_seconds': summary.get('duration_seconds', 0.0),
+        'sample_count': summary.get('sample_count', 0)
     }
     
-    # Check if WP-1 parameters are present
-    params_used = qa_summary.get("parameters_used", {})
-    if not params_used:
-        verification_details["warnings"].append("No processing parameters found in QA summary")
-        return False, verification_details
+    reports.append(summary_report)
     
-    # Check for filter information in processing metadata
-    # This would typically be in the processing log or parameters
-    processing_log = qa_summary.get("processing_log", {})
-    info_messages = processing_log.get("info", [])
+    # Window reports for bad windows
+    windows = quality_results.get('windows', [])
+    for window in windows:
+        if window.get('quality_flag', 0) >= 2:  # Bad windows
+            window_report = {
+                'experiment': experiment,
+                'session': session,
+                'sensor_id': summary.get('sensor_id', 'unknown'),
+                'report_type': 'bad_window',
+                'window_id': window.get('window_id', -1),
+                'start_time': window.get('start_time', 0.0),
+                'end_time': window.get('end_time', 0.0),
+                'clipping_ratio': window.get('clipping_ratio', 0.0),
+                'quality_flag': window.get('quality_flag', 0)
+            }
+            reports.append(window_report)
     
-    # Look for filter information in various places
-    # 1. Check if high-pass filter was mentioned (which implies anti-alias was also applied)
-    highpass_applied = any("high-pass" in msg.lower() or "highpass" in msg.lower() 
-                          for msg in info_messages)
-    
-    # 2. Check config for expected anti-alias settings
-    anti_alias_config = config.get("anti_alias", {})
-    expected_cutoff = anti_alias_config.get("cutoff_hz", 85)
-    expected_order = anti_alias_config.get("order", 4)
-    
-    # 3. Analyze frequency content if window metrics are available
-    windows = qa_summary.get("windows", [])
-    if windows:
-        # Check for high-frequency content that shouldn't be there
-        for window in windows:
-            metrics = window.get("metrics", {})
-            # If peak values are suspiciously high, might indicate aliasing
-            peak_to_rms = metrics.get("peak_to_rms", 0)
-            if peak_to_rms > 20:  # Unusually high peak-to-RMS ratio
-                verification_details["warnings"].append(
-                    f"High peak-to-RMS ratio ({peak_to_rms:.1f}) may indicate aliasing"
-                )
-    
-    # 4. Check sampling rate to ensure Nyquist compliance
-    fs = config.get("fs", 200)
-    nyquist = fs / 2
-    if expected_cutoff >= nyquist * 0.9:
-        verification_details["warnings"].append(
-            f"Anti-alias cutoff ({expected_cutoff} Hz) too close to Nyquist ({nyquist} Hz)"
-        )
-    
-    # Make verification decision
-    # For now, we'll assume filter was applied if high-pass was mentioned
-    # In production, this would check explicit filter flags
-    if highpass_applied:
-        verification_details["filter_verified"] = True
-        verification_details["filter_type"] = "butterworth"  # Assumed from config
-        verification_details["cutoff_hz"] = expected_cutoff
-        verification_details["order"] = expected_order
-        filter_verified = True
-    else:
-        verification_details["warnings"].append(
-            "Could not verify anti-aliasing filter application from QA summary"
-        )
-        filter_verified = False
-    
-    # Add config check warning if needed
-    require_antialiasing = config.get("wp3", {}).get("quality", {}).get("require_antialiasing", True)
-    if require_antialiasing and not filter_verified:
-        verification_details["warnings"].append(
-            "WP-3 requires anti-aliasing verification, but filter could not be verified"
-        )
-    
-    return filter_verified, verification_details
+    return reports
 
 
-def load_qa_summary(qa_file_path: Path) -> Optional[Dict[str, Any]]:
+def verify_antialiasing_filter(qa_summary: Dict[str, Any], 
+                             config: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
     """
-    Load quality assessment summary from WP-1 output.
+    Verify anti-aliasing filter effectiveness based on quality metrics.
     
     Args:
-        qa_file_path: Path to qa_summary JSON file
+        qa_summary: Quality assessment summary
+        config: Configuration with fs and anti_alias settings
         
     Returns:
-        QA summary dictionary or None if not found
+        Tuple of (is_verified, details_dict)
     """
-    if not qa_file_path.exists():
-        logger.warning(f"QA summary file not found: {qa_file_path}")
-        return None
+    details = {
+        'verified': True,
+        'warnings': [],
+        'info': []
+    }
     
-    try:
-        with open(qa_file_path, 'r') as f:
-            qa_summary = json.load(f)
-        return qa_summary
-    except Exception as e:
-        logger.error(f"Failed to load QA summary: {e}")
-        return None
+    # Check peak-to-RMS ratios
+    windows = qa_summary.get('windows', [])
+    high_peak_windows = []
+    
+    for i, window in enumerate(windows):
+        metrics = window.get('metrics', {})
+        peak_to_rms = metrics.get('peak_to_rms', 0)
+        
+        # Flag windows with high peak-to-RMS (potential aliasing)
+        if peak_to_rms > 20.0:  # Threshold for concern
+            high_peak_windows.append((i, peak_to_rms))
+    
+    if high_peak_windows:
+        details['verified'] = False
+        details['warnings'].append(
+            f"High peak-to-RMS ratios detected in {len(high_peak_windows)} windows, "
+            f"indicating potential aliasing or transient events"
+        )
+        
+        # Add specific window details
+        for window_id, ratio in high_peak_windows[:3]:  # Show first 3
+            details['warnings'].append(
+                f"Window {window_id}: peak-to-RMS = {ratio:.1f}"
+            )
+    
+    # Check if anti-alias filter is configured properly
+    fs = config.get('fs', 200)
+    anti_alias_config = config.get('anti_alias', {})
+    cutoff_hz = anti_alias_config.get('cutoff_hz', fs/2.2)
+    
+    if cutoff_hz > fs/2:
+        details['warnings'].append(
+            f"Anti-alias cutoff ({cutoff_hz} Hz) exceeds Nyquist frequency ({fs/2} Hz)"
+        )
+        details['verified'] = False
+    
+    # Info about configuration
+    details['info'].append(f"Sampling rate: {fs} Hz")
+    details['info'].append(f"Anti-alias cutoff: {cutoff_hz} Hz")
+    
+    return details['verified'], details
