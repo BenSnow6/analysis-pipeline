@@ -8,6 +8,7 @@ detecting clipping, and validating time alignment.
 import numpy as np
 from typing import Dict, List, Tuple, Any, Optional
 import logging
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -460,3 +461,35 @@ def verify_antialiasing_filter(qa_summary: Dict[str, Any],
     details['info'].append(f"Anti-alias cutoff: {cutoff_hz} Hz")
     
     return details['verified'], details
+
+
+def save_quality_report(reports: List[Dict[str, Any]], output_path: Path) -> None:
+    """
+    Save quality report to JSON file.
+    
+    Args:
+        reports: List of report entries
+        output_path: Path to save the JSON file
+    """
+    import json
+    
+    # Ensure parent directory exists
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Convert to JSON-serializable format
+    serializable_reports = []
+    for report in reports:
+        serializable_report = {}
+        for key, value in report.items():
+            if isinstance(value, (int, float, str, bool, list, dict, type(None))):
+                serializable_report[key] = value
+            else:
+                # Convert non-serializable types to strings
+                serializable_report[key] = str(value)
+        serializable_reports.append(serializable_report)
+    
+    # Write to file
+    with open(output_path, 'w') as f:
+        json.dump(serializable_reports, f, indent=2)
+    
+    logger.info(f"Saved {len(reports)} quality reports to {output_path}")
