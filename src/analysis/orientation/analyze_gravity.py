@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 import yaml
+from src.core.paths import ORIENTATION_CONFIG_FILE
 
 def analyze_gravity_measurements():
     """Analyze raw accelerometer data to check gravity magnitude."""
@@ -84,7 +85,7 @@ def analyze_gravity_measurements():
         print("⚠️ Gravity appears to be negative - sensor might be inverted!")
     
     # Now check the rotation matrix expectation
-    config_path = Path(__file__).parent / "orientation_config.yaml"
+    config_path = ORIENTATION_CONFIG_FILE
     with open(config_path, 'r') as f:
         config = yaml.safe_load(f)
     

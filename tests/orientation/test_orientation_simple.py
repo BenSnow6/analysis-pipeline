@@ -6,11 +6,18 @@ Tests that the fixes work by checking file loading and basic processing.
 
 import os
 from pathlib import Path
+import sys
+
+# Add project root to path for imports
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.core.paths import ORIENTATION_CONFIG_FILE, ALIGNED_DATA_DIR
 
 def test_load_data():
     """Test that we can load data with gyro columns."""
     
-    csv_file = Path(__file__).parent.parent.parent / "code" / "alignment_analysis" / "aligned_data" / "007_Fast_stbd_turn_1_csv" / "Sensor_3.csv"
+    csv_file = ALIGNED_DATA_DIR / "007_Fast_stbd_turn_1_csv" / "Sensor_3.csv"
     
     if not csv_file.exists():
         print(f"ERROR: CSV file not found: {csv_file}")
@@ -48,7 +55,7 @@ def test_load_data():
 def test_orientation_config():
     """Test that orientation config exists and is readable."""
     
-    config_file = Path(__file__).parent.parent.parent / "code" / "orientation_analysis" / "orientation_config.yaml"
+    config_file = ORIENTATION_CONFIG_FILE
     
     if not config_file.exists():
         print(f"ERROR: Config file not found: {config_file}")

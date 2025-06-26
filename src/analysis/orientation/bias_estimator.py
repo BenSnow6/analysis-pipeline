@@ -13,6 +13,7 @@ import sys
 
 from src.scripts.frame_definitions import get_R_bs_dcm
 from src.analysis.orientation.static_detector import StaticDetector
+from src.core.paths import ORIENTATION_CONFIG_FILE
 
 
 class BiasEstimator:
@@ -26,7 +27,7 @@ class BiasEstimator:
             config_path: Path to orientation config file
         """
         if config_path is None:
-            config_path = Path(__file__).parent / "orientation_config.yaml"
+            config_path = ORIENTATION_CONFIG_FILE
             
         with open(config_path, 'r') as f:
             self.config = yaml.safe_load(f)

@@ -233,7 +233,7 @@ class TestTimeAlignment:
 
 def test_quality_report_generation():
     """Test quality report generation."""
-    from quality import generate_quality_report
+    from src.analysis.rpm.quality import generate_quality_report
     
     # Mock quality results
     quality_results = {
@@ -269,7 +269,7 @@ def test_quality_report_generation():
 
 def test_quality_report_save(tmp_path):
     """Test saving quality report to JSON."""
-    from quality import save_quality_report
+    from src.analysis.rpm.quality import save_quality_report
     
     report = {
         'experiment': 'test',

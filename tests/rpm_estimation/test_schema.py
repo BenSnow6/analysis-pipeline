@@ -195,7 +195,7 @@ class TestDataConsistency:
 
 def test_schema_report():
     """Test schema validation report generation."""
-    from schema import generate_schema_report
+    from src.analysis.rpm.schema import generate_schema_report
     
     validation_results = [
         {'file': 'file1.parquet', 'is_valid': True, 'issues': []},
@@ -215,7 +215,7 @@ def test_schema_report():
 
 def test_parquet_info(tmp_path):
     """Test extraction of Parquet file information."""
-    from schema import get_parquet_info
+    from src.analysis.rpm.schema import get_parquet_info
     
     # Create test Parquet file
     df = pd.DataFrame({

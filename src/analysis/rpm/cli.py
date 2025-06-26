@@ -134,7 +134,8 @@ def validate_args(args):
             raise FileNotFoundError(f"Configuration file not found: {args.config}")
     
     # Create output directory if needed
-    args.output_dir.mkdir(parents=True, exist_ok=True)
+    if hasattr(args, 'output_dir') and args.output_dir is not None:
+        args.output_dir.mkdir(parents=True, exist_ok=True)
     
     return args
 

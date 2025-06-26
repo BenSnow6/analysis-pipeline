@@ -22,7 +22,7 @@ class TestDataPaths:
         # Actual data may not exist in test environment
         
         expected_structure = {
-            'base_path': 'code/processed/aligned',
+            'base_path': 'data/processed/aligned',
             'csv_export': '{experiment}_csv/',
             'sensor_files': [
                 'Sensor_3.csv',
@@ -35,7 +35,7 @@ class TestDataPaths:
         }
         
         # Verify structure is as expected
-        assert 'aligned_data' in expected_structure['base_path']
+        assert 'aligned' in expected_structure['base_path']
         assert '_csv' in expected_structure['csv_export']
     
     @pytest.mark.requires_data
@@ -111,13 +111,13 @@ class TestDataLoading:
             expected_df = self.create_test_csv(sensor_file)
             
             # Mock the find_experiment_data function
-            import rpm_estimation.io
-            original_find = rpm_estimation.io.find_experiment_data
+            import src.analysis.rpm.io as rpm_io
+            original_find = rpm_io.find_experiment_data
             
             def mock_find(exp, session, base_path=None):
                 return exp_dir
             
-            rpm_estimation.io.find_experiment_data = mock_find
+            rpm_io.find_experiment_data = mock_find
             
             try:
                 # Load data
@@ -131,7 +131,7 @@ class TestDataLoading:
                 
             finally:
                 # Restore original function
-                rpm_estimation.io.find_experiment_data = original_find
+                rpm_io.find_experiment_data = original_find
 
 
 class TestResultSaving:

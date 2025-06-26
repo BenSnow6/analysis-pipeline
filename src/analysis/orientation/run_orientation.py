@@ -13,6 +13,7 @@ from tqdm import tqdm
 
 from src.analysis.orientation.orientation_check import OrientationChecker
 from src.analysis.orientation.plot_orientation import OrientationPlotter
+from src.core.paths import ORIENTATION_CONFIG_FILE, ALIGNED_DATA_DIR
 
 
 def main():
@@ -30,14 +31,14 @@ def main():
     parser.add_argument(
         "-c", "--config",
         type=Path,
-        default=Path(__file__).parent / "orientation_config.yaml",
+        default=ORIENTATION_CONFIG_FILE,
         help="Path to configuration file"
     )
     
     parser.add_argument(
         "-d", "--data-dir",
         type=Path,
-        default=Path(__file__).parent.parent / "alignment_analysis" / "aligned_data",
+        default=ALIGNED_DATA_DIR,
         help="Directory containing aligned data"
     )
     

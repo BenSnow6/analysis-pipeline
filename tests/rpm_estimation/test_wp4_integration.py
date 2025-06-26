@@ -64,8 +64,8 @@ def test_fusion_logic():
     """Test basic fusion logic with synthetic data."""
     print("\n=== Testing Fusion Logic ===")
     
-    from tracking import RPMFrame, RPMTimeSeries
-    from fusion import fuse_sensors_snr
+    from src.analysis.rpm.tracking import RPMFrame, RPMTimeSeries
+    from src.analysis.rpm.fusion import fuse_sensors_snr
     import numpy as np
     
     # Create synthetic test data

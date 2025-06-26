@@ -8,6 +8,7 @@ import pandas as pd
 from typing import List, Tuple, Dict, Optional
 import yaml
 from pathlib import Path
+from src.core.paths import ORIENTATION_CONFIG_FILE
 
 
 class StaticDetector:
@@ -21,7 +22,7 @@ class StaticDetector:
             config_path: Path to configuration file. If None, use default config.
         """
         if config_path is None:
-            config_path = Path(__file__).parent / "orientation_config.yaml"
+            config_path = ORIENTATION_CONFIG_FILE
             
         with open(config_path, 'r') as f:
             config = yaml.safe_load(f)
