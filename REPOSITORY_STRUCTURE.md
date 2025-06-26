@@ -75,7 +75,14 @@ analysis-pipeline/
 - Analysis modules → `/src/analysis/{module}/`
 - Command-line scripts → `/src/scripts/`
 - Jupyter notebooks → `/src/notebooks/`
-- **NO documentation in src!** All docs go to `/docs/`
+
+### ⚠️ CRITICAL RULE:
+**NO documentation or images in /src/!**
+- ❌ NO .md files in /src/
+- ❌ NO .png, .jpg, .jpeg, .gif files in /src/
+- ❌ NO PDFs or other docs in /src/
+- ✅ ONLY .py files (and config .yaml/.json) in /src/
+- ✅ ALL documentation goes to /docs/
 
 ### When Documenting:
 - Analysis methodology → `/docs/results/{analysis}/README.md`
