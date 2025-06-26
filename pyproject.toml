@@ -32,7 +32,7 @@ dependencies = [
     "pandas==2.0.3",
     
     # Data formats
-    "tables==3.10.1",
+    "tables>=3.8.0,<3.10",  # 3.10+ requires Python 3.10+
     "h5py>=2.9.0",
     "pyarrow>=17.0.0",
     
