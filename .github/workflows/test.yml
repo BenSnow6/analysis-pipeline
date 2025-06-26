@@ -35,7 +35,7 @@ jobs:
     
     - name: Run tests
       run: |
-        pytest tests/test_rpm_estimation.py -v --cov=src.analysis.rpm --cov-report=term-missing
+        pytest tests/rpm_estimation/ -v --cov=src.analysis.rpm --cov-report=term-missing
     
     - name: Check imports
       run: |
