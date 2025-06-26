@@ -34,7 +34,7 @@ dependencies = [
     # Data formats
     "tables>=3.8.0,<3.10",  # 3.10+ requires Python 3.10+
     "h5py>=2.9.0",
-    "pyarrow>=17.0.0",
+    "pyarrow>=10.0.0,<17.0.0",  # Later versions may have compatibility issues
     
     # Visualization
     "matplotlib==3.7.2",
@@ -50,7 +50,7 @@ dependencies = [
     
     # Utilities
     "tqdm>=4.66.4",
-    "pyproj>=3.7.0",
+    "pyproj>=3.5.0,<3.7",  # 3.7+ requires Python 3.10+
 ]
 
 [project.optional-dependencies]
