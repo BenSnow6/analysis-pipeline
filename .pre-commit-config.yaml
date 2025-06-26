@@ -39,5 +39,5 @@ repos:
       - id: mypy
         args: ['--config-file', 'pyproject.toml']
         additional_dependencies: [types-PyYAML, types-requests]
-        files: ^src/hovercraft_analysis/
+        files: ^src/
         pass_filenames: false

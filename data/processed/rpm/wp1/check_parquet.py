@@ -12,7 +12,7 @@ import pyarrow.parquet as pq
 project_root = Path(__file__).parent.parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-parquet_file = Path("code/rpm_estimation/sanity_check/output_wp1/afternoon/011_Static_stbd_1/proc_IMU_Sensor_3.parquet")
+parquet_file = Path("data/processed/rpm/wp1/output_wp1/afternoon/011_Static_stbd_1/proc_IMU_Sensor_3.parquet")
 
 # Read metadata
 parquet_file_obj = pq.ParquetFile(parquet_file)

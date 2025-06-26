@@ -42,28 +42,28 @@ dev:
 
 # Testing targets
 test:
-	pytest tests/ -v --cov=hovercraft_analysis --cov-report=html --cov-report=term
+	pytest tests/ -v --cov=src --cov-report=html --cov-report=term
 
 test-fast:
 	pytest tests/ -v
 
 test-cov:
-	pytest tests/ -v --cov=hovercraft_analysis --cov-report=html --cov-report=term
+	pytest tests/ -v --cov=src --cov-report=html --cov-report=term
 	@echo "Coverage report generated in htmlcov/index.html"
 
 # Code quality targets
 lint:
 	@echo "Running flake8..."
-	flake8 src/hovercraft_analysis tests/ --config=.flake8 || true
+	flake8 src/ tests/ --config=.flake8 || true
 	@echo ""
 	@echo "Running mypy..."
-	mypy src/hovercraft_analysis --config-file pyproject.toml || true
+	mypy src/ --config-file pyproject.toml || true
 
 format:
 	@echo "Running isort..."
-	isort src/hovercraft_analysis tests/
+	isort src/ tests/
 	@echo "Running black..."
-	black src/hovercraft_analysis tests/
+	black src/ tests/
 	@echo "✓ Code formatted successfully"
 
 check-quality:
@@ -72,9 +72,9 @@ check-quality:
 	@echo "Checking black..."
 	black --check src/hovercraft_analysis tests/
 	@echo "Checking flake8..."
-	flake8 src/hovercraft_analysis tests/ --config=.flake8
+	flake8 src/ tests/ --config=.flake8
 	@echo "Checking mypy..."
-	mypy src/hovercraft_analysis --config-file pyproject.toml
+	mypy src/ --config-file pyproject.toml
 
 # Documentation targets
 docs:
