@@ -12,7 +12,11 @@
       "Bash(pip install:*)",
       "Bash(ls:*)",
       "Bash(grep:*)",
-      "Bash(../../venv/bin/python3:*)"
+      "Bash(../../venv/bin/python3:*)",
+      "Bash(touch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(rmdir:*)"
     ],
     "deny": []
   },

@@ -1,0 +1,301 @@
+{
+  "migration_date": "2025-06-23T22:10:09.025646",
+  "phase": "Phase 4 - Data Directory Reorganization",
+  "actions": [
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/007_Fast_stbd_turn_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/007_Fast_stbd_turn_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/016_Straight_cruise_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/016_Straight_cruise_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/021_Quarter_turn_port_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/021_Quarter_turn_port_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/007_Fast_stbd_turn_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/007_Fast_stbd_turn_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/016_Straight_cruise_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/016_Straight_cruise_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/021_Quarter_turn_port_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/morning/021_Quarter_turn_port_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/007_Fast_stbd_turn_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/007_Fast_stbd_turn_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/009_Fast_port_turn_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/009_Fast_port_turn_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/011_Static_stbd_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/011_Static_stbd_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/012_Static_port_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/012_Static_port_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/013_Static_port_2_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/013_Static_port_2_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/014_Static_stbd_2_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/014_Static_stbd_2_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/016_Straight_cruise_1_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/016_Straight_cruise_1_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/018_Straight_cruise_2_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/018_Straight_cruise_2_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/020_Straight_cruise_3_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/020_Straight_cruise_3_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/021_Quarter_turn_port_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/021_Quarter_turn_port_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/022_Quarter_turn_stbd_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/022_Quarter_turn_stbd_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/023_Eigth_turn_port_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/023_Eigth_turn_port_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/024_Eigth_turn_stbd_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/024_Eigth_turn_stbd_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/026_Engine_rpm_sweep_aligned.h5",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/026_Engine_rpm_sweep_aligned.h5"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/007_Fast_stbd_turn_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/007_Fast_stbd_turn_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/009_Fast_port_turn_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/009_Fast_port_turn_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/011_Static_stbd_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/011_Static_stbd_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/012_Static_port_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/012_Static_port_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/013_Static_port_2_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/013_Static_port_2_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/014_Static_stbd_2_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/014_Static_stbd_2_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/016_Straight_cruise_1_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/016_Straight_cruise_1_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/018_Straight_cruise_2_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/018_Straight_cruise_2_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/020_Straight_cruise_3_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/020_Straight_cruise_3_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/021_Quarter_turn_port_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/021_Quarter_turn_port_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/022_Quarter_turn_stbd_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/022_Quarter_turn_stbd_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/023_Eigth_turn_port_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/023_Eigth_turn_port_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/024_Eigth_turn_stbd_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/024_Eigth_turn_stbd_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/afternoon/026_Engine_rpm_sweep_csv",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/afternoon/026_Engine_rpm_sweep_csv"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/static/afternoon",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/static/afternoon"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/alignment_analysis/aligned_data/static/morning",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/aligned/static/morning"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/002_Setup",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/002_Setup"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/003_Waiting_for_departure",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/003_Waiting_for_departure"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/003_Waiting_for_departure_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/003_Waiting_for_departure_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/007_Fast_stbd_turn_1",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/007_Fast_stbd_turn_1"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/007_Fast_stbd_turn_1_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/007_Fast_stbd_turn_1_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/010_Waiting_for_static_turns",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/010_Waiting_for_static_turns"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/010_Waiting_for_static_turns_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/010_Waiting_for_static_turns_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/011_Static_stbd_1",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/011_Static_stbd_1"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/011_Static_stbd_1_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/011_Static_stbd_1_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/016_Straight_cruise_1",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/016_Straight_cruise_1"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/016_Straight_cruise_1_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/016_Straight_cruise_1_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/021_Quarter_turn_port",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/021_Quarter_turn_port"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/021_Quarter_turn_port_cross_sensor_consistency.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/021_Quarter_turn_port_cross_sensor_consistency.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/all_validation_results.yaml",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/all_validation_results.yaml"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/ORIENTATION_ANALYSIS_FINAL_REPORT.md",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/ORIENTATION_ANALYSIS_FINAL_REPORT.md"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/sensor_coordinate_systems.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/sensor_coordinate_systems.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/static",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/static"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/orientation_analysis/validation_results/validation_summary.png",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/orientation/validation_results/validation_summary.png"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/rpm_estimation/results/wp1",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/rpm/wp1"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/rpm_estimation/results/wp2",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/rpm/wp2"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/rpm_estimation/results/wp3",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/rpm/wp3"
+    },
+    {
+      "type": "move",
+      "source": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/code/rpm_estimation/results/wp4",
+      "destination": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/data/processed/rpm/wp4"
+    },
+    {
+      "type": "update",
+      "file": "/mnt/c/Users/ben/Documents/EngD/09 Data collection/01_analysis_pipeline/analysis-pipeline/config/pipeline.yaml",
+      "changes": "Updated raw data paths to include /raw"
+    }
+  ]
+}

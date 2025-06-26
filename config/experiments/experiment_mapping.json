@@ -1,0 +1,79 @@
+{
+  "evaluation_experiments": {
+    "1a_1_Minimum_Radius_Turn": {
+      "description": "Minimum Radius Turn experiments",
+      "morning": ["015_Skirt_shift_turns"],
+      "afternoon": [
+        "007_Fast_stbd_turn_1",
+        "009_Fast_port_turn_1", 
+        "011_Static_stbd_1",
+        "012_Static_port_1",
+        "013_Static_port_2",
+        "014_Static_stbd_2"
+      ]
+    },
+    "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle": {
+      "description": "Rate of Turn vs Nosewheel Steering Angle experiments",
+      "morning": [],
+      "afternoon": [
+        "021_Quarter_turn_port",
+        "022_Quarter_turn_stbd",
+        "023_Eigth_turn_port",
+        "024_Eigth_turn_stbd"
+      ]
+    },
+    "1b_1_Ground_Acceleration_Time_and_Distance": {
+      "description": "Ground Acceleration Time and Distance experiments",
+      "morning": [
+        "007_Downwind_max_speed_1",
+        "009_Downwind_max_speed_2",
+        "010_Downwind_max_speed_3"
+      ],
+      "afternoon": [
+        "016_Straight_cruise_1",
+        "018_Straight_cruise_2",
+        "020_Straight_cruise_3"
+      ]
+    },
+    "1b_4_Normal_Take_off": {
+      "description": "Normal Take-off experiments",
+      "morning": [
+        "006_Departure",
+        "013_Yaw_speed_3"
+      ],
+      "afternoon": [
+        "026_Engine_rpm_sweep"
+      ]
+    },
+    "1c_1_Normal_Climb_All_Engines_Operating": {
+      "description": "Normal Climb All Engines Operating experiments",
+      "morning": [
+        "014_Floating_on_sea_and_takeoff",
+        "016_Plough_in"
+      ],
+      "afternoon": []
+    },
+    "1d_1_Level_Flight_Acceleration": {
+      "description": "Level Flight Acceleration experiments",
+      "morning": [
+        "007_Downwind_max_speed_1",
+        "008_Into_wind_max_speed",
+        "009_Downwind_max_speed_2",
+        "010_Downwind_max_speed_3"
+      ],
+      "afternoon": []
+    },
+    "1d_2_Level_Flight_Deceleration": {
+      "description": "Level Flight Deceleration experiments",
+      "morning": [
+        "013_Yaw_speed_3"
+      ],
+      "afternoon": []
+    }
+  },
+  "notes": {
+    "overlap": "Some experiments appear in multiple evaluation categories (e.g., 007_Downwind_max_speed_1 is in both 1b_1 and 1d_1)",
+    "source": "Generated from 02_Evaluation_Experiments folder structure",
+    "timestamp": "2025-06-23"
+  }
+}

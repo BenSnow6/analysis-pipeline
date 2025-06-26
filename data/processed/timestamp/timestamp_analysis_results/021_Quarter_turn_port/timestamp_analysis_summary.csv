@@ -1,0 +1,6 @@
+sensor_name,within_spec,expected_rate_hz,actual_rate_hz,rate_deviation_percent,mean_jitter_ms,max_jitter_ms,jitter_threshold_ms,jitter_violations,num_gaps,num_samples,duration_seconds
+gps,False,1,0.82,18.18,222.222,8000.0,100,1,1,37,44.0
+sensor_3,True,200,200.0,0.0,0.0,0.0,20,0,0,9001,45.0
+sensor_4,True,200,200.0,0.0,0.0,0.0,20,0,0,9000,45.0
+sensor_5,True,200,200.0,0.0,0.0,0.0,20,0,0,9000,45.0
+sensor_wb,True,100,100.11,0.11,0.189,10.0,20,0,0,4505,45.0

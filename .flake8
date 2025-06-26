@@ -1,0 +1,26 @@
+[flake8]
+# E203: whitespace before ':' (conflicts with black)
+# E501: line too long (black handles this)
+# W503: line break before binary operator (conflicts with black)
+ignore = E203, E501, W503
+max-line-length = 88
+exclude = 
+    .git,
+    __pycache__,
+    build,
+    dist,
+    .eggs,
+    *.egg,
+    venv,
+    .venv,
+    .mypy_cache,
+    .pytest_cache,
+    htmlcov,
+    docs/_build,
+    # Legacy code directory - gradually migrate
+    code/
+per-file-ignores =
+    # Allow imports at bottom of __init__ files
+    __init__.py:E402,F401
+    # Allow star imports in test files
+    tests/*:F403,F405

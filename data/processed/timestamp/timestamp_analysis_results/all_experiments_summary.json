@@ -1,0 +1,61 @@
+{
+  "total_experiments": 10,
+  "failed_experiments": [
+    "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/021_Quarter_turn_port",
+    "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/022_Quarter_turn_stbd",
+    "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/023_Eigth_turn_port",
+    "1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/024_Eigth_turn_stbd"
+  ],
+  "experiment_summaries": {
+    "1a_1_Minimum_Radius_Turn/afternoon/007_Fast_stbd_turn_1": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1a_1_Minimum_Radius_Turn/afternoon/009_Fast_port_turn_1": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1a_1_Minimum_Radius_Turn/afternoon/011_Static_stbd_1": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1a_1_Minimum_Radius_Turn/afternoon/012_Static_port_1": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1a_1_Minimum_Radius_Turn/afternoon/013_Static_port_2": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1a_1_Minimum_Radius_Turn/afternoon/014_Static_stbd_2": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/016_Straight_cruise_1": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/018_Straight_cruise_2": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1b_1_Ground_Acceleration_Time_and_Distance/afternoon/020_Straight_cruise_3": {
+      "sensors_analyzed": 6,
+      "sensors_passing": 5,
+      "overall_pass": false
+    },
+    "1b_4_Normal_Take_off/afternoon/026_Engine_rpm_sweep": {
+      "sensors_analyzed": 5,
+      "sensors_passing": 5,
+      "overall_pass": true
+    }
+  }
+}

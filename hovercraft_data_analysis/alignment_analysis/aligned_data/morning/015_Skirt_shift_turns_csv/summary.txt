@@ -1,2 +1,0 @@
-Aligned data exported from: 015_Skirt_shift_turns_aligned.h5
-Export timestamp: 2025-06-18 23:48:20.353333

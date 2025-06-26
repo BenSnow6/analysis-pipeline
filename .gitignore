@@ -5,6 +5,12 @@ __pycache__/
 *.so
 .Python
 env/
+venv/
+.venv/
+ENV/
+VENV/
+**/venv/
+**/.venv/
 build/
 develop-eggs/
 dist/
@@ -29,3 +35,53 @@ var/
 # System files
 .DS_Store
 Thumbs.db
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+*.cover
+.hypothesis/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation build
+docs/_build/
+docs/api/_autosummary/
+
+# Local config overrides
+.env
+.env.local
+config/pipeline.local.yaml
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Data cache
+data/cache/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+.Trash-*

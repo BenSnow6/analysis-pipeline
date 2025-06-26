@@ -1,0 +1,80 @@
+# Experiment Categories Configuration
+# This file provides additional metadata about experiment categories
+# Referenced by experiment_mapping.json
+
+categories:
+  1a_1_Minimum_Radius_Turn:
+    full_name: "Minimum Radius Turn"
+    description: "Experiments to determine the minimum turning radius of the hovercraft"
+    objective: "Evaluate turning performance at various speeds and steering angles"
+    metrics:
+      - turning_radius
+      - yaw_rate
+      - lateral_acceleration
+    
+  1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle:
+    full_name: "Rate of Turn vs Nosewheel Steering Angle"
+    description: "Characterize the relationship between steering input and turn rate"
+    objective: "Create control model for steering response"
+    metrics:
+      - yaw_rate_vs_steering
+      - response_time
+      - steady_state_gain
+    
+  1b_1_Ground_Acceleration_Time_and_Distance:
+    full_name: "Ground Acceleration Time and Distance"
+    description: "Measure acceleration performance from standstill"
+    objective: "Determine acceleration capabilities and distance requirements"
+    metrics:
+      - acceleration_profile
+      - time_to_speed
+      - distance_covered
+    
+  1b_4_Normal_Take_off:
+    full_name: "Normal Take-off"
+    description: "Standard take-off procedure experiments"
+    objective: "Characterize normal take-off performance"
+    metrics:
+      - engine_rpm
+      - ground_speed
+      - attitude_angles
+    
+  1c_1_Normal_Climb_All_Engines_Operating:
+    full_name: "Normal Climb - All Engines Operating"
+    description: "Climb performance with all engines operational"
+    objective: "Evaluate maximum climb capability"
+    metrics:
+      - climb_rate
+      - power_consumption
+      - stability_margins
+    
+  2a_General_Handling_on_Water:
+    full_name: "General Handling on Water"
+    description: "Water surface operation characteristics"
+    objective: "Assess handling qualities on water"
+    metrics:
+      - drift_angle
+      - wave_response
+      - control_effectiveness
+    
+  2b_Straight_Line_and_Curved_Deceleration:
+    full_name: "Straight Line and Curved Deceleration"
+    description: "Deceleration performance in various conditions"
+    objective: "Determine safe deceleration rates"
+    metrics:
+      - deceleration_rate
+      - stopping_distance
+      - stability_during_decel
+
+# Analysis priorities
+priorities:
+  high:
+    - 1a_1_Minimum_Radius_Turn
+    - 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle
+    - 1b_1_Ground_Acceleration_Time_and_Distance
+  medium:
+    - 1b_4_Normal_Take_off
+    - 2b_Straight_Line_and_Curved_Deceleration
+  low:
+    - 1c_1_Normal_Climb_All_Engines_Operating
+    - 2a_General_Handling_on_Water

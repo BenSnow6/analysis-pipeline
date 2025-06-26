@@ -1,0 +1,2361 @@
+analysis-pipeline/
+├── config/
+│   ├── experiments/
+│   │   ├── experiment_categories.yaml
+│   │   ├── experiment_manifest.yaml
+│   │   └── experiment_mapping.json
+│   ├── processing/
+│   │   ├── alignment_config.yaml
+│   │   ├── orientation_config.yaml
+│   │   ├── rpm_config.yaml
+│   │   └── timestamp_config.yaml
+│   ├── sensors/
+│   │   ├── sensor_orientations.json
+│   │   └── sensor_specs.yaml
+│   └── pipeline.yaml
+├── data/
+│   ├── cache/
+│   ├── processed/
+│   │   ├── aligned/
+│   │   │   ├── afternoon/
+│   │   │   │   ├── 007_Fast_stbd_turn_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 009_Fast_port_turn_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 011_Static_stbd_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 012_Static_port_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 013_Static_port_2_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 014_Static_stbd_2_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 016_Straight_cruise_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 018_Straight_cruise_2_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 020_Straight_cruise_3_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 021_Quarter_turn_port_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 022_Quarter_turn_stbd_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 023_Eigth_turn_port_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 024_Eigth_turn_stbd_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 026_Engine_rpm_sweep_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 007_Fast_stbd_turn_1_aligned.h5
+│   │   │   │   ├── 009_Fast_port_turn_1_aligned.h5
+│   │   │   │   ├── 011_Static_stbd_1_aligned.h5
+│   │   │   │   ├── 012_Static_port_1_aligned.h5
+│   │   │   │   ├── 013_Static_port_2_aligned.h5
+│   │   │   │   ├── 014_Static_stbd_2_aligned.h5
+│   │   │   │   ├── 016_Straight_cruise_1_aligned.h5
+│   │   │   │   ├── 018_Straight_cruise_2_aligned.h5
+│   │   │   │   ├── 020_Straight_cruise_3_aligned.h5
+│   │   │   │   ├── 021_Quarter_turn_port_aligned.h5
+│   │   │   │   ├── 022_Quarter_turn_stbd_aligned.h5
+│   │   │   │   ├── 023_Eigth_turn_port_aligned.h5
+│   │   │   │   ├── 024_Eigth_turn_stbd_aligned.h5
+│   │   │   │   └── 026_Engine_rpm_sweep_aligned.h5
+│   │   │   ├── morning/
+│   │   │   │   ├── 007_Fast_stbd_turn_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 016_Straight_cruise_1_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 021_Quarter_turn_port_csv/
+│   │   │   │   │   ├── gps.csv
+│   │   │   │   │   ├── metadata.csv
+│   │   │   │   │   ├── Sensor_3.csv
+│   │   │   │   │   ├── Sensor_4.csv
+│   │   │   │   │   ├── Sensor_5.csv
+│   │   │   │   │   ├── Sensor_wb.csv
+│   │   │   │   │   └── summary.txt
+│   │   │   │   ├── 007_Fast_stbd_turn_1_aligned.h5
+│   │   │   │   ├── 016_Straight_cruise_1_aligned.h5
+│   │   │   │   └── 021_Quarter_turn_port_aligned.h5
+│   │   │   └── static/
+│   │   │       ├── afternoon/
+│   │   │       │   ├── 002_Setup_csv/
+│   │   │       │   │   ├── gps.csv
+│   │   │       │   │   ├── metadata.csv
+│   │   │       │   │   ├── Sensor_3.csv
+│   │   │       │   │   ├── Sensor_4.csv
+│   │   │       │   │   ├── Sensor_5.csv
+│   │   │       │   │   ├── Sensor_wb.csv
+│   │   │       │   │   └── summary.txt
+│   │   │       │   ├── 003_Waiting_for_departure_csv/
+│   │   │       │   │   ├── gps.csv
+│   │   │       │   │   ├── metadata.csv
+│   │   │       │   │   ├── Sensor_3.csv
+│   │   │       │   │   ├── Sensor_4.csv
+│   │   │       │   │   ├── Sensor_5.csv
+│   │   │       │   │   ├── Sensor_wb.csv
+│   │   │       │   │   └── summary.txt
+│   │   │       │   ├── 010_Waiting_for_static_turns_csv/
+│   │   │       │   │   ├── gps.csv
+│   │   │       │   │   ├── metadata.csv
+│   │   │       │   │   ├── Sensor_3.csv
+│   │   │       │   │   ├── Sensor_4.csv
+│   │   │       │   │   ├── Sensor_5.csv
+│   │   │       │   │   ├── Sensor_wb.csv
+│   │   │       │   │   └── summary.txt
+│   │   │       │   ├── 002_Setup_aligned.h5
+│   │   │       │   ├── 003_Waiting_for_departure_aligned.h5
+│   │   │       │   └── 010_Waiting_for_static_turns_aligned.h5
+│   │   │       └── morning/
+│   │   │           ├── 002_Setup_csv/
+│   │   │           │   ├── gps.csv
+│   │   │           │   ├── metadata.csv
+│   │   │           │   ├── Sensor_3.csv
+│   │   │           │   ├── Sensor_4.csv
+│   │   │           │   ├── Sensor_5.csv
+│   │   │           │   ├── Sensor_wb.csv
+│   │   │           │   └── summary.txt
+│   │   │           ├── 002_Setup_aligned.h5
+│   │   │           └── 004_Setup_2_aligned.h5
+│   │   ├── orientation/
+│   │   │   └── validation_results/
+│   │   │       ├── 002_Setup/
+│   │   │       │   ├── Sensor_3_bias_estimation.png
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 003_Waiting_for_departure/
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 007_Fast_stbd_turn_1/
+│   │   │       │   ├── Sensor_3_dynamic_validation.png
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_dynamic_validation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_dynamic_validation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_dynamic_validation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 010_Waiting_for_static_turns/
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 011_Static_stbd_1/
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 016_Straight_cruise_1/
+│   │   │       │   ├── Sensor_3_dynamic_validation.png
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_dynamic_validation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_dynamic_validation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_dynamic_validation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── 021_Quarter_turn_port/
+│   │   │       │   ├── Sensor_3_dynamic_validation.png
+│   │   │       │   ├── Sensor_3_gravity_alignment.png
+│   │   │       │   ├── Sensor_3_transformation.png
+│   │   │       │   ├── Sensor_4_dynamic_validation.png
+│   │   │       │   ├── Sensor_4_gravity_alignment.png
+│   │   │       │   ├── Sensor_4_transformation.png
+│   │   │       │   ├── Sensor_5_dynamic_validation.png
+│   │   │       │   ├── Sensor_5_gravity_alignment.png
+│   │   │       │   ├── Sensor_5_transformation.png
+│   │   │       │   ├── Sensor_wb_dynamic_validation.png
+│   │   │       │   ├── Sensor_wb_gravity_alignment.png
+│   │   │       │   ├── Sensor_wb_transformation.png
+│   │   │       │   ├── VALIDATION_REPORT.md
+│   │   │       │   └── validation_results.yaml
+│   │   │       ├── static/
+│   │   │       │   ├── afternoon/
+│   │   │       │   │   ├── 002_Setup/
+│   │   │       │   │   ├── 003_Waiting_for_departure/
+│   │   │       │   │   ├── 010_Waiting_for_static_turns/
+│   │   │       │   │   ├── all_validation_results.yaml
+│   │   │       │   │   ├── ORIENTATION_ANALYSIS_FINAL_REPORT.md
+│   │   │       │   │   ├── sensor_coordinate_systems.png
+│   │   │       │   │   └── validation_summary.png
+│   │   │       │   └── morning/
+│   │   │       │       ├── 002_Setup/
+│   │   │       │       ├── 004_Setup_2/
+│   │   │       │       ├── all_validation_results.yaml
+│   │   │       │       ├── ORIENTATION_ANALYSIS_FINAL_REPORT.md
+│   │   │       │       ├── sensor_coordinate_systems.png
+│   │   │       │       └── validation_summary.png
+│   │   │       ├── 003_Waiting_for_departure_cross_sensor_consistency.png
+│   │   │       ├── 007_Fast_stbd_turn_1_cross_sensor_consistency.png
+│   │   │       ├── 010_Waiting_for_static_turns_cross_sensor_consistency.png
+│   │   │       ├── 011_Static_stbd_1_cross_sensor_consistency.png
+│   │   │       ├── 016_Straight_cruise_1_cross_sensor_consistency.png
+│   │   │       ├── 021_Quarter_turn_port_cross_sensor_consistency.png
+│   │   │       ├── all_validation_results.yaml
+│   │   │       ├── ORIENTATION_ANALYSIS_FINAL_REPORT.md
+│   │   │       ├── sensor_coordinate_systems.png
+│   │   │       └── validation_summary.png
+│   │   ├── rpm/
+│   │   │   ├── wp1/
+│   │   │   │   ├── output_wp1/
+│   │   │   │   │   ├── afternoon/
+│   │   │   │   │   │   ├── 007_Fast_stbd_turn_1/
+│   │   │   │   │   │   │   ├── proc_IMU_Sensor_3.parquet
+│   │   │   │   │   │   │   ├── proc_IMU_Sensor_4.parquet
+│   │   │   │   │   │   │   ├── proc_IMU_Sensor_wb.parquet
+│   │   │   │   │   │   │   ├── qa_summary_Sensor_3.json
+│   │   │   │   │   │   │   ├── qa_summary_Sensor_4.json
+│   │   │   │   │   │   │   └── qa_summary_Sensor_wb.json
+│   │   │   │   │   │   └── 011_Static_stbd_1/
+│   │   │   │   │   │       ├── proc_IMU_Sensor_3.parquet
+│   │   │   │   │   │       ├── proc_IMU_Sensor_4.parquet
+│   │   │   │   │   │       ├── proc_IMU_Sensor_wb.parquet
+│   │   │   │   │   │       ├── qa_summary_Sensor_3.json
+│   │   │   │   │   │       ├── qa_summary_Sensor_4.json
+│   │   │   │   │   │       └── qa_summary_Sensor_wb.json
+│   │   │   │   │   └── wp1_done.flag
+│   │   │   │   ├── check_parquet.py
+│   │   │   │   ├── run_wp1.py
+│   │   │   │   ├── test_preprocessing_results.txt
+│   │   │   │   └── wp1_test.log
+│   │   │   ├── wp2/
+│   │   │   │   ├── afternoon/
+│   │   │   │   │   ├── 003_Waiting_for_departure_Sensor_3_rpm.h5/
+│   │   │   │   │   │   └── 003_Waiting_for_departure_Sensor_3_rpm.h5
+│   │   │   │   │   ├── 003_Waiting_for_departure_Sensor_4_rpm.h5/
+│   │   │   │   │   │   └── 003_Waiting_for_departure_Sensor_4_rpm.h5
+│   │   │   │   │   ├── 003_Waiting_for_departure_Sensor_wb_rpm.h5/
+│   │   │   │   │   │   └── 003_Waiting_for_departure_Sensor_wb_rpm.h5
+│   │   │   │   │   ├── 007_Fast_stbd_turn_1_Sensor_3_rpm.h5/
+│   │   │   │   │   │   └── 007_Fast_stbd_turn_1_Sensor_3_rpm.h5
+│   │   │   │   │   ├── 007_Fast_stbd_turn_1_Sensor_4_rpm.h5/
+│   │   │   │   │   │   └── 007_Fast_stbd_turn_1_Sensor_4_rpm.h5
+│   │   │   │   │   ├── 007_Fast_stbd_turn_1_Sensor_wb_rpm.h5/
+│   │   │   │   │   │   └── 007_Fast_stbd_turn_1_Sensor_wb_rpm.h5
+│   │   │   │   │   ├── 026_Engine_rpm_sweep_Sensor_3_rpm.h5/
+│   │   │   │   │   │   └── 026_Engine_rpm_sweep_Sensor_3_rpm.h5
+│   │   │   │   │   ├── 026_Engine_rpm_sweep_Sensor_4_rpm.h5/
+│   │   │   │   │   │   └── 026_Engine_rpm_sweep_Sensor_4_rpm.h5
+│   │   │   │   │   └── 026_Engine_rpm_sweep_Sensor_wb_rpm.h5/
+│   │   │   │   │       └── 026_Engine_rpm_sweep_Sensor_wb_rpm.h5
+│   │   │   │   ├── plots/
+│   │   │   │   │   └── afternoon/
+│   │   │   │   │       ├── 003_Waiting_for_departure_Sensor_3_diagnostic.png
+│   │   │   │   │       ├── 003_Waiting_for_departure_Sensor_4_diagnostic.png
+│   │   │   │   │       ├── 003_Waiting_for_departure_Sensor_wb_diagnostic.png
+│   │   │   │   │       ├── 007_Fast_stbd_turn_1_Sensor_3_diagnostic.png
+│   │   │   │   │       ├── 007_Fast_stbd_turn_1_Sensor_4_diagnostic.png
+│   │   │   │   │       ├── 007_Fast_stbd_turn_1_Sensor_wb_diagnostic.png
+│   │   │   │   │       ├── 026_Engine_rpm_sweep_Sensor_3_diagnostic.png
+│   │   │   │   │       ├── 026_Engine_rpm_sweep_Sensor_4_diagnostic.png
+│   │   │   │   │       └── 026_Engine_rpm_sweep_Sensor_wb_diagnostic.png
+│   │   │   │   └── unit_test_plots/
+│   │   │   │       ├── test1_clean_sine_wave.png
+│   │   │   │       ├── test2_noisy_signal.png
+│   │   │   │       ├── test3_harmonic_signal.png
+│   │   │   │       ├── test4_peak_detection.png
+│   │   │   │       └── unit_test_summary.png
+│   │   │   ├── wp3/
+│   │   │   │   ├── afternoon/
+│   │   │   │   │   ├── 007_Fast_stbd_turn_1_Sensor_3_stft.h5
+│   │   │   │   │   ├── 007_Fast_stbd_turn_1_Sensor_4_stft.h5
+│   │   │   │   │   └── 007_Fast_stbd_turn_1_Sensor_wb_stft.h5
+│   │   │   │   └── test_plots/
+│   │   │   │       ├── index.html
+│   │   │   │       ├── stft_basic_functionality.png
+│   │   │   │       ├── stft_edge_handling_comparison.png
+│   │   │   │       ├── stft_smoothing_methods_comparison.png
+│   │   │   │       ├── stft_snr_gating_behavior.png
+│   │   │   │       ├── stft_triangular_ramp_test.png
+│   │   │   │       └── wp3_feature_summary.png
+│   │   │   └── wp4/
+│   │   │       ├── afternoon/
+│   │   │       │   └── 007_Fast_stbd_turn_1/
+│   │   │       │       ├── fusion_diagnostic.png
+│   │   │       │       ├── fusion_report.json
+│   │   │       │       └── rpm_fused.csv
+│   │   │       ├── WP4_CURRENT_STATUS.md
+│   │   │       ├── WP4_TEST_PLAN_SUMMARY.md
+│   │   │       └── WP4_TEST_RESULTS.md
+│   │   └── timestamp/
+│   │       └── timestamp_analysis_results/
+│   │           ├── 007_Fast_stbd_turn_1/
+│   │           │   ├── timestamp_analysis_gps.png
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   ├── timestamp_analysis_sensor_3.png
+│   │           │   ├── timestamp_analysis_sensor_4.png
+│   │           │   ├── timestamp_analysis_sensor_5.png
+│   │           │   ├── timestamp_analysis_sensor_wb.png
+│   │           │   ├── timestamp_analysis_sensor_wnb.png
+│   │           │   ├── timestamp_analysis_summary.csv
+│   │           │   └── timestamp_analysis_summary_007_Fast_stbd_turn_1.png
+│   │           ├── 009_Fast_port_turn_1/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 011_Static_stbd_1/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 012_Static_port_1/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 013_Static_port_2/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 014_Static_stbd_2/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 016_Straight_cruise_1/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 018_Straight_cruise_2/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 020_Straight_cruise_3/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 021_Quarter_turn_port/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 022_Quarter_turn_stbd/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 023_Eigth_turn_port/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 024_Eigth_turn_stbd/
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   └── timestamp_analysis_summary.csv
+│   │           ├── 026_Engine_rpm_sweep/
+│   │           │   ├── timestamp_analysis_gps.png
+│   │           │   ├── timestamp_analysis_report.html
+│   │           │   ├── timestamp_analysis_results.json
+│   │           │   ├── timestamp_analysis_sensor_3.png
+│   │           │   ├── timestamp_analysis_sensor_4.png
+│   │           │   ├── timestamp_analysis_sensor_5.png
+│   │           │   ├── timestamp_analysis_sensor_wb.png
+│   │           │   ├── timestamp_analysis_summary.csv
+│   │           │   └── timestamp_analysis_summary_026_Engine_rpm_sweep.png
+│   │           └── all_experiments_summary.json
+│   ├── raw/
+│   │   ├── afternoon/
+│   │   │   └── Experiments/
+│   │   │       ├── 001_Synchronisation/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_001_Synchronisation.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_001_Synchronisation.csv
+│   │   │       │       │   ├── angle_001_Synchronisation.csv
+│   │   │       │       │   ├── gyro_001_Synchronisation.csv
+│   │   │       │       │   ├── mag_001_Synchronisation.csv
+│   │   │       │       │   └── quat_001_Synchronisation.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_001_Synchronisation.csv
+│   │   │       │       │   ├── angle_001_Synchronisation.csv
+│   │   │       │       │   ├── gyro_001_Synchronisation.csv
+│   │   │       │       │   ├── mag_001_Synchronisation.csv
+│   │   │       │       │   └── quat_001_Synchronisation.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_001_Synchronisation.csv
+│   │   │       │       │   ├── angle_001_Synchronisation.csv
+│   │   │       │       │   ├── gyro_001_Synchronisation.csv
+│   │   │       │       │   ├── mag_001_Synchronisation.csv
+│   │   │       │       │   └── quat_001_Synchronisation.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_001_Synchronisation.csv
+│   │   │       │       │   ├── angle_001_Synchronisation.csv
+│   │   │       │       │   ├── gyro_001_Synchronisation.csv
+│   │   │       │       │   ├── mag_001_Synchronisation.csv
+│   │   │       │       │   └── quat_001_Synchronisation.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_001_Synchronisation.csv
+│   │   │       │           ├── angle_001_Synchronisation.csv
+│   │   │       │           ├── gyro_001_Synchronisation.csv
+│   │   │       │           ├── mag_001_Synchronisation.csv
+│   │   │       │           └── quat_001_Synchronisation.csv
+│   │   │       ├── 002_Setup/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_002_Setup.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_002_Setup.csv
+│   │   │       │       │   ├── angle_002_Setup.csv
+│   │   │       │       │   ├── gyro_002_Setup.csv
+│   │   │       │       │   ├── mag_002_Setup.csv
+│   │   │       │       │   └── quat_002_Setup.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_002_Setup.csv
+│   │   │       │       │   ├── angle_002_Setup.csv
+│   │   │       │       │   ├── gyro_002_Setup.csv
+│   │   │       │       │   ├── mag_002_Setup.csv
+│   │   │       │       │   └── quat_002_Setup.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_002_Setup.csv
+│   │   │       │       │   ├── angle_002_Setup.csv
+│   │   │       │       │   ├── gyro_002_Setup.csv
+│   │   │       │       │   ├── mag_002_Setup.csv
+│   │   │       │       │   └── quat_002_Setup.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_002_Setup.csv
+│   │   │       │       │   ├── angle_002_Setup.csv
+│   │   │       │       │   ├── gyro_002_Setup.csv
+│   │   │       │       │   ├── mag_002_Setup.csv
+│   │   │       │       │   └── quat_002_Setup.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_002_Setup.csv
+│   │   │       │           ├── angle_002_Setup.csv
+│   │   │       │           ├── gyro_002_Setup.csv
+│   │   │       │           ├── mag_002_Setup.csv
+│   │   │       │           └── quat_002_Setup.csv
+│   │   │       ├── 003_Waiting_for_departure/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_003_Waiting_for_departure.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── angle_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── gyro_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── mag_003_Waiting_for_departure.csv
+│   │   │       │       │   └── quat_003_Waiting_for_departure.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── angle_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── gyro_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── mag_003_Waiting_for_departure.csv
+│   │   │       │       │   └── quat_003_Waiting_for_departure.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── angle_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── gyro_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── mag_003_Waiting_for_departure.csv
+│   │   │       │       │   └── quat_003_Waiting_for_departure.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── angle_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── gyro_003_Waiting_for_departure.csv
+│   │   │       │       │   ├── mag_003_Waiting_for_departure.csv
+│   │   │       │       │   └── quat_003_Waiting_for_departure.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_003_Waiting_for_departure.csv
+│   │   │       │           ├── angle_003_Waiting_for_departure.csv
+│   │   │       │           ├── gyro_003_Waiting_for_departure.csv
+│   │   │       │           ├── mag_003_Waiting_for_departure.csv
+│   │   │       │           └── quat_003_Waiting_for_departure.csv
+│   │   │       ├── 004_Seaway_departure/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_004_Seaway_departure.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_004_Seaway_departure.csv
+│   │   │       │       │   ├── angle_004_Seaway_departure.csv
+│   │   │       │       │   ├── gyro_004_Seaway_departure.csv
+│   │   │       │       │   ├── mag_004_Seaway_departure.csv
+│   │   │       │       │   └── quat_004_Seaway_departure.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_004_Seaway_departure.csv
+│   │   │       │       │   ├── angle_004_Seaway_departure.csv
+│   │   │       │       │   ├── gyro_004_Seaway_departure.csv
+│   │   │       │       │   ├── mag_004_Seaway_departure.csv
+│   │   │       │       │   └── quat_004_Seaway_departure.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_004_Seaway_departure.csv
+│   │   │       │       │   ├── angle_004_Seaway_departure.csv
+│   │   │       │       │   ├── gyro_004_Seaway_departure.csv
+│   │   │       │       │   ├── mag_004_Seaway_departure.csv
+│   │   │       │       │   └── quat_004_Seaway_departure.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_004_Seaway_departure.csv
+│   │   │       │       │   ├── angle_004_Seaway_departure.csv
+│   │   │       │       │   ├── gyro_004_Seaway_departure.csv
+│   │   │       │       │   ├── mag_004_Seaway_departure.csv
+│   │   │       │       │   └── quat_004_Seaway_departure.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_004_Seaway_departure.csv
+│   │   │       │           ├── angle_004_Seaway_departure.csv
+│   │   │       │           ├── gyro_004_Seaway_departure.csv
+│   │   │       │           ├── mag_004_Seaway_departure.csv
+│   │   │       │           └── quat_004_Seaway_departure.csv
+│   │   │       ├── 005_Departure/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_005_Departure.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_005_Departure.csv
+│   │   │       │       │   ├── angle_005_Departure.csv
+│   │   │       │       │   ├── gyro_005_Departure.csv
+│   │   │       │       │   ├── mag_005_Departure.csv
+│   │   │       │       │   └── quat_005_Departure.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_005_Departure.csv
+│   │   │       │       │   ├── angle_005_Departure.csv
+│   │   │       │       │   ├── gyro_005_Departure.csv
+│   │   │       │       │   ├── mag_005_Departure.csv
+│   │   │       │       │   └── quat_005_Departure.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_005_Departure.csv
+│   │   │       │       │   ├── angle_005_Departure.csv
+│   │   │       │       │   ├── gyro_005_Departure.csv
+│   │   │       │       │   ├── mag_005_Departure.csv
+│   │   │       │       │   └── quat_005_Departure.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_005_Departure.csv
+│   │   │       │       │   ├── angle_005_Departure.csv
+│   │   │       │       │   ├── gyro_005_Departure.csv
+│   │   │       │       │   ├── mag_005_Departure.csv
+│   │   │       │       │   └── quat_005_Departure.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_005_Departure.csv
+│   │   │       │           ├── angle_005_Departure.csv
+│   │   │       │           ├── gyro_005_Departure.csv
+│   │   │       │           ├── mag_005_Departure.csv
+│   │   │       │           └── quat_005_Departure.csv
+│   │   │       ├── 006_Departure_cruise/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_006_Departure_cruise.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_006_Departure_cruise.csv
+│   │   │       │       │   ├── angle_006_Departure_cruise.csv
+│   │   │       │       │   ├── gyro_006_Departure_cruise.csv
+│   │   │       │       │   ├── mag_006_Departure_cruise.csv
+│   │   │       │       │   └── quat_006_Departure_cruise.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_006_Departure_cruise.csv
+│   │   │       │       │   ├── angle_006_Departure_cruise.csv
+│   │   │       │       │   ├── gyro_006_Departure_cruise.csv
+│   │   │       │       │   ├── mag_006_Departure_cruise.csv
+│   │   │       │       │   └── quat_006_Departure_cruise.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_006_Departure_cruise.csv
+│   │   │       │       │   ├── angle_006_Departure_cruise.csv
+│   │   │       │       │   ├── gyro_006_Departure_cruise.csv
+│   │   │       │       │   ├── mag_006_Departure_cruise.csv
+│   │   │       │       │   └── quat_006_Departure_cruise.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_006_Departure_cruise.csv
+│   │   │       │       │   ├── angle_006_Departure_cruise.csv
+│   │   │       │       │   ├── gyro_006_Departure_cruise.csv
+│   │   │       │       │   ├── mag_006_Departure_cruise.csv
+│   │   │       │       │   └── quat_006_Departure_cruise.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_006_Departure_cruise.csv
+│   │   │       │           ├── angle_006_Departure_cruise.csv
+│   │   │       │           ├── gyro_006_Departure_cruise.csv
+│   │   │       │           ├── mag_006_Departure_cruise.csv
+│   │   │       │           └── quat_006_Departure_cruise.csv
+│   │   │       ├── 007_Fast_stbd_turn_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_007_Fast_stbd_turn_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── angle_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── gyro_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── mag_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   └── quat_007_Fast_stbd_turn_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── angle_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── gyro_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── mag_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   └── quat_007_Fast_stbd_turn_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── angle_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── gyro_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── mag_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   └── quat_007_Fast_stbd_turn_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── angle_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── gyro_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   ├── mag_007_Fast_stbd_turn_1.csv
+│   │   │       │       │   └── quat_007_Fast_stbd_turn_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_007_Fast_stbd_turn_1.csv
+│   │   │       │           ├── angle_007_Fast_stbd_turn_1.csv
+│   │   │       │           ├── gyro_007_Fast_stbd_turn_1.csv
+│   │   │       │           ├── mag_007_Fast_stbd_turn_1.csv
+│   │   │       │           └── quat_007_Fast_stbd_turn_1.csv
+│   │   │       ├── 008_Interesting_roll_angle/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_008_Interesting_roll_angle.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── angle_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── gyro_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── mag_008_Interesting_roll_angle.csv
+│   │   │       │       │   └── quat_008_Interesting_roll_angle.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── angle_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── gyro_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── mag_008_Interesting_roll_angle.csv
+│   │   │       │       │   └── quat_008_Interesting_roll_angle.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── angle_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── gyro_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── mag_008_Interesting_roll_angle.csv
+│   │   │       │       │   └── quat_008_Interesting_roll_angle.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── angle_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── gyro_008_Interesting_roll_angle.csv
+│   │   │       │       │   ├── mag_008_Interesting_roll_angle.csv
+│   │   │       │       │   └── quat_008_Interesting_roll_angle.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_008_Interesting_roll_angle.csv
+│   │   │       │           ├── angle_008_Interesting_roll_angle.csv
+│   │   │       │           ├── gyro_008_Interesting_roll_angle.csv
+│   │   │       │           ├── mag_008_Interesting_roll_angle.csv
+│   │   │       │           └── quat_008_Interesting_roll_angle.csv
+│   │   │       ├── 009_Fast_port_turn_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_009_Fast_port_turn_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── angle_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── gyro_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── mag_009_Fast_port_turn_1.csv
+│   │   │       │       │   └── quat_009_Fast_port_turn_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── angle_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── gyro_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── mag_009_Fast_port_turn_1.csv
+│   │   │       │       │   └── quat_009_Fast_port_turn_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── angle_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── gyro_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── mag_009_Fast_port_turn_1.csv
+│   │   │       │       │   └── quat_009_Fast_port_turn_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── angle_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── gyro_009_Fast_port_turn_1.csv
+│   │   │       │       │   ├── mag_009_Fast_port_turn_1.csv
+│   │   │       │       │   └── quat_009_Fast_port_turn_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_009_Fast_port_turn_1.csv
+│   │   │       │           ├── angle_009_Fast_port_turn_1.csv
+│   │   │       │           ├── gyro_009_Fast_port_turn_1.csv
+│   │   │       │           ├── mag_009_Fast_port_turn_1.csv
+│   │   │       │           └── quat_009_Fast_port_turn_1.csv
+│   │   │       ├── 010_Waiting_for_static_turns/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_010_Waiting_for_static_turns.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── angle_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── gyro_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── mag_010_Waiting_for_static_turns.csv
+│   │   │       │       │   └── quat_010_Waiting_for_static_turns.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── angle_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── gyro_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── mag_010_Waiting_for_static_turns.csv
+│   │   │       │       │   └── quat_010_Waiting_for_static_turns.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── angle_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── gyro_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── mag_010_Waiting_for_static_turns.csv
+│   │   │       │       │   └── quat_010_Waiting_for_static_turns.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── angle_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── gyro_010_Waiting_for_static_turns.csv
+│   │   │       │       │   ├── mag_010_Waiting_for_static_turns.csv
+│   │   │       │       │   └── quat_010_Waiting_for_static_turns.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_010_Waiting_for_static_turns.csv
+│   │   │       │           ├── angle_010_Waiting_for_static_turns.csv
+│   │   │       │           ├── gyro_010_Waiting_for_static_turns.csv
+│   │   │       │           ├── mag_010_Waiting_for_static_turns.csv
+│   │   │       │           └── quat_010_Waiting_for_static_turns.csv
+│   │   │       ├── 011_Static_stbd_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_011_Static_stbd_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_011_Static_stbd_1.csv
+│   │   │       │       │   ├── angle_011_Static_stbd_1.csv
+│   │   │       │       │   ├── gyro_011_Static_stbd_1.csv
+│   │   │       │       │   ├── mag_011_Static_stbd_1.csv
+│   │   │       │       │   └── quat_011_Static_stbd_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_011_Static_stbd_1.csv
+│   │   │       │       │   ├── angle_011_Static_stbd_1.csv
+│   │   │       │       │   ├── gyro_011_Static_stbd_1.csv
+│   │   │       │       │   ├── mag_011_Static_stbd_1.csv
+│   │   │       │       │   └── quat_011_Static_stbd_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_011_Static_stbd_1.csv
+│   │   │       │       │   ├── angle_011_Static_stbd_1.csv
+│   │   │       │       │   ├── gyro_011_Static_stbd_1.csv
+│   │   │       │       │   ├── mag_011_Static_stbd_1.csv
+│   │   │       │       │   └── quat_011_Static_stbd_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_011_Static_stbd_1.csv
+│   │   │       │       │   ├── angle_011_Static_stbd_1.csv
+│   │   │       │       │   ├── gyro_011_Static_stbd_1.csv
+│   │   │       │       │   ├── mag_011_Static_stbd_1.csv
+│   │   │       │       │   └── quat_011_Static_stbd_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_011_Static_stbd_1.csv
+│   │   │       │           ├── angle_011_Static_stbd_1.csv
+│   │   │       │           ├── gyro_011_Static_stbd_1.csv
+│   │   │       │           ├── mag_011_Static_stbd_1.csv
+│   │   │       │           └── quat_011_Static_stbd_1.csv
+│   │   │       ├── 012_Static_port_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_012_Static_port_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_012_Static_port_1.csv
+│   │   │       │       │   ├── angle_012_Static_port_1.csv
+│   │   │       │       │   ├── gyro_012_Static_port_1.csv
+│   │   │       │       │   ├── mag_012_Static_port_1.csv
+│   │   │       │       │   └── quat_012_Static_port_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_012_Static_port_1.csv
+│   │   │       │       │   ├── angle_012_Static_port_1.csv
+│   │   │       │       │   ├── gyro_012_Static_port_1.csv
+│   │   │       │       │   ├── mag_012_Static_port_1.csv
+│   │   │       │       │   └── quat_012_Static_port_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_012_Static_port_1.csv
+│   │   │       │       │   ├── angle_012_Static_port_1.csv
+│   │   │       │       │   ├── gyro_012_Static_port_1.csv
+│   │   │       │       │   ├── mag_012_Static_port_1.csv
+│   │   │       │       │   └── quat_012_Static_port_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_012_Static_port_1.csv
+│   │   │       │       │   ├── angle_012_Static_port_1.csv
+│   │   │       │       │   ├── gyro_012_Static_port_1.csv
+│   │   │       │       │   ├── mag_012_Static_port_1.csv
+│   │   │       │       │   └── quat_012_Static_port_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_012_Static_port_1.csv
+│   │   │       │           ├── angle_012_Static_port_1.csv
+│   │   │       │           ├── gyro_012_Static_port_1.csv
+│   │   │       │           ├── mag_012_Static_port_1.csv
+│   │   │       │           └── quat_012_Static_port_1.csv
+│   │   │       ├── 013_Static_port_2/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_013_Static_port_2.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_013_Static_port_2.csv
+│   │   │       │       │   ├── angle_013_Static_port_2.csv
+│   │   │       │       │   ├── gyro_013_Static_port_2.csv
+│   │   │       │       │   ├── mag_013_Static_port_2.csv
+│   │   │       │       │   └── quat_013_Static_port_2.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_013_Static_port_2.csv
+│   │   │       │       │   ├── angle_013_Static_port_2.csv
+│   │   │       │       │   ├── gyro_013_Static_port_2.csv
+│   │   │       │       │   ├── mag_013_Static_port_2.csv
+│   │   │       │       │   └── quat_013_Static_port_2.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_013_Static_port_2.csv
+│   │   │       │       │   ├── angle_013_Static_port_2.csv
+│   │   │       │       │   ├── gyro_013_Static_port_2.csv
+│   │   │       │       │   ├── mag_013_Static_port_2.csv
+│   │   │       │       │   └── quat_013_Static_port_2.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_013_Static_port_2.csv
+│   │   │       │       │   ├── angle_013_Static_port_2.csv
+│   │   │       │       │   ├── gyro_013_Static_port_2.csv
+│   │   │       │       │   ├── mag_013_Static_port_2.csv
+│   │   │       │       │   └── quat_013_Static_port_2.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_013_Static_port_2.csv
+│   │   │       │           ├── angle_013_Static_port_2.csv
+│   │   │       │           ├── gyro_013_Static_port_2.csv
+│   │   │       │           ├── mag_013_Static_port_2.csv
+│   │   │       │           └── quat_013_Static_port_2.csv
+│   │   │       ├── 014_Static_stbd_2/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_014_Static_stbd_2.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_014_Static_stbd_2.csv
+│   │   │       │       │   ├── angle_014_Static_stbd_2.csv
+│   │   │       │       │   ├── gyro_014_Static_stbd_2.csv
+│   │   │       │       │   ├── mag_014_Static_stbd_2.csv
+│   │   │       │       │   └── quat_014_Static_stbd_2.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_014_Static_stbd_2.csv
+│   │   │       │       │   ├── angle_014_Static_stbd_2.csv
+│   │   │       │       │   ├── gyro_014_Static_stbd_2.csv
+│   │   │       │       │   ├── mag_014_Static_stbd_2.csv
+│   │   │       │       │   └── quat_014_Static_stbd_2.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_014_Static_stbd_2.csv
+│   │   │       │       │   ├── angle_014_Static_stbd_2.csv
+│   │   │       │       │   ├── gyro_014_Static_stbd_2.csv
+│   │   │       │       │   ├── mag_014_Static_stbd_2.csv
+│   │   │       │       │   └── quat_014_Static_stbd_2.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_014_Static_stbd_2.csv
+│   │   │       │       │   ├── angle_014_Static_stbd_2.csv
+│   │   │       │       │   ├── gyro_014_Static_stbd_2.csv
+│   │   │       │       │   ├── mag_014_Static_stbd_2.csv
+│   │   │       │       │   └── quat_014_Static_stbd_2.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_014_Static_stbd_2.csv
+│   │   │       │           ├── angle_014_Static_stbd_2.csv
+│   │   │       │           ├── gyro_014_Static_stbd_2.csv
+│   │   │       │           ├── mag_014_Static_stbd_2.csv
+│   │   │       │           └── quat_014_Static_stbd_2.csv
+│   │   │       ├── 015_Intermediate_travel/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_015_Intermediate_travel.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_015_Intermediate_travel.csv
+│   │   │       │       │   ├── angle_015_Intermediate_travel.csv
+│   │   │       │       │   ├── gyro_015_Intermediate_travel.csv
+│   │   │       │       │   ├── mag_015_Intermediate_travel.csv
+│   │   │       │       │   └── quat_015_Intermediate_travel.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_015_Intermediate_travel.csv
+│   │   │       │       │   ├── angle_015_Intermediate_travel.csv
+│   │   │       │       │   ├── gyro_015_Intermediate_travel.csv
+│   │   │       │       │   ├── mag_015_Intermediate_travel.csv
+│   │   │       │       │   └── quat_015_Intermediate_travel.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_015_Intermediate_travel.csv
+│   │   │       │       │   ├── angle_015_Intermediate_travel.csv
+│   │   │       │       │   ├── gyro_015_Intermediate_travel.csv
+│   │   │       │       │   ├── mag_015_Intermediate_travel.csv
+│   │   │       │       │   └── quat_015_Intermediate_travel.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_015_Intermediate_travel.csv
+│   │   │       │       │   ├── angle_015_Intermediate_travel.csv
+│   │   │       │       │   ├── gyro_015_Intermediate_travel.csv
+│   │   │       │       │   ├── mag_015_Intermediate_travel.csv
+│   │   │       │       │   └── quat_015_Intermediate_travel.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_015_Intermediate_travel.csv
+│   │   │       │           ├── angle_015_Intermediate_travel.csv
+│   │   │       │           ├── gyro_015_Intermediate_travel.csv
+│   │   │       │           ├── mag_015_Intermediate_travel.csv
+│   │   │       │           └── quat_015_Intermediate_travel.csv
+│   │   │       ├── 016_Straight_cruise_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_016_Straight_cruise_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── angle_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── gyro_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── mag_016_Straight_cruise_1.csv
+│   │   │       │       │   └── quat_016_Straight_cruise_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── angle_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── gyro_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── mag_016_Straight_cruise_1.csv
+│   │   │       │       │   └── quat_016_Straight_cruise_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── angle_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── gyro_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── mag_016_Straight_cruise_1.csv
+│   │   │       │       │   └── quat_016_Straight_cruise_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── angle_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── gyro_016_Straight_cruise_1.csv
+│   │   │       │       │   ├── mag_016_Straight_cruise_1.csv
+│   │   │       │       │   └── quat_016_Straight_cruise_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_016_Straight_cruise_1.csv
+│   │   │       │           ├── angle_016_Straight_cruise_1.csv
+│   │   │       │           ├── gyro_016_Straight_cruise_1.csv
+│   │   │       │           ├── mag_016_Straight_cruise_1.csv
+│   │   │       │           └── quat_016_Straight_cruise_1.csv
+│   │   │       ├── 017_Slight_turn_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_017_Slight_turn_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_017_Slight_turn_1.csv
+│   │   │       │       │   ├── angle_017_Slight_turn_1.csv
+│   │   │       │       │   ├── gyro_017_Slight_turn_1.csv
+│   │   │       │       │   ├── mag_017_Slight_turn_1.csv
+│   │   │       │       │   └── quat_017_Slight_turn_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_017_Slight_turn_1.csv
+│   │   │       │       │   ├── angle_017_Slight_turn_1.csv
+│   │   │       │       │   ├── gyro_017_Slight_turn_1.csv
+│   │   │       │       │   ├── mag_017_Slight_turn_1.csv
+│   │   │       │       │   └── quat_017_Slight_turn_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_017_Slight_turn_1.csv
+│   │   │       │       │   ├── angle_017_Slight_turn_1.csv
+│   │   │       │       │   ├── gyro_017_Slight_turn_1.csv
+│   │   │       │       │   ├── mag_017_Slight_turn_1.csv
+│   │   │       │       │   └── quat_017_Slight_turn_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_017_Slight_turn_1.csv
+│   │   │       │       │   ├── angle_017_Slight_turn_1.csv
+│   │   │       │       │   ├── gyro_017_Slight_turn_1.csv
+│   │   │       │       │   ├── mag_017_Slight_turn_1.csv
+│   │   │       │       │   └── quat_017_Slight_turn_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_017_Slight_turn_1.csv
+│   │   │       │           ├── angle_017_Slight_turn_1.csv
+│   │   │       │           ├── gyro_017_Slight_turn_1.csv
+│   │   │       │           ├── mag_017_Slight_turn_1.csv
+│   │   │       │           └── quat_017_Slight_turn_1.csv
+│   │   │       ├── 018_Straight_cruise_2/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_018_Straight_cruise_2.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── angle_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── gyro_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── mag_018_Straight_cruise_2.csv
+│   │   │       │       │   └── quat_018_Straight_cruise_2.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── angle_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── gyro_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── mag_018_Straight_cruise_2.csv
+│   │   │       │       │   └── quat_018_Straight_cruise_2.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── angle_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── gyro_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── mag_018_Straight_cruise_2.csv
+│   │   │       │       │   └── quat_018_Straight_cruise_2.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── angle_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── gyro_018_Straight_cruise_2.csv
+│   │   │       │       │   ├── mag_018_Straight_cruise_2.csv
+│   │   │       │       │   └── quat_018_Straight_cruise_2.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_018_Straight_cruise_2.csv
+│   │   │       │           ├── angle_018_Straight_cruise_2.csv
+│   │   │       │           ├── gyro_018_Straight_cruise_2.csv
+│   │   │       │           ├── mag_018_Straight_cruise_2.csv
+│   │   │       │           └── quat_018_Straight_cruise_2.csv
+│   │   │       ├── 019_Turn_stbd_1/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_019_Turn_stbd_1.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── angle_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── gyro_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── mag_019_Turn_stbd_1.csv
+│   │   │       │       │   └── quat_019_Turn_stbd_1.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── angle_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── gyro_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── mag_019_Turn_stbd_1.csv
+│   │   │       │       │   └── quat_019_Turn_stbd_1.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── angle_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── gyro_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── mag_019_Turn_stbd_1.csv
+│   │   │       │       │   └── quat_019_Turn_stbd_1.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── angle_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── gyro_019_Turn_stbd_1.csv
+│   │   │       │       │   ├── mag_019_Turn_stbd_1.csv
+│   │   │       │       │   └── quat_019_Turn_stbd_1.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_019_Turn_stbd_1.csv
+│   │   │       │           ├── angle_019_Turn_stbd_1.csv
+│   │   │       │           ├── gyro_019_Turn_stbd_1.csv
+│   │   │       │           ├── mag_019_Turn_stbd_1.csv
+│   │   │       │           └── quat_019_Turn_stbd_1.csv
+│   │   │       ├── 020_Straight_cruise_3/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_020_Straight_cruise_3.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── angle_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── gyro_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── mag_020_Straight_cruise_3.csv
+│   │   │       │       │   └── quat_020_Straight_cruise_3.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── angle_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── gyro_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── mag_020_Straight_cruise_3.csv
+│   │   │       │       │   └── quat_020_Straight_cruise_3.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── angle_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── gyro_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── mag_020_Straight_cruise_3.csv
+│   │   │       │       │   └── quat_020_Straight_cruise_3.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── angle_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── gyro_020_Straight_cruise_3.csv
+│   │   │       │       │   ├── mag_020_Straight_cruise_3.csv
+│   │   │       │       │   └── quat_020_Straight_cruise_3.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_020_Straight_cruise_3.csv
+│   │   │       │           ├── angle_020_Straight_cruise_3.csv
+│   │   │       │           ├── gyro_020_Straight_cruise_3.csv
+│   │   │       │           ├── mag_020_Straight_cruise_3.csv
+│   │   │       │           └── quat_020_Straight_cruise_3.csv
+│   │   │       ├── 021_Quarter_turn_port/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_021_Quarter_turn_port.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── angle_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── gyro_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── mag_021_Quarter_turn_port.csv
+│   │   │       │       │   └── quat_021_Quarter_turn_port.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── angle_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── gyro_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── mag_021_Quarter_turn_port.csv
+│   │   │       │       │   └── quat_021_Quarter_turn_port.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── angle_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── gyro_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── mag_021_Quarter_turn_port.csv
+│   │   │       │       │   └── quat_021_Quarter_turn_port.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── angle_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── gyro_021_Quarter_turn_port.csv
+│   │   │       │       │   ├── mag_021_Quarter_turn_port.csv
+│   │   │       │       │   └── quat_021_Quarter_turn_port.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_021_Quarter_turn_port.csv
+│   │   │       │           ├── angle_021_Quarter_turn_port.csv
+│   │   │       │           ├── gyro_021_Quarter_turn_port.csv
+│   │   │       │           ├── mag_021_Quarter_turn_port.csv
+│   │   │       │           └── quat_021_Quarter_turn_port.csv
+│   │   │       ├── 022_Quarter_turn_stbd/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_022_Quarter_turn_stbd.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── angle_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── gyro_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── mag_022_Quarter_turn_stbd.csv
+│   │   │       │       │   └── quat_022_Quarter_turn_stbd.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── angle_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── gyro_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── mag_022_Quarter_turn_stbd.csv
+│   │   │       │       │   └── quat_022_Quarter_turn_stbd.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── angle_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── gyro_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── mag_022_Quarter_turn_stbd.csv
+│   │   │       │       │   └── quat_022_Quarter_turn_stbd.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── angle_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── gyro_022_Quarter_turn_stbd.csv
+│   │   │       │       │   ├── mag_022_Quarter_turn_stbd.csv
+│   │   │       │       │   └── quat_022_Quarter_turn_stbd.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_022_Quarter_turn_stbd.csv
+│   │   │       │           ├── angle_022_Quarter_turn_stbd.csv
+│   │   │       │           ├── gyro_022_Quarter_turn_stbd.csv
+│   │   │       │           ├── mag_022_Quarter_turn_stbd.csv
+│   │   │       │           └── quat_022_Quarter_turn_stbd.csv
+│   │   │       ├── 023_Eigth_turn_port/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_023_Eigth_turn_port.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── angle_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── gyro_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── mag_023_Eigth_turn_port.csv
+│   │   │       │       │   └── quat_023_Eigth_turn_port.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── angle_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── gyro_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── mag_023_Eigth_turn_port.csv
+│   │   │       │       │   └── quat_023_Eigth_turn_port.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── angle_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── gyro_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── mag_023_Eigth_turn_port.csv
+│   │   │       │       │   └── quat_023_Eigth_turn_port.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── angle_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── gyro_023_Eigth_turn_port.csv
+│   │   │       │       │   ├── mag_023_Eigth_turn_port.csv
+│   │   │       │       │   └── quat_023_Eigth_turn_port.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_023_Eigth_turn_port.csv
+│   │   │       │           ├── angle_023_Eigth_turn_port.csv
+│   │   │       │           ├── gyro_023_Eigth_turn_port.csv
+│   │   │       │           ├── mag_023_Eigth_turn_port.csv
+│   │   │       │           └── quat_023_Eigth_turn_port.csv
+│   │   │       ├── 024_Eigth_turn_stbd/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_024_Eigth_turn_stbd.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── angle_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── gyro_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── mag_024_Eigth_turn_stbd.csv
+│   │   │       │       │   └── quat_024_Eigth_turn_stbd.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── angle_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── gyro_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── mag_024_Eigth_turn_stbd.csv
+│   │   │       │       │   └── quat_024_Eigth_turn_stbd.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── angle_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── gyro_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── mag_024_Eigth_turn_stbd.csv
+│   │   │       │       │   └── quat_024_Eigth_turn_stbd.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── angle_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── gyro_024_Eigth_turn_stbd.csv
+│   │   │       │       │   ├── mag_024_Eigth_turn_stbd.csv
+│   │   │       │       │   └── quat_024_Eigth_turn_stbd.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_024_Eigth_turn_stbd.csv
+│   │   │       │           ├── angle_024_Eigth_turn_stbd.csv
+│   │   │       │           ├── gyro_024_Eigth_turn_stbd.csv
+│   │   │       │           ├── mag_024_Eigth_turn_stbd.csv
+│   │   │       │           └── quat_024_Eigth_turn_stbd.csv
+│   │   │       ├── 025_Tavel_to_sweep/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_025_Tavel_to_sweep.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── angle_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── gyro_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── mag_025_Tavel_to_sweep.csv
+│   │   │       │       │   └── quat_025_Tavel_to_sweep.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── angle_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── gyro_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── mag_025_Tavel_to_sweep.csv
+│   │   │       │       │   └── quat_025_Tavel_to_sweep.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── angle_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── gyro_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── mag_025_Tavel_to_sweep.csv
+│   │   │       │       │   └── quat_025_Tavel_to_sweep.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── angle_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── gyro_025_Tavel_to_sweep.csv
+│   │   │       │       │   ├── mag_025_Tavel_to_sweep.csv
+│   │   │       │       │   └── quat_025_Tavel_to_sweep.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_025_Tavel_to_sweep.csv
+│   │   │       │           ├── angle_025_Tavel_to_sweep.csv
+│   │   │       │           ├── gyro_025_Tavel_to_sweep.csv
+│   │   │       │           ├── mag_025_Tavel_to_sweep.csv
+│   │   │       │           └── quat_025_Tavel_to_sweep.csv
+│   │   │       ├── 026_Engine_rpm_sweep/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_026_Engine_rpm_sweep.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── angle_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── gyro_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── mag_026_Engine_rpm_sweep.csv
+│   │   │       │       │   └── quat_026_Engine_rpm_sweep.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── angle_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── gyro_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── mag_026_Engine_rpm_sweep.csv
+│   │   │       │       │   └── quat_026_Engine_rpm_sweep.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── angle_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── gyro_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── mag_026_Engine_rpm_sweep.csv
+│   │   │       │       │   └── quat_026_Engine_rpm_sweep.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── angle_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── gyro_026_Engine_rpm_sweep.csv
+│   │   │       │       │   ├── mag_026_Engine_rpm_sweep.csv
+│   │   │       │       │   └── quat_026_Engine_rpm_sweep.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_026_Engine_rpm_sweep.csv
+│   │   │       │           ├── angle_026_Engine_rpm_sweep.csv
+│   │   │       │           ├── gyro_026_Engine_rpm_sweep.csv
+│   │   │       │           ├── mag_026_Engine_rpm_sweep.csv
+│   │   │       │           └── quat_026_Engine_rpm_sweep.csv
+│   │   │       ├── 027_Interim/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_027_Interim.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_027_Interim.csv
+│   │   │       │       │   ├── angle_027_Interim.csv
+│   │   │       │       │   ├── gyro_027_Interim.csv
+│   │   │       │       │   ├── mag_027_Interim.csv
+│   │   │       │       │   └── quat_027_Interim.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_027_Interim.csv
+│   │   │       │       │   ├── angle_027_Interim.csv
+│   │   │       │       │   ├── gyro_027_Interim.csv
+│   │   │       │       │   ├── mag_027_Interim.csv
+│   │   │       │       │   └── quat_027_Interim.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_027_Interim.csv
+│   │   │       │       │   ├── angle_027_Interim.csv
+│   │   │       │       │   ├── gyro_027_Interim.csv
+│   │   │       │       │   ├── mag_027_Interim.csv
+│   │   │       │       │   └── quat_027_Interim.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_027_Interim.csv
+│   │   │       │       │   ├── angle_027_Interim.csv
+│   │   │       │       │   ├── gyro_027_Interim.csv
+│   │   │       │       │   ├── mag_027_Interim.csv
+│   │   │       │       │   └── quat_027_Interim.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_027_Interim.csv
+│   │   │       │           ├── angle_027_Interim.csv
+│   │   │       │           ├── gyro_027_Interim.csv
+│   │   │       │           ├── mag_027_Interim.csv
+│   │   │       │           └── quat_027_Interim.csv
+│   │   │       ├── 028_Return_to_ryde/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_028_Return_to_ryde.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_028_Return_to_ryde.csv
+│   │   │       │       │   ├── angle_028_Return_to_ryde.csv
+│   │   │       │       │   ├── gyro_028_Return_to_ryde.csv
+│   │   │       │       │   ├── mag_028_Return_to_ryde.csv
+│   │   │       │       │   └── quat_028_Return_to_ryde.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_028_Return_to_ryde.csv
+│   │   │       │       │   ├── angle_028_Return_to_ryde.csv
+│   │   │       │       │   ├── gyro_028_Return_to_ryde.csv
+│   │   │       │       │   ├── mag_028_Return_to_ryde.csv
+│   │   │       │       │   └── quat_028_Return_to_ryde.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_028_Return_to_ryde.csv
+│   │   │       │       │   ├── angle_028_Return_to_ryde.csv
+│   │   │       │       │   ├── gyro_028_Return_to_ryde.csv
+│   │   │       │       │   ├── mag_028_Return_to_ryde.csv
+│   │   │       │       │   └── quat_028_Return_to_ryde.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_028_Return_to_ryde.csv
+│   │   │       │       │   ├── angle_028_Return_to_ryde.csv
+│   │   │       │       │   ├── gyro_028_Return_to_ryde.csv
+│   │   │       │       │   ├── mag_028_Return_to_ryde.csv
+│   │   │       │       │   └── quat_028_Return_to_ryde.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_028_Return_to_ryde.csv
+│   │   │       │           ├── angle_028_Return_to_ryde.csv
+│   │   │       │           ├── gyro_028_Return_to_ryde.csv
+│   │   │       │           ├── mag_028_Return_to_ryde.csv
+│   │   │       │           └── quat_028_Return_to_ryde.csv
+│   │   │       ├── 029_Engine_off_clean_up/
+│   │   │       │   ├── GPS/
+│   │   │       │   │   └── GPS_029_Engine_off_clean_up.csv
+│   │   │       │   └── IMU/
+│   │   │       │       ├── Sensor_3/
+│   │   │       │       │   ├── accel_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── angle_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── gyro_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── mag_029_Engine_off_clean_up.csv
+│   │   │       │       │   └── quat_029_Engine_off_clean_up.csv
+│   │   │       │       ├── Sensor_4/
+│   │   │       │       │   ├── accel_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── angle_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── gyro_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── mag_029_Engine_off_clean_up.csv
+│   │   │       │       │   └── quat_029_Engine_off_clean_up.csv
+│   │   │       │       ├── Sensor_5/
+│   │   │       │       │   ├── accel_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── angle_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── gyro_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── mag_029_Engine_off_clean_up.csv
+│   │   │       │       │   └── quat_029_Engine_off_clean_up.csv
+│   │   │       │       ├── Sensor_wb/
+│   │   │       │       │   ├── accel_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── angle_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── gyro_029_Engine_off_clean_up.csv
+│   │   │       │       │   ├── mag_029_Engine_off_clean_up.csv
+│   │   │       │       │   └── quat_029_Engine_off_clean_up.csv
+│   │   │       │       └── Sensor_wnb/
+│   │   │       │           ├── accel_029_Engine_off_clean_up.csv
+│   │   │       │           ├── angle_029_Engine_off_clean_up.csv
+│   │   │       │           ├── gyro_029_Engine_off_clean_up.csv
+│   │   │       │           ├── mag_029_Engine_off_clean_up.csv
+│   │   │       │           └── quat_029_Engine_off_clean_up.csv
+│   │   │       └── 030_Post_flight_sync/
+│   │   │           ├── GPS/
+│   │   │           │   └── GPS_030_Post_flight_sync.csv
+│   │   │           └── IMU/
+│   │   │               ├── Sensor_3/
+│   │   │               │   ├── accel_030_Post_flight_sync.csv
+│   │   │               │   ├── angle_030_Post_flight_sync.csv
+│   │   │               │   ├── gyro_030_Post_flight_sync.csv
+│   │   │               │   ├── mag_030_Post_flight_sync.csv
+│   │   │               │   └── quat_030_Post_flight_sync.csv
+│   │   │               ├── Sensor_4/
+│   │   │               │   ├── accel_030_Post_flight_sync.csv
+│   │   │               │   ├── angle_030_Post_flight_sync.csv
+│   │   │               │   ├── gyro_030_Post_flight_sync.csv
+│   │   │               │   ├── mag_030_Post_flight_sync.csv
+│   │   │               │   └── quat_030_Post_flight_sync.csv
+│   │   │               ├── Sensor_5/
+│   │   │               │   ├── accel_030_Post_flight_sync.csv
+│   │   │               │   ├── angle_030_Post_flight_sync.csv
+│   │   │               │   ├── gyro_030_Post_flight_sync.csv
+│   │   │               │   ├── mag_030_Post_flight_sync.csv
+│   │   │               │   └── quat_030_Post_flight_sync.csv
+│   │   │               ├── Sensor_wb/
+│   │   │               │   ├── accel_030_Post_flight_sync.csv
+│   │   │               │   ├── angle_030_Post_flight_sync.csv
+│   │   │               │   ├── gyro_030_Post_flight_sync.csv
+│   │   │               │   ├── mag_030_Post_flight_sync.csv
+│   │   │               │   └── quat_030_Post_flight_sync.csv
+│   │   │               └── Sensor_wnb/
+│   │   │                   ├── accel_030_Post_flight_sync.csv
+│   │   │                   ├── angle_030_Post_flight_sync.csv
+│   │   │                   ├── gyro_030_Post_flight_sync.csv
+│   │   │                   ├── mag_030_Post_flight_sync.csv
+│   │   │                   └── quat_030_Post_flight_sync.csv
+│   │   └── morning/
+│   │       └── Experiments/
+│   │           ├── 001_Synchronisation/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_001_Synchronisation.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_001_Synchronisation.csv
+│   │           │   │   ├── angle_001_Synchronisation.csv
+│   │           │   │   ├── gyro_001_Synchronisation.csv
+│   │           │   │   ├── mag_001_Synchronisation.csv
+│   │           │   │   └── quat_001_Synchronisation.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_001_Synchronisation.csv
+│   │           │   │   ├── angle_001_Synchronisation.csv
+│   │           │   │   ├── gyro_001_Synchronisation.csv
+│   │           │   │   ├── mag_001_Synchronisation.csv
+│   │           │   │   └── quat_001_Synchronisation.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_001_Synchronisation.csv
+│   │           │   │   ├── angle_001_Synchronisation.csv
+│   │           │   │   ├── gyro_001_Synchronisation.csv
+│   │           │   │   ├── mag_001_Synchronisation.csv
+│   │           │   │   └── quat_001_Synchronisation.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_001_Synchronisation.csv
+│   │           │   │   ├── angle_001_Synchronisation.csv
+│   │           │   │   ├── gyro_001_Synchronisation.csv
+│   │           │   │   ├── mag_001_Synchronisation.csv
+│   │           │   │   └── quat_001_Synchronisation.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_001_Synchronisation.csv
+│   │           │       ├── angle_001_Synchronisation.csv
+│   │           │       ├── gyro_001_Synchronisation.csv
+│   │           │       ├── mag_001_Synchronisation.csv
+│   │           │       └── quat_001_Synchronisation.csv
+│   │           ├── 002_Setup/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_002_Setup.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_002_Setup.csv
+│   │           │   │   ├── angle_002_Setup.csv
+│   │           │   │   ├── gyro_002_Setup.csv
+│   │           │   │   ├── mag_002_Setup.csv
+│   │           │   │   └── quat_002_Setup.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_002_Setup.csv
+│   │           │   │   ├── angle_002_Setup.csv
+│   │           │   │   ├── gyro_002_Setup.csv
+│   │           │   │   ├── mag_002_Setup.csv
+│   │           │   │   └── quat_002_Setup.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_002_Setup.csv
+│   │           │   │   ├── angle_002_Setup.csv
+│   │           │   │   ├── gyro_002_Setup.csv
+│   │           │   │   ├── mag_002_Setup.csv
+│   │           │   │   └── quat_002_Setup.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_002_Setup.csv
+│   │           │   │   ├── angle_002_Setup.csv
+│   │           │   │   ├── gyro_002_Setup.csv
+│   │           │   │   ├── mag_002_Setup.csv
+│   │           │   │   └── quat_002_Setup.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_002_Setup.csv
+│   │           │       ├── angle_002_Setup.csv
+│   │           │       ├── gyro_002_Setup.csv
+│   │           │       ├── mag_002_Setup.csv
+│   │           │       └── quat_002_Setup.csv
+│   │           ├── 003_Rudder_Cals/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_003_Rudder_Cals.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_003_Rudder_Cals.csv
+│   │           │   │   ├── angle_003_Rudder_Cals.csv
+│   │           │   │   ├── gyro_003_Rudder_Cals.csv
+│   │           │   │   ├── mag_003_Rudder_Cals.csv
+│   │           │   │   └── quat_003_Rudder_Cals.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_003_Rudder_Cals.csv
+│   │           │   │   ├── angle_003_Rudder_Cals.csv
+│   │           │   │   ├── gyro_003_Rudder_Cals.csv
+│   │           │   │   ├── mag_003_Rudder_Cals.csv
+│   │           │   │   └── quat_003_Rudder_Cals.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_003_Rudder_Cals.csv
+│   │           │   │   ├── angle_003_Rudder_Cals.csv
+│   │           │   │   ├── gyro_003_Rudder_Cals.csv
+│   │           │   │   ├── mag_003_Rudder_Cals.csv
+│   │           │   │   └── quat_003_Rudder_Cals.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_003_Rudder_Cals.csv
+│   │           │   │   ├── angle_003_Rudder_Cals.csv
+│   │           │   │   ├── gyro_003_Rudder_Cals.csv
+│   │           │   │   ├── mag_003_Rudder_Cals.csv
+│   │           │   │   └── quat_003_Rudder_Cals.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_003_Rudder_Cals.csv
+│   │           │       ├── angle_003_Rudder_Cals.csv
+│   │           │       ├── gyro_003_Rudder_Cals.csv
+│   │           │       ├── mag_003_Rudder_Cals.csv
+│   │           │       └── quat_003_Rudder_Cals.csv
+│   │           ├── 004_Setup_2/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_004_Setup_2.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_004_Setup_2.csv
+│   │           │   │   ├── angle_004_Setup_2.csv
+│   │           │   │   ├── gyro_004_Setup_2.csv
+│   │           │   │   ├── mag_004_Setup_2.csv
+│   │           │   │   └── quat_004_Setup_2.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_004_Setup_2.csv
+│   │           │   │   ├── angle_004_Setup_2.csv
+│   │           │   │   ├── gyro_004_Setup_2.csv
+│   │           │   │   ├── mag_004_Setup_2.csv
+│   │           │   │   └── quat_004_Setup_2.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_004_Setup_2.csv
+│   │           │   │   ├── angle_004_Setup_2.csv
+│   │           │   │   ├── gyro_004_Setup_2.csv
+│   │           │   │   ├── mag_004_Setup_2.csv
+│   │           │   │   └── quat_004_Setup_2.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_004_Setup_2.csv
+│   │           │   │   ├── angle_004_Setup_2.csv
+│   │           │   │   ├── gyro_004_Setup_2.csv
+│   │           │   │   ├── mag_004_Setup_2.csv
+│   │           │   │   └── quat_004_Setup_2.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_004_Setup_2.csv
+│   │           │       ├── angle_004_Setup_2.csv
+│   │           │       ├── gyro_004_Setup_2.csv
+│   │           │       ├── mag_004_Setup_2.csv
+│   │           │       └── quat_004_Setup_2.csv
+│   │           ├── 005_Pre_flight_engine_turn_on/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_005_Pre_flight_engine_turn_on.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── angle_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── gyro_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── mag_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   └── quat_005_Pre_flight_engine_turn_on.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── angle_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── gyro_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── mag_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   └── quat_005_Pre_flight_engine_turn_on.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── angle_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── gyro_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── mag_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   └── quat_005_Pre_flight_engine_turn_on.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── angle_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── gyro_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   ├── mag_005_Pre_flight_engine_turn_on.csv
+│   │           │   │   └── quat_005_Pre_flight_engine_turn_on.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_005_Pre_flight_engine_turn_on.csv
+│   │           │       ├── angle_005_Pre_flight_engine_turn_on.csv
+│   │           │       ├── gyro_005_Pre_flight_engine_turn_on.csv
+│   │           │       ├── mag_005_Pre_flight_engine_turn_on.csv
+│   │           │       └── quat_005_Pre_flight_engine_turn_on.csv
+│   │           ├── 006_Departure/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_006_Departure.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_006_Departure.csv
+│   │           │   │   ├── angle_006_Departure.csv
+│   │           │   │   ├── gyro_006_Departure.csv
+│   │           │   │   ├── mag_006_Departure.csv
+│   │           │   │   └── quat_006_Departure.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_006_Departure.csv
+│   │           │   │   ├── angle_006_Departure.csv
+│   │           │   │   ├── gyro_006_Departure.csv
+│   │           │   │   ├── mag_006_Departure.csv
+│   │           │   │   └── quat_006_Departure.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_006_Departure.csv
+│   │           │   │   ├── angle_006_Departure.csv
+│   │           │   │   ├── gyro_006_Departure.csv
+│   │           │   │   ├── mag_006_Departure.csv
+│   │           │   │   └── quat_006_Departure.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_006_Departure.csv
+│   │           │   │   ├── angle_006_Departure.csv
+│   │           │   │   ├── gyro_006_Departure.csv
+│   │           │   │   ├── mag_006_Departure.csv
+│   │           │   │   └── quat_006_Departure.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_006_Departure.csv
+│   │           │       ├── angle_006_Departure.csv
+│   │           │       ├── gyro_006_Departure.csv
+│   │           │       ├── mag_006_Departure.csv
+│   │           │       └── quat_006_Departure.csv
+│   │           ├── 007_Downwind_max_speed_1/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_007_Downwind_max_speed_1.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── angle_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── gyro_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── mag_007_Downwind_max_speed_1.csv
+│   │           │   │   └── quat_007_Downwind_max_speed_1.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── angle_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── gyro_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── mag_007_Downwind_max_speed_1.csv
+│   │           │   │   └── quat_007_Downwind_max_speed_1.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── angle_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── gyro_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── mag_007_Downwind_max_speed_1.csv
+│   │           │   │   └── quat_007_Downwind_max_speed_1.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── angle_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── gyro_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── mag_007_Downwind_max_speed_1.csv
+│   │           │   │   └── quat_007_Downwind_max_speed_1.csv
+│   │           │   ├── Sensor_wnb/
+│   │           │   │   ├── accel_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── angle_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── gyro_007_Downwind_max_speed_1.csv
+│   │           │   │   ├── mag_007_Downwind_max_speed_1.csv
+│   │           │   │   └── quat_007_Downwind_max_speed_1.csv
+│   │           │   ├── explore.ipynb
+│   │           │   ├── GPS_008_Into_wind_max_speed.csv
+│   │           │   ├── gps_map.html
+│   │           │   ├── gps_map_GPS_007_Downwind_max_speed_1.csv.html
+│   │           │   ├── gps_map_GPS_008_Into_wind_max_speed.csv.html
+│   │           │   └── weather_data.csv
+│   │           ├── 008_Into_wind_max_speed/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_008_Into_wind_max_speed.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_008_Into_wind_max_speed.csv
+│   │           │   │   ├── angle_008_Into_wind_max_speed.csv
+│   │           │   │   ├── gyro_008_Into_wind_max_speed.csv
+│   │           │   │   ├── mag_008_Into_wind_max_speed.csv
+│   │           │   │   └── quat_008_Into_wind_max_speed.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_008_Into_wind_max_speed.csv
+│   │           │   │   ├── angle_008_Into_wind_max_speed.csv
+│   │           │   │   ├── gyro_008_Into_wind_max_speed.csv
+│   │           │   │   ├── mag_008_Into_wind_max_speed.csv
+│   │           │   │   └── quat_008_Into_wind_max_speed.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_008_Into_wind_max_speed.csv
+│   │           │   │   ├── angle_008_Into_wind_max_speed.csv
+│   │           │   │   ├── gyro_008_Into_wind_max_speed.csv
+│   │           │   │   ├── mag_008_Into_wind_max_speed.csv
+│   │           │   │   └── quat_008_Into_wind_max_speed.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_008_Into_wind_max_speed.csv
+│   │           │   │   ├── angle_008_Into_wind_max_speed.csv
+│   │           │   │   ├── gyro_008_Into_wind_max_speed.csv
+│   │           │   │   ├── mag_008_Into_wind_max_speed.csv
+│   │           │   │   └── quat_008_Into_wind_max_speed.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_008_Into_wind_max_speed.csv
+│   │           │       ├── angle_008_Into_wind_max_speed.csv
+│   │           │       ├── gyro_008_Into_wind_max_speed.csv
+│   │           │       ├── mag_008_Into_wind_max_speed.csv
+│   │           │       └── quat_008_Into_wind_max_speed.csv
+│   │           ├── 009_Downwind_max_speed_2/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_009_Downwind_max_speed_2.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── angle_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── gyro_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── mag_009_Downwind_max_speed_2.csv
+│   │           │   │   └── quat_009_Downwind_max_speed_2.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── angle_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── gyro_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── mag_009_Downwind_max_speed_2.csv
+│   │           │   │   └── quat_009_Downwind_max_speed_2.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── angle_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── gyro_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── mag_009_Downwind_max_speed_2.csv
+│   │           │   │   └── quat_009_Downwind_max_speed_2.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── angle_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── gyro_009_Downwind_max_speed_2.csv
+│   │           │   │   ├── mag_009_Downwind_max_speed_2.csv
+│   │           │   │   └── quat_009_Downwind_max_speed_2.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_009_Downwind_max_speed_2.csv
+│   │           │       ├── angle_009_Downwind_max_speed_2.csv
+│   │           │       ├── gyro_009_Downwind_max_speed_2.csv
+│   │           │       ├── mag_009_Downwind_max_speed_2.csv
+│   │           │       └── quat_009_Downwind_max_speed_2.csv
+│   │           ├── 010_Downwind_max_speed_3/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_010_Downwind_max_speed_3.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── angle_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── gyro_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── mag_010_Downwind_max_speed_3.csv
+│   │           │   │   └── quat_010_Downwind_max_speed_3.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── angle_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── gyro_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── mag_010_Downwind_max_speed_3.csv
+│   │           │   │   └── quat_010_Downwind_max_speed_3.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── angle_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── gyro_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── mag_010_Downwind_max_speed_3.csv
+│   │           │   │   └── quat_010_Downwind_max_speed_3.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── angle_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── gyro_010_Downwind_max_speed_3.csv
+│   │           │   │   ├── mag_010_Downwind_max_speed_3.csv
+│   │           │   │   └── quat_010_Downwind_max_speed_3.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_010_Downwind_max_speed_3.csv
+│   │           │       ├── angle_010_Downwind_max_speed_3.csv
+│   │           │       ├── gyro_010_Downwind_max_speed_3.csv
+│   │           │       ├── mag_010_Downwind_max_speed_3.csv
+│   │           │       └── quat_010_Downwind_max_speed_3.csv
+│   │           ├── 011_Yaw_speed_1/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_011_Yaw_speed_1.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_011_Yaw_speed_1.csv
+│   │           │   │   ├── angle_011_Yaw_speed_1.csv
+│   │           │   │   ├── gyro_011_Yaw_speed_1.csv
+│   │           │   │   ├── mag_011_Yaw_speed_1.csv
+│   │           │   │   └── quat_011_Yaw_speed_1.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_011_Yaw_speed_1.csv
+│   │           │   │   ├── angle_011_Yaw_speed_1.csv
+│   │           │   │   ├── gyro_011_Yaw_speed_1.csv
+│   │           │   │   ├── mag_011_Yaw_speed_1.csv
+│   │           │   │   └── quat_011_Yaw_speed_1.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_011_Yaw_speed_1.csv
+│   │           │   │   ├── angle_011_Yaw_speed_1.csv
+│   │           │   │   ├── gyro_011_Yaw_speed_1.csv
+│   │           │   │   ├── mag_011_Yaw_speed_1.csv
+│   │           │   │   └── quat_011_Yaw_speed_1.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_011_Yaw_speed_1.csv
+│   │           │   │   ├── angle_011_Yaw_speed_1.csv
+│   │           │   │   ├── gyro_011_Yaw_speed_1.csv
+│   │           │   │   ├── mag_011_Yaw_speed_1.csv
+│   │           │   │   └── quat_011_Yaw_speed_1.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_011_Yaw_speed_1.csv
+│   │           │       ├── angle_011_Yaw_speed_1.csv
+│   │           │       ├── gyro_011_Yaw_speed_1.csv
+│   │           │       ├── mag_011_Yaw_speed_1.csv
+│   │           │       └── quat_011_Yaw_speed_1.csv
+│   │           ├── 012_Yaw_speed_2/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_012_Yaw_speed_2.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_012_Yaw_speed_2.csv
+│   │           │   │   ├── angle_012_Yaw_speed_2.csv
+│   │           │   │   ├── gyro_012_Yaw_speed_2.csv
+│   │           │   │   ├── mag_012_Yaw_speed_2.csv
+│   │           │   │   └── quat_012_Yaw_speed_2.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_012_Yaw_speed_2.csv
+│   │           │   │   ├── angle_012_Yaw_speed_2.csv
+│   │           │   │   ├── gyro_012_Yaw_speed_2.csv
+│   │           │   │   ├── mag_012_Yaw_speed_2.csv
+│   │           │   │   └── quat_012_Yaw_speed_2.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_012_Yaw_speed_2.csv
+│   │           │   │   ├── angle_012_Yaw_speed_2.csv
+│   │           │   │   ├── gyro_012_Yaw_speed_2.csv
+│   │           │   │   ├── mag_012_Yaw_speed_2.csv
+│   │           │   │   └── quat_012_Yaw_speed_2.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_012_Yaw_speed_2.csv
+│   │           │   │   ├── angle_012_Yaw_speed_2.csv
+│   │           │   │   ├── gyro_012_Yaw_speed_2.csv
+│   │           │   │   ├── mag_012_Yaw_speed_2.csv
+│   │           │   │   └── quat_012_Yaw_speed_2.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_012_Yaw_speed_2.csv
+│   │           │       ├── angle_012_Yaw_speed_2.csv
+│   │           │       ├── gyro_012_Yaw_speed_2.csv
+│   │           │       ├── mag_012_Yaw_speed_2.csv
+│   │           │       └── quat_012_Yaw_speed_2.csv
+│   │           ├── 013_Yaw_speed_3/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_013_Yaw_speed_3.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_013_Yaw_speed_3.csv
+│   │           │   │   ├── angle_013_Yaw_speed_3.csv
+│   │           │   │   ├── gyro_013_Yaw_speed_3.csv
+│   │           │   │   ├── mag_013_Yaw_speed_3.csv
+│   │           │   │   └── quat_013_Yaw_speed_3.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_013_Yaw_speed_3.csv
+│   │           │   │   ├── angle_013_Yaw_speed_3.csv
+│   │           │   │   ├── gyro_013_Yaw_speed_3.csv
+│   │           │   │   ├── mag_013_Yaw_speed_3.csv
+│   │           │   │   └── quat_013_Yaw_speed_3.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_013_Yaw_speed_3.csv
+│   │           │   │   ├── angle_013_Yaw_speed_3.csv
+│   │           │   │   ├── gyro_013_Yaw_speed_3.csv
+│   │           │   │   ├── mag_013_Yaw_speed_3.csv
+│   │           │   │   └── quat_013_Yaw_speed_3.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_013_Yaw_speed_3.csv
+│   │           │   │   ├── angle_013_Yaw_speed_3.csv
+│   │           │   │   ├── gyro_013_Yaw_speed_3.csv
+│   │           │   │   ├── mag_013_Yaw_speed_3.csv
+│   │           │   │   └── quat_013_Yaw_speed_3.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_013_Yaw_speed_3.csv
+│   │           │       ├── angle_013_Yaw_speed_3.csv
+│   │           │       ├── gyro_013_Yaw_speed_3.csv
+│   │           │       ├── mag_013_Yaw_speed_3.csv
+│   │           │       └── quat_013_Yaw_speed_3.csv
+│   │           ├── 014_Floating_on_sea_and_takeoff/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_014_Floating_on_sea_and_takeoff.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── angle_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── gyro_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── mag_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   └── quat_014_Floating_on_sea_and_takeoff.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── angle_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── gyro_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── mag_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   └── quat_014_Floating_on_sea_and_takeoff.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── angle_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── gyro_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── mag_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   └── quat_014_Floating_on_sea_and_takeoff.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── angle_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── gyro_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── mag_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   └── quat_014_Floating_on_sea_and_takeoff.csv
+│   │           │   ├── Sensor_wnb/
+│   │           │   │   ├── accel_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── angle_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── gyro_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   ├── mag_014_Floating_on_sea_and_takeoff.csv
+│   │           │   │   └── quat_014_Floating_on_sea_and_takeoff.csv
+│   │           │   └── sea.ipynb
+│   │           ├── 015_Skirt_shift_turns/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_015_Skirt_shift_turns.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_015_Skirt_shift_turns.csv
+│   │           │   │   ├── angle_015_Skirt_shift_turns.csv
+│   │           │   │   ├── gyro_015_Skirt_shift_turns.csv
+│   │           │   │   ├── mag_015_Skirt_shift_turns.csv
+│   │           │   │   └── quat_015_Skirt_shift_turns.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_015_Skirt_shift_turns.csv
+│   │           │   │   ├── angle_015_Skirt_shift_turns.csv
+│   │           │   │   ├── gyro_015_Skirt_shift_turns.csv
+│   │           │   │   ├── mag_015_Skirt_shift_turns.csv
+│   │           │   │   └── quat_015_Skirt_shift_turns.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_015_Skirt_shift_turns.csv
+│   │           │   │   ├── angle_015_Skirt_shift_turns.csv
+│   │           │   │   ├── gyro_015_Skirt_shift_turns.csv
+│   │           │   │   ├── mag_015_Skirt_shift_turns.csv
+│   │           │   │   └── quat_015_Skirt_shift_turns.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_015_Skirt_shift_turns.csv
+│   │           │   │   ├── angle_015_Skirt_shift_turns.csv
+│   │           │   │   ├── gyro_015_Skirt_shift_turns.csv
+│   │           │   │   ├── mag_015_Skirt_shift_turns.csv
+│   │           │   │   └── quat_015_Skirt_shift_turns.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_015_Skirt_shift_turns.csv
+│   │           │       ├── angle_015_Skirt_shift_turns.csv
+│   │           │       ├── gyro_015_Skirt_shift_turns.csv
+│   │           │       ├── mag_015_Skirt_shift_turns.csv
+│   │           │       └── quat_015_Skirt_shift_turns.csv
+│   │           ├── 016_Plough_in/
+│   │           │   ├── GPS/
+│   │           │   │   └── GPS_016_Plough_in.csv
+│   │           │   ├── Sensor_3/
+│   │           │   │   ├── accel_016_Plough_in.csv
+│   │           │   │   ├── angle_016_Plough_in.csv
+│   │           │   │   ├── gyro_016_Plough_in.csv
+│   │           │   │   ├── mag_016_Plough_in.csv
+│   │           │   │   └── quat_016_Plough_in.csv
+│   │           │   ├── Sensor_4/
+│   │           │   │   ├── accel_016_Plough_in.csv
+│   │           │   │   ├── angle_016_Plough_in.csv
+│   │           │   │   ├── gyro_016_Plough_in.csv
+│   │           │   │   ├── mag_016_Plough_in.csv
+│   │           │   │   └── quat_016_Plough_in.csv
+│   │           │   ├── Sensor_5/
+│   │           │   │   ├── accel_016_Plough_in.csv
+│   │           │   │   ├── angle_016_Plough_in.csv
+│   │           │   │   ├── gyro_016_Plough_in.csv
+│   │           │   │   ├── mag_016_Plough_in.csv
+│   │           │   │   └── quat_016_Plough_in.csv
+│   │           │   ├── Sensor_wb/
+│   │           │   │   ├── accel_016_Plough_in.csv
+│   │           │   │   ├── angle_016_Plough_in.csv
+│   │           │   │   ├── gyro_016_Plough_in.csv
+│   │           │   │   ├── mag_016_Plough_in.csv
+│   │           │   │   └── quat_016_Plough_in.csv
+│   │           │   └── Sensor_wnb/
+│   │           │       ├── accel_016_Plough_in.csv
+│   │           │       ├── angle_016_Plough_in.csv
+│   │           │       ├── gyro_016_Plough_in.csv
+│   │           │       ├── mag_016_Plough_in.csv
+│   │           │       └── quat_016_Plough_in.csv
+│   │           └── 017_Return_to_Ryde/
+│   │               ├── GPS/
+│   │               │   └── GPS_017_Return_to_Ryde.csv
+│   │               ├── Sensor_3/
+│   │               │   ├── accel_017_Return_to_Ryde.csv
+│   │               │   ├── angle_017_Return_to_Ryde.csv
+│   │               │   ├── gyro_017_Return_to_Ryde.csv
+│   │               │   ├── mag_017_Return_to_Ryde.csv
+│   │               │   └── quat_017_Return_to_Ryde.csv
+│   │               ├── Sensor_4/
+│   │               │   ├── accel_017_Return_to_Ryde.csv
+│   │               │   ├── angle_017_Return_to_Ryde.csv
+│   │               │   ├── gyro_017_Return_to_Ryde.csv
+│   │               │   ├── mag_017_Return_to_Ryde.csv
+│   │               │   └── quat_017_Return_to_Ryde.csv
+│   │               ├── Sensor_5/
+│   │               │   ├── accel_017_Return_to_Ryde.csv
+│   │               │   ├── angle_017_Return_to_Ryde.csv
+│   │               │   ├── gyro_017_Return_to_Ryde.csv
+│   │               │   ├── mag_017_Return_to_Ryde.csv
+│   │               │   └── quat_017_Return_to_Ryde.csv
+│   │               ├── Sensor_wb/
+│   │               │   ├── accel_017_Return_to_Ryde.csv
+│   │               │   ├── angle_017_Return_to_Ryde.csv
+│   │               │   ├── gyro_017_Return_to_Ryde.csv
+│   │               │   ├── mag_017_Return_to_Ryde.csv
+│   │               │   └── quat_017_Return_to_Ryde.csv
+│   │               └── Sensor_wnb/
+│   │                   ├── accel_017_Return_to_Ryde.csv
+│   │                   ├── angle_017_Return_to_Ryde.csv
+│   │                   ├── gyro_017_Return_to_Ryde.csv
+│   │                   ├── mag_017_Return_to_Ryde.csv
+│   │                   └── quat_017_Return_to_Ryde.csv
+│   └── migration_log_phase4.json
+├── docs/
+│   ├── codebase_analysis/
+│   │   └── codebase_analysis_report.md
+│   ├── config/
+│   │   ├── current_validation_findings.md
+│   │   └── manifest_validation.md
+│   ├── development/
+│   │   ├── dependencies.dot
+│   │   ├── dependencies_mermaid.md
+│   │   └── dependency_analysis.md
+│   ├── Experimental setup/
+│   │   ├── experiment_list.md
+│   │   └── plotting_requirements.md
+│   ├── migration/
+│   │   ├── CLEANUP_SUMMARY.md
+│   │   ├── MIGRATION_COMPLETION_SUMMARY.md
+│   │   ├── MIGRATION_CONTINUATION_NOTES.md
+│   │   ├── REORGANIZATION_SUMMARY.md
+│   │   └── REPOSITORY_REORGANIZATION_GUIDE.md
+│   ├── results/
+│   │   ├── alignment/
+│   │   ├── attitude_estimation/
+│   │   ├── orientation/
+│   │   ├── raw_data_analysis/
+│   │   ├── rpm_estimation/
+│   │   │   ├── wp0_exploration/
+│   │   │   ├── wp1_preprocessing/
+│   │   │   ├── wp2_peak_detection/
+│   │   │   ├── wp3_stft/
+│   │   │   │   └── wp3_done.flag
+│   │   │   ├── wp4_fusion/
+│   │   │   │   └── wp4_done.flag
+│   │   │   └── wp5-7_future/
+│   │   ├── steering/
+│   │   ├── timestamp_analysis/
+│   │   ├── validation/
+│   │   └── README.md
+│   ├── _tree.md
+│   ├── architecture.md
+│   ├── conf.py
+│   ├── configuration_guide.md
+│   ├── getting_started.md
+│   ├── index.rst
+│   ├── MEGA_MARKDOWN.md
+│   ├── README.md
+│   └── README_MORNING_AFTERNOON.md
+├── hovercraft_analysis.egg-info/
+│   ├── dependency_links.txt
+│   ├── entry_points.txt
+│   ├── PKG-INFO
+│   ├── requires.txt
+│   ├── SOURCES.txt
+│   └── top_level.txt
+├── notes/
+│   ├── Chaper_2_lit_review.md
+│   ├── Chapter_3_methods.md
+│   ├── Chapter_4_plan.md
+│   ├── Chapter_5_plan.md
+│   └── Hovercraft_simulator_documentation.md
+├── scripts/
+│   ├── test_phase2_imports.py
+│   └── update_imports_phase2.py
+├── src/
+│   ├── analysis/
+│   │   ├── alignment/
+│   │   │   ├── __init__.py
+│   │   │   ├── align.py
+│   │   │   ├── align_additional_all.py
+│   │   │   ├── align_additional_data.py
+│   │   │   ├── alignment_config.yaml
+│   │   │   ├── alignment_consistency_007_Fast_stbd_turn_1.png
+│   │   │   ├── alignment_consistency_016_Straight_cruise_1.png
+│   │   │   ├── alignment_consistency_021_Quarter_turn_port.png
+│   │   │   ├── ALIGNMENT_METHODOLOGY_RESULTS.md
+│   │   │   ├── alignment_quality_007_Fast_stbd_turn_1.png
+│   │   │   ├── alignment_quality_016_Straight_cruise_1.png
+│   │   │   ├── alignment_quality_021_Quarter_turn_port.png
+│   │   │   ├── analyze_alignment_simple.py
+│   │   │   ├── convert_hdf5_compat.py
+│   │   │   ├── debug_align.ipynb
+│   │   │   ├── export_all_to_csv.py
+│   │   │   ├── export_static_to_csv.py
+│   │   │   ├── export_to_csv.py
+│   │   │   ├── plot_alignment_simple.py
+│   │   │   ├── README.md
+│   │   │   ├── requirements.txt
+│   │   │   ├── run_alignment.py
+│   │   │   └── WEEK1_CHECKLIST.md
+│   │   ├── orientation/
+│   │   │   ├── __init__.py
+│   │   │   ├── add_gyro_to_csv.py
+│   │   │   ├── add_gyro_to_static_experiments.py
+│   │   │   ├── analyze_gravity.py
+│   │   │   ├── analyze_static_gyro.py
+│   │   │   ├── analyze_static_gyro_simple.py
+│   │   │   ├── bias_estimator.py
+│   │   │   ├── check_gyro_units.py
+│   │   │   ├── check_rotation_matrix.py
+│   │   │   ├── check_sensor3_orientation.py
+│   │   │   ├── check_sensor5_orientation.py
+│   │   │   ├── CURRENT_STATUS_ANALYSIS.md
+│   │   │   ├── debug_orientation.py
+│   │   │   ├── debug_rotation_validation.py
+│   │   │   ├── deduce_sensor_orientation.py
+│   │   │   ├── dynamic_validator.py
+│   │   │   ├── FIXES_IMPLEMENTED.md
+│   │   │   ├── NEXT_ACTIONS.md
+│   │   │   ├── orientation_analysis_status.md
+│   │   │   ├── ORIENTATION_ANALYSIS_SUMMARY.md
+│   │   │   ├── orientation_check.py
+│   │   │   ├── orientation_config.yaml
+│   │   │   ├── orientation_exploration_issues.md
+│   │   │   ├── ORIENTATION_FIXES_SUMMARY.md
+│   │   │   ├── plot_orientation.py
+│   │   │   ├── README.md
+│   │   │   ├── rotation_validator.py
+│   │   │   ├── run_orientation.py
+│   │   │   ├── START_HERE_ORIENTATION_STATUS.md
+│   │   │   └── static_detector.py
+│   │   ├── rpm/
+│   │   │   ├── docs/
+│   │   │   │   └── work_packages/
+│   │   │   │       ├── wp0/
+│   │   │   │       │   └── WP0_PLAN.md
+│   │   │   │       ├── wp1/
+│   │   │   │       │   ├── WP1_README.md
+│   │   │   │       │   └── WP1_SANITY_CHECK_RESULTS.md
+│   │   │   │       ├── wp2/
+│   │   │   │       │   ├── WP2_IMPLEMENTATION_SUMMARY.md
+│   │   │   │       │   ├── WP2_README.md
+│   │   │   │       │   └── WP2_SANITY_CHECK_RESULTS.md
+│   │   │   │       ├── wp3/
+│   │   │   │       │   ├── WP3_COMPLETION_SUMMARY.md
+│   │   │   │       │   ├── WP3_PLAN.md
+│   │   │   │       │   └── WP3_README.md
+│   │   │   │       └── wp4/
+│   │   │   │           ├── WP4_COMPLETION_SUMMARY.md
+│   │   │   │           ├── WP4_IMPLEMENTATION_SUMMARY.md
+│   │   │   │           ├── WP4_PLAN.md
+│   │   │   │           ├── WP4_README.md
+│   │   │   │           ├── WP4_READY.md
+│   │   │   │           └── WP4_TESTING_ACTION_PLAN.md
+│   │   │   ├── results/
+│   │   │   ├── __init__.py
+│   │   │   ├── check_wp2_results.py
+│   │   │   ├── cli.py
+│   │   │   ├── create_unit_test_summary.py
+│   │   │   ├── DEVELOPMENT_CHECKLIST.md
+│   │   │   ├── fusion.py
+│   │   │   ├── generate_wp3_test_plots.py
+│   │   │   ├── io.py
+│   │   │   ├── logging_config.py
+│   │   │   ├── preprocess.py
+│   │   │   ├── pytest.ini
+│   │   │   ├── quality.py
+│   │   │   ├── README.md
+│   │   │   ├── requirements.txt
+│   │   │   ├── rpm_config.yaml
+│   │   │   ├── run_wp2_tests.py
+│   │   │   ├── run_wp3_simple.py
+│   │   │   ├── schema.py
+│   │   │   ├── spectral.py
+│   │   │   ├── tracking.py
+│   │   │   ├── validate_wp2.py
+│   │   │   ├── vibration_plan.md
+│   │   │   ├── visualize_unit_tests.py
+│   │   │   ├── wp2_process.py
+│   │   │   ├── wp3_process.py
+│   │   │   └── wp4_process.py
+│   │   ├── timestamp/
+│   │   │   ├── config/
+│   │   │   │   ├── sensor_specs.yaml
+│   │   │   │   └── sensor_specs_corrected.yaml
+│   │   │   ├── __init__.py
+│   │   │   ├── __main__.py
+│   │   │   ├── ALIGNMENT_DEVELOPMENT_GUIDE.md
+│   │   │   ├── data_loader.py
+│   │   │   ├── FINAL_ANALYSIS_SUMMARY.md
+│   │   │   ├── main.py
+│   │   │   ├── README.md
+│   │   │   ├── report_generator.py
+│   │   │   ├── requirements.txt
+│   │   │   ├── TECHNICAL_DOCUMENTATION.md
+│   │   │   ├── timestamp_analyzer.py
+│   │   │   └── visualizer.py
+│   │   └── __init__.py
+│   ├── apps/
+│   │   ├── dashboard/
+│   │   │   ├── assets/
+│   │   │   │   └── custom_styles.css
+│   │   │   ├── app.py
+│   │   │   ├── callbacks.py
+│   │   │   ├── config.py
+│   │   │   ├── data_loader.py
+│   │   │   └── layout.py
+│   │   └── __init__.py
+│   ├── core/
+│   │   ├── __init__.py
+│   │   ├── classes.py
+│   │   ├── config.py
+│   │   ├── data_processing.py
+│   │   ├── experiment_manifest.py
+│   │   ├── experiment_manifest.yaml
+│   │   ├── import_analysis_report.json
+│   │   ├── io.py
+│   │   ├── orientation_config.yaml
+│   │   ├── paths.py
+│   │   ├── plotting.py
+│   │   ├── reorganization_summary.json
+│   │   ├── unreal_sensor_scraper.md
+│   │   └── validation_report.py
+│   ├── notebooks/
+│   │   ├── 1a_1.ipynb
+│   │   ├── Afternoon_gps.ipynb
+│   │   ├── experiment_details_real_world_data.ipynb
+│   │   └── folders.ipynb
+│   ├── plans/
+│   │   ├── alignment_and_orientation.md
+│   │   └── thesis_plan.md
+│   ├── scripts/
+│   │   ├── __init__.py
+│   │   ├── basic_timestamp_analysis.py
+│   │   ├── clean_raw_data_plots.py
+│   │   ├── dashboard_app.py
+│   │   ├── data_sync.py
+│   │   ├── data_utils.py
+│   │   ├── export_static_experiments_to_csv.py
+│   │   ├── frame_definitions.py
+│   │   ├── generate_data_plots.py
+│   │   ├── preprocess_data.py
+│   │   ├── process_all_experiments.py
+│   │   ├── repo_tree.py
+│   │   ├── run_static_orientation_analysis.py
+│   │   ├── run_timestamp_analysis_standalone.py
+│   │   ├── run_week1_complete.py
+│   │   ├── update_experiment_manifest.py
+│   │   └── validate_manifest.py
+│   └── __init__.py
+├── tests/
+│   ├── alignment/
+│   │   ├── __init__.py
+│   │   └── test_align.py
+│   ├── config/
+│   │   ├── __init__.py
+│   │   ├── test_experiment_manifest_helpers.py
+│   │   ├── test_experiment_manifest_integration.py
+│   │   └── test_experiment_manifest_unit.py
+│   ├── orientation/
+│   │   ├── __init__.py
+│   │   ├── test_fixes.py
+│   │   ├── test_orientation.py
+│   │   ├── test_orientation_simple.py
+│   │   └── test_unit_conversion.py
+│   ├── rpm_estimation/
+│   │   ├── __init__.py
+│   │   ├── test_cli.py
+│   │   ├── test_config.py
+│   │   ├── test_dataclass.py
+│   │   ├── test_fusion.py
+│   │   ├── test_imports.py
+│   │   ├── test_io.py
+│   │   ├── test_preprocessing.py
+│   │   ├── test_quality.py
+│   │   ├── test_schema.py
+│   │   ├── test_spectral.py
+│   │   ├── test_stft.py
+│   │   ├── test_wp2_processing.py
+│   │   ├── test_wp3_run.py
+│   │   └── test_wp4_integration.py
+│   ├── scripts/
+│   │   ├── __init__.py
+│   │   └── test_timestamp_analysis.py
+│   ├── timestamp/
+│   │   └── __init__.py
+│   ├── __init__.py
+│   └── conftest.py
+├── venv/ [virtual environment]
+├── CLAUDE.md
+├── generate_tree.py
+├── Makefile
+├── pyproject.toml
+├── README.md
+├── repository_tree.txt
+├── requirements.txt
+└── SETUP.md
