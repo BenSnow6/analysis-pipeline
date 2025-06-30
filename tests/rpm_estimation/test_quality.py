@@ -270,20 +270,22 @@ def test_quality_report_save(tmp_path):
     """Test saving quality report to JSON."""
     from src.analysis.rpm.quality import save_quality_report
     
-    report = {
+    # save_quality_report expects a list of reports
+    reports = [{
         'experiment': 'test',
         'session': 'morning',
         'summary': {'overall_quality': 'good'}
-    }
+    }]
     
     output_path = tmp_path / 'quality_report.json'
-    save_quality_report(report, output_path)
+    save_quality_report(reports, output_path)
     
     # Verify file exists and is valid JSON
     assert output_path.exists()
     with open(output_path) as f:
         loaded = json.load(f)
-    assert loaded['experiment'] == 'test'
+    assert len(loaded) == 1
+    assert loaded[0]['experiment'] == 'test'
 
 
 if __name__ == "__main__":
