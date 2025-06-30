@@ -1,0 +1,46 @@
+# Hovercraft Analysis Pipeline Requirements
+# Consolidated requirements for all modules
+# Python >= 3.8 required
+
+# Core scientific computing
+numpy==2.0.0          # Most restrictive from alignment_analysis
+scipy==1.11.1         # From rpm_estimation
+pandas==2.0.3         # Most restrictive from rpm_estimation
+
+# Data formats and storage
+tables>=3.8.0         # PyTables for HDF5 support
+h5py==3.9.0           # HDF5 interface
+pyarrow==12.0.1       # For Parquet support
+
+# Configuration
+PyYAML==6.0.1         # Most restrictive from rpm_estimation
+
+# Visualization
+matplotlib==3.7.2     # Most restrictive from rpm_estimation
+seaborn>=0.11.0       # From timestamp_analysis
+
+# Progress and CLI
+tqdm>=4.65.0          # Progress bars
+
+# Jupyter notebooks
+jupyter>=1.0.0        # Jupyter metapackage
+notebook>=6.5.0       # Jupyter notebook
+
+# Testing
+pytest==7.4.0         # Most restrictive from rpm_estimation
+pytest-cov==4.1.0     # Code coverage
+
+# Development tools
+black>=23.0.0         # Code formatter
+mypy>=1.0.0           # Type checker
+flake8>=6.0.0         # Linter
+isort>=5.12.0         # Import sorter
+
+# Optional development tools
+ipython>=8.0.0        # Enhanced Python shell
+ipdb>=0.13.0          # IPython debugger
+pre-commit>=3.0.0     # Git hooks framework
+
+# Documentation
+sphinx>=5.0.0         # Documentation generator
+sphinx-rtd-theme>=1.0.0  # Read the Docs theme

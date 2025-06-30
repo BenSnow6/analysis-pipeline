@@ -1,0 +1,80 @@
+# Timestamp Analysis Configuration
+# Settings for analyzing timestamp quality and synchronization
+
+# Analysis parameters
+analysis:
+  # Minimum number of samples required for meaningful analysis
+  min_samples: 100
+  
+  # Whether to automatically detect sampling rates if actual rate differs significantly
+  auto_detect_rate: true
+  
+  # Tolerance for rate detection (actual rate must be within this % of expected)
+  rate_tolerance_percent: 10
+  
+  # Window size for rolling statistics (in seconds)
+  window_size_s: 10.0
+  
+  # Number of histogram bins for jitter analysis
+  jitter_histogram_bins: 50
+
+# Quality thresholds
+quality_thresholds:
+  # Maximum acceptable clock drift in ppm (parts per million)
+  max_drift_ppm: 100
+  
+  # Maximum acceptable RMS jitter as fraction of nominal period
+  max_rms_jitter_fraction: 0.1
+  
+  # Maximum acceptable gap fraction (gaps/total_intervals)
+  max_gap_fraction: 0.01
+
+# Visualization settings
+visualization:
+  # Whether to generate plots
+  generate_plots: true
+  
+  # Plot formats to save
+  plot_formats: ["png", "pdf"]
+  
+  # DPI for raster plots
+  plot_dpi: 150
+  
+  # Figure size (width, height) in inches
+  figure_size: [12, 8]
+
+# Report generation
+reporting:
+  # Whether to generate HTML reports
+  generate_html: true
+  
+  # Whether to generate CSV summaries
+  generate_csv: true
+  
+  # Whether to generate JSON results
+  generate_json: true
+  
+  # Include detailed per-sample data in reports
+  include_detailed_data: false
+
+# Cross-sensor synchronization
+synchronization:
+  # Reference sensor for synchronization analysis
+  reference_sensor: "Sensor_3"
+  
+  # Maximum acceptable offset between sensors (ms)
+  max_offset_ms: 5.0
+  
+  # Whether to analyze cross-correlation
+  analyze_cross_correlation: true
+
+# Output settings
+output:
+  # Subdirectory for timestamp analysis results
+  results_subdir: "timestamp_analysis_results"
+  
+  # Whether to save intermediate results
+  save_intermediate: false
+  
+  # Compression for output files
+  use_compression: true

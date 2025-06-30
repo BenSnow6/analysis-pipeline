@@ -1,0 +1,135 @@
+# Hovercraft Analysis Pipeline Master Configuration
+# This is the central configuration file that references all other configs
+# Environment variables can be used with ${VARIABLE_NAME} syntax
+#
+# Updated 2025-06-24: Consolidated structure with all code in /src/
+# No longer using /code/ directory or hovercraft_analysis package structure
+
+project:
+  name: "hovercraft-analysis-pipeline"
+  version: "1.0.0"
+  description: "Analysis pipeline for hovercraft sensor data (IMU, GPS)"
+  author: "Ben Snow"
+
+# Path configuration
+# All paths support environment variable substitution
+paths:
+  # Root directories
+  project_root: "${PROJECT_ROOT:-.}"  # Default to current directory if not set
+  data_root: "${project_root}/data"
+  src_root: "${project_root}/src"
+  config_root: "${project_root}/config"
+  docs_root: "${project_root}/docs"
+  
+  # Raw data directories
+  raw_data:
+    morning: "${data_root}/raw/morning/Experiments"
+    afternoon: "${data_root}/raw/afternoon/Experiments"
+  
+  # Processed data directories
+  processed_data:
+    root: "${data_root}/processed"
+    aligned: "${processed_data.root}/aligned"
+    orientation: "${processed_data.root}/orientation"
+    rpm: "${processed_data.root}/rpm"
+    timestamp: "${processed_data.root}/timestamp"
+  
+  # Legacy paths removed after consolidation (2025-06-24)
+  
+  # Cache directory for temporary files
+  cache: "${data_root}/cache"
+
+# Configuration file references
+configs:
+  # Experiment configurations
+  experiments:
+    mapping: "${config_root}/experiments/experiment_mapping.json"
+    manifest: "${config_root}/experiments/experiment_manifest.yaml"
+    categories: "${config_root}/experiments/experiment_categories.yaml"
+  
+  # Sensor configurations
+  sensors:
+    orientations: "${config_root}/sensors/sensor_orientations.json"
+    specs: "${config_root}/sensors/sensor_specs.yaml"
+    locations_morning: "${config_root}/sensors/morning_sensor_locations.json"
+    locations_afternoon: "${config_root}/sensors/afternoon_sensor_locations.json"
+  
+  # Processing configurations
+  processing:
+    alignment: "${config_root}/processing/alignment_config.yaml"
+    orientation: "${config_root}/processing/orientation_config.yaml"
+    rpm: "${config_root}/processing/rpm_config.yaml"
+    timestamp: "${config_root}/processing/timestamp_config.yaml"
+
+# Global processing defaults
+processing:
+  # Data format preferences
+  output_formats:
+    primary: "hdf5"  # For time series data
+    secondary: "csv"  # For compatibility
+    metadata: "json"  # For supplementary information
+  
+  # Common parameters
+  parallel_processing: true
+  n_workers: -1  # Use all available cores
+  verbose: true
+  
+  # Quality control
+  quality:
+    save_qa_reports: true
+    plot_results: true
+    validation_level: "strict"  # Options: minimal, standard, strict
+  
+  # Logging
+  logging:
+    level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    file: null  # Set to path for file logging
+
+# Module-specific defaults (can be overridden by module configs)
+modules:
+  alignment:
+    enabled: true
+    output_formats: ["hdf5", "csv"]
+    save_plots: true
+    
+  orientation:
+    enabled: true
+    validate_static: true
+    validate_dynamic: true
+    
+  rpm:
+    enabled: true
+    work_packages: ["wp1", "wp2", "wp3", "wp4"]
+    save_intermediate: true
+    
+  timestamp:
+    enabled: true
+    generate_reports: true
+    plot_analysis: true
+
+# Environment-specific settings
+environments:
+  development:
+    logging.level: "DEBUG"
+    processing.verbose: true
+    processing.quality.validation_level: "strict"
+    
+  production:
+    logging.level: "WARNING"
+    processing.verbose: false
+    processing.quality.validation_level: "standard"
+    
+  testing:
+    logging.level: "INFO"
+    processing.n_workers: 1  # Single thread for reproducibility
+    paths.data_root: "${project_root}/tests/data"
+
+# Feature flags
+features:
+  use_legacy_paths: false  # Migration completed - legacy paths removed
+  validate_on_load: true   # Validate configs when loading
+  auto_create_dirs: true   # Create missing directories automatically
+  
+# Schema version for backward compatibility
+schema_version: "1.0.0"

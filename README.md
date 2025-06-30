@@ -1,82 +1,212 @@
-# Hovercraft Data Analysis Pipeline
+# Hovercraft Analysis Pipeline
 
-A data analysis pipeline for processing, analyzing, and visualizing data collected from hovercraft experiments.
+A comprehensive Python package for processing and analyzing sensor data from hovercraft experiments, including IMU, GPS, and other sensor types.
 
-## Overview
+## 🚀 Quick Start
 
-This repository contains the data and tools for analyzing hovercraft performance based on GPS and IMU sensor readings collected during various test maneuvers. Key components include:
+```bash
+# Clone the repository
+git clone <repository-url>
+cd analysis-pipeline
 
-- Raw experimental data stored in `02_Evaluation_Experiments/`.
-- A Dash web application for interactive visualization (`hovercraft_data_analysis/dashboard_app/`).
-- Supporting Python modules and potentially Jupyter notebooks for specific analyses.
+# Install in development mode
+make dev
 
-## Data Structure (`02_Evaluation_Experiments/`)
+# Run tests
+make test
 
-Experimental data is organized within the `02_Evaluation_Experiments/` directory using a nested structure:
-
-```
-Category/
-└── TimeSlot/
-    └── ExperimentRun/
-        ├── GPS/
-        │   └── *.csv (GPS data)
-        └── IMU/
-            ├── Sensor_*/
-            │   └── *.csv (IMU data for specific sensor)
-            └── ...
+# Launch the dashboard
+make run-dashboard
 ```
 
-- **Category:** Broad type of experiment (e.g., `1a_1_Minimum_Radius_Turn`).
-- **TimeSlot:** Time of day the experiment was run (e.g., `afternoon`, `morning`).
-- **ExperimentRun:** Specific instance of the experiment (e.g., `007_Fast_stbd_turn_1`).
-- **GPS/IMU:** Subdirectories containing the respective sensor data files in CSV format.
+## 📁 Repository Structure
 
-A `sensor_orientations.json` file (if present in the root) defines the orientation offsets for specific sensors used in the analysis.
+```
+analysis-pipeline/
+├── src/                      # Source code
+│   └── hovercraft_analysis/  # Main package
+│       ├── core/            # Core utilities
+│       ├── analysis/        # Analysis modules
+│       ├── apps/           # Applications (dashboard)
+│       └── scripts/        # CLI entry points
+├── config/                  # Configuration files
+│   ├── pipeline.yaml       # Master configuration
+│   ├── experiments/        # Experiment metadata
+│   ├── sensors/           # Sensor configurations
+│   └── processing/        # Processing configs
+├── data/                   # All data (gitignored)
+│   ├── raw/               # Raw experimental data
+│   ├── processed/         # Analysis outputs
+│   └── cache/             # Temporary files
+├── tests/                  # Test suite
+├── docs/                   # Documentation
+│   ├── getting_started.md  # Quick start guide
+│   ├── architecture.md     # System design
+│   ├── migration/         # Migration history
+│   └── development/       # Dev resources
+├── scripts/               # Utility scripts
+├── Makefile              # Development commands
+└── pyproject.toml        # Package configuration
+```
 
-## Visualization Dashboard (`hovercraft_data_analysis/dashboard_app/`)
+## 🛠️ Installation
 
-A Dash application provides an interactive way to explore the collected data.
+### Prerequisites
 
-**Features:**
+- Python 3.8 or higher
+- pip
+- Make (optional but recommended)
 
-- Select experiments based on their folder path.
-- View synchronized plots of GPS track and IMU sensor readings (accelerometer, gyroscope, magnetometer, orientation).
-- Select specific IMU sensors for plotting.
+### Development Installation
 
-**Running the App:**
+```bash
+# Using Make (recommended)
+make dev
 
-1.  Ensure you have the necessary Python packages installed (primarily `dash`, `plotly`, `pandas`). You might need to create a `requirements.txt` based on imports in the `dashboard_app` files.
-2.  Navigate to the repository root in your terminal.
-3.  Run the application using:
-    ```bash
-    python hovercraft_data_analysis/dashboard_app/app.py
-    ```
-4.  Open your web browser and go to the address provided (usually `http://127.0.0.1:8050/`).
+# Or manually
+pip install -e ".[dev,notebook]"
+```
 
-**Application Structure:**
+### Basic Installation
 
-- `app.py`: Main application entry point, defines the Dash app instance.
-- `config.py`: Configuration settings (e.g., path to data).
-- `data_loader.py`: Functions for finding and loading experiment data.
-- `layout.py`: Defines the structure and components of the web interface.
-- `callbacks.py`: Contains the Dash callbacks that handle user interactions and update plots.
+```bash
+# For users who just want to run the tools
+make install
 
-## Other Components
+# Or manually
+pip install -e .
+```
 
-- `src/`: May contain legacy or supplementary Python source code (check relevance).
-- `notebooks/`: May contain legacy or supplementary Jupyter notebooks (check relevance).
-- `Experimental setup/`: Contains information about the experimental hardware and setup.
-- `experiment_details_real_world_data.ipynb`: Notebook potentially detailing the experiments.
+## 📊 Features
 
-## Getting Started
+- **Data Processing**: Automatic alignment and synchronization of multi-sensor data
+- **Analysis Modules**: 
+  - Time alignment and synchronization
+  - Orientation analysis
+  - Timestamp validation
+  - RPM estimation
+- **Visualization**: Interactive web dashboard for data exploration
+- **CLI Tools**: Command-line interfaces for all major functions
+- **Quality Assurance**: Type hints, tests, and automated formatting
 
-1.  Clone the repository.
-2.  Set up a Python environment and install necessary dependencies (see Visualization Dashboard section).
-3.  Run the Dash application to visualize the data.
-4.  Explore the data structure and notebooks/source code for deeper analysis if needed.
+## 🎯 Usage
 
-## Requirements
+### Command-Line Tools
 
-- Python 3.x
-- Jupyter Notebook/Lab
-- Data analysis libraries (NumPy, Pandas, Matplotlib, etc.)
+After installation, these commands are available:
+
+```bash
+# Align sensor data for an experiment
+hovercraft-align --experiment 007_Fast_stbd_turn_1
+
+# Launch the analysis dashboard
+hovercraft-dashboard
+
+# Run timestamp analysis
+hovercraft-timestamp --experiment 016_Straight_cruise_1
+
+# Analyze sensor orientations
+hovercraft-orientation --experiment 011_Static_stbd_1
+```
+
+### Python API
+
+```python
+from hovercraft_analysis.core import load_experiment_data
+from hovercraft_analysis.analysis.alignment import align_experiment_data
+
+# Load experiment data
+data = load_experiment_data("007_Fast_stbd_turn_1", "afternoon")
+
+# Run alignment
+aligned_data = align_experiment_data("007_Fast_stbd_turn_1", "afternoon")
+```
+
+## 🧑‍💻 Development
+
+### Available Make Commands
+
+```bash
+make help         # Show all available commands
+make test         # Run tests with coverage
+make lint         # Run code quality checks
+make format       # Auto-format code
+make docs         # Build documentation
+make clean        # Remove build artifacts
+```
+
+### Code Style
+
+This project uses:
+- **Black** for code formatting
+- **isort** for import sorting
+- **flake8** for linting
+- **mypy** for type checking
+
+Run `make format` before committing to ensure consistent style.
+
+### Testing
+
+```bash
+# Run all tests with coverage
+make test
+
+# Run tests quickly (no coverage)
+make test-fast
+
+# Run specific test file
+pytest tests/test_alignment.py -v
+```
+
+## 📚 Documentation
+
+- [Getting Started Guide](docs/getting_started.md)
+- [Architecture Overview](docs/architecture.md)
+- [API Documentation](docs/api/index.html) (build with `make docs`)
+- [Migration History](docs/migration/) - Details about the codebase reorganization
+
+## 🔧 Configuration
+
+The project uses a unified configuration system. The master configuration file is located at `config/pipeline.yaml`.
+
+### Environment Variables
+
+- `HOVERCRAFT_ENV`: Set to 'development', 'production', or 'testing'
+- `PROJECT_ROOT`: Automatically detected, can be overridden
+
+### Configuration Access
+
+```python
+from hovercraft_analysis.core import get_config
+
+config = get_config()
+data_root = config.get('paths.data_root')
+```
+
+## 🤝 Contributing
+
+1. Create a feature branch
+2. Make your changes
+3. Run `make format` to format code
+4. Run `make test` to ensure tests pass
+5. Run `make lint` to check code quality
+6. Submit a pull request
+
+## 📄 License
+
+[Your license here]
+
+## 🙏 Acknowledgments
+
+This project was developed as part of an EngD thesis on hovercraft sensor data analysis.
+
+## 📞 Support
+
+For questions or issues:
+- Check the [documentation](docs/)
+- Review [existing issues](https://github.com/your-org/hovercraft-analysis/issues)
+- Create a new issue with a detailed description
+
+---
+
+**Note**: This codebase has undergone a major reorganization to follow Python best practices. For historical context, see the [migration documentation](docs/migration/).

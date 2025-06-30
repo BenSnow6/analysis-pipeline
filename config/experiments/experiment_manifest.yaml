@@ -1,0 +1,992 @@
+evaluation_experiments:
+  morning:
+  - name: 006_Departure
+    path: 1b_4_Normal_Take_off/morning/006_Departure
+    type: dynamic
+    description: Departure from port
+    category: 1b_4_Normal_Take_off
+    is_static: false
+    paths:
+      relative: morning/Experiments/006_Departure
+      full_path: /data/raw/morning/Experiments/006_Departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 007_Downwind_max_speed_1
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/morning/007_Downwind_max_speed_1
+    type: dynamic
+    description: Downwind maximum speed run 1
+    category:
+    - 1b_1_Ground_Acceleration_Time_and_Distance
+    - 1d_1_Level_Flight_Acceleration
+    is_static: false
+    paths:
+      relative: morning/Experiments/007_Downwind_max_speed_1
+      full_path: /data/raw/morning/Experiments/007_Downwind_max_speed_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 008_Into_wind_max_speed
+    path: 1d_1_Level_Flight_Acceleration/morning/008_Into_wind_max_speed
+    type: dynamic
+    description: Into wind maximum speed
+    category: 1d_1_Level_Flight_Acceleration
+    is_static: false
+    paths:
+      relative: morning/Experiments/008_Into_wind_max_speed
+      full_path: /data/raw/morning/Experiments/008_Into_wind_max_speed
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 009_Downwind_max_speed_2
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/morning/009_Downwind_max_speed_2
+    type: dynamic
+    description: Downwind maximum speed run 2
+    category:
+    - 1b_1_Ground_Acceleration_Time_and_Distance
+    - 1d_1_Level_Flight_Acceleration
+    is_static: false
+    paths:
+      relative: morning/Experiments/009_Downwind_max_speed_2
+      full_path: /data/raw/morning/Experiments/009_Downwind_max_speed_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 010_Downwind_max_speed_3
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/morning/010_Downwind_max_speed_3
+    type: dynamic
+    description: Downwind maximum speed run 3
+    category:
+    - 1b_1_Ground_Acceleration_Time_and_Distance
+    - 1d_1_Level_Flight_Acceleration
+    is_static: false
+    paths:
+      relative: morning/Experiments/010_Downwind_max_speed_3
+      full_path: /data/raw/morning/Experiments/010_Downwind_max_speed_3
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 013_Yaw_speed_3
+    path: 1b_4_Normal_Take_off/morning/013_Yaw_speed_3
+    type: dynamic
+    description: Yaw speed test 3
+    category:
+    - 1b_4_Normal_Take_off
+    - 1d_2_Level_Flight_Deceleration
+    is_static: false
+    paths:
+      relative: morning/Experiments/013_Yaw_speed_3
+      full_path: /data/raw/morning/Experiments/013_Yaw_speed_3
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 014_Floating_on_sea_and_takeoff
+    path: 1c_1_Normal_Climb_All_Engines_Operating/morning/014_Floating_on_sea_and_takeoff
+    type: mixed
+    description: Floating on sea (static) and takeoff (dynamic)
+    category: 1c_1_Normal_Climb_All_Engines_Operating
+    is_static: false
+    paths:
+      relative: morning/Experiments/014_Floating_on_sea_and_takeoff
+      full_path: /data/raw/morning/Experiments/014_Floating_on_sea_and_takeoff
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 015_Skirt_shift_turns
+    path: 1a_1_Minimum_Radius_Turn/morning/015_Skirt_shift_turns
+    type: dynamic
+    description: Skirt shift turns
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: morning/Experiments/015_Skirt_shift_turns
+      full_path: /data/raw/morning/Experiments/015_Skirt_shift_turns
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 016_Plough_in
+    path: 1c_1_Normal_Climb_All_Engines_Operating/morning/016_Plough_in
+    type: dynamic
+    description: Plough in maneuver
+    category: 1c_1_Normal_Climb_All_Engines_Operating
+    is_static: false
+    paths:
+      relative: morning/Experiments/016_Plough_in
+      full_path: /data/raw/morning/Experiments/016_Plough_in
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  afternoon:
+  - name: 007_Fast_stbd_turn_1
+    path: 1a_1_Minimum_Radius_Turn/afternoon/007_Fast_stbd_turn_1
+    type: dynamic
+    description: Fast starboard turn 1
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/007_Fast_stbd_turn_1
+      full_path: /data/raw/afternoon/Experiments/007_Fast_stbd_turn_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 009_Fast_port_turn_1
+    path: 1a_1_Minimum_Radius_Turn/afternoon/009_Fast_port_turn_1
+    type: dynamic
+    description: Fast port turn 1
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/009_Fast_port_turn_1
+      full_path: /data/raw/afternoon/Experiments/009_Fast_port_turn_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 011_Static_stbd_1
+    path: 1a_1_Minimum_Radius_Turn/afternoon/011_Static_stbd_1
+    type: static_turn
+    description: Static starboard turn 1 (may contain motion)
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/011_Static_stbd_1
+      full_path: /data/raw/afternoon/Experiments/011_Static_stbd_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 012_Static_port_1
+    path: 1a_1_Minimum_Radius_Turn/afternoon/012_Static_port_1
+    type: static_turn
+    description: Static port turn 1 (may contain motion)
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/012_Static_port_1
+      full_path: /data/raw/afternoon/Experiments/012_Static_port_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 013_Static_port_2
+    path: 1a_1_Minimum_Radius_Turn/afternoon/013_Static_port_2
+    type: static_turn
+    description: Static port turn 2 (may contain motion)
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/013_Static_port_2
+      full_path: /data/raw/afternoon/Experiments/013_Static_port_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 014_Static_stbd_2
+    path: 1a_1_Minimum_Radius_Turn/afternoon/014_Static_stbd_2
+    type: static_turn
+    description: Static starboard turn 2 (may contain motion)
+    category: 1a_1_Minimum_Radius_Turn
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/014_Static_stbd_2
+      full_path: /data/raw/afternoon/Experiments/014_Static_stbd_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 016_Straight_cruise_1
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/afternoon/016_Straight_cruise_1
+    type: dynamic
+    description: Straight cruise 1
+    category: 1b_1_Ground_Acceleration_Time_and_Distance
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/016_Straight_cruise_1
+      full_path: /data/raw/afternoon/Experiments/016_Straight_cruise_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 018_Straight_cruise_2
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/afternoon/018_Straight_cruise_2
+    type: dynamic
+    description: Straight cruise 2
+    category: 1b_1_Ground_Acceleration_Time_and_Distance
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/018_Straight_cruise_2
+      full_path: /data/raw/afternoon/Experiments/018_Straight_cruise_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 020_Straight_cruise_3
+    path: 1b_1_Ground_Acceleration_Time_and_Distance/afternoon/020_Straight_cruise_3
+    type: dynamic
+    description: Straight cruise 3
+    category: 1b_1_Ground_Acceleration_Time_and_Distance
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/020_Straight_cruise_3
+      full_path: /data/raw/afternoon/Experiments/020_Straight_cruise_3
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 021_Quarter_turn_port
+    path: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/021_Quarter_turn_port
+    type: dynamic
+    description: Quarter turn to port
+    category: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/021_Quarter_turn_port
+      full_path: /data/raw/afternoon/Experiments/021_Quarter_turn_port
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 022_Quarter_turn_stbd
+    path: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/022_Quarter_turn_stbd
+    type: dynamic
+    description: Quarter turn to starboard
+    category: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/022_Quarter_turn_stbd
+      full_path: /data/raw/afternoon/Experiments/022_Quarter_turn_stbd
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 023_Eigth_turn_port
+    path: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/023_Eigth_turn_port
+    type: dynamic
+    description: Eighth turn to port
+    category: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/023_Eigth_turn_port
+      full_path: /data/raw/afternoon/Experiments/023_Eigth_turn_port
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 024_Eigth_turn_stbd
+    path: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle/afternoon/024_Eigth_turn_stbd
+    type: dynamic
+    description: Eighth turn to starboard
+    category: 1a_2_Rate_of_Turn_vs_Nosewheel_Steering_Angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/024_Eigth_turn_stbd
+      full_path: /data/raw/afternoon/Experiments/024_Eigth_turn_stbd
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 026_Engine_rpm_sweep
+    path: 1b_4_Normal_Take_off/afternoon/026_Engine_rpm_sweep
+    type: mixed
+    description: Engine RPM sweep (contains static periods)
+    category: 1b_4_Normal_Take_off
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/026_Engine_rpm_sweep
+      full_path: /data/raw/afternoon/Experiments/026_Engine_rpm_sweep
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+static_experiments:
+  morning:
+  - name: 002_Setup
+    path: all_expts/morning/Experiments/002_Setup
+    description: Initial setup - sensors installed and waiting
+    is_static: true
+    paths:
+      relative: morning/Experiments/002_Setup
+      full_path: /data/raw/morning/Experiments/002_Setup
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 004_Setup_2
+    path: all_expts/morning/Experiments/004_Setup_2
+    description: Second setup period
+    is_static: true
+    paths:
+      relative: morning/Experiments/004_Setup_2
+      full_path: /data/raw/morning/Experiments/004_Setup_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 001_Synchronisation
+    path: data/raw/morning/Experiments/001_Synchronisation
+    type: unknown
+    description: 001 Synchronisation
+    is_static: true
+    paths:
+      relative: morning/Experiments/001_Synchronisation
+      full_path: /data/raw/morning/Experiments/001_Synchronisation
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  afternoon:
+  - name: 002_Setup
+    path: all_expts/afternoon/Experiments/002_Setup
+    description: Initial setup - sensors installed and waiting
+    is_static: true
+    paths:
+      relative: afternoon/Experiments/002_Setup
+      full_path: /data/raw/afternoon/Experiments/002_Setup
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 003_Waiting_for_departure
+    path: all_expts/afternoon/Experiments/003_Waiting_for_departure
+    description: Waiting for departure - static on ground
+    is_static: true
+    paths:
+      relative: afternoon/Experiments/003_Waiting_for_departure
+      full_path: /data/raw/afternoon/Experiments/003_Waiting_for_departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 010_Waiting_for_static_turns
+    path: all_expts/afternoon/Experiments/010_Waiting_for_static_turns
+    description: Waiting between static turn experiments
+    is_static: true
+    paths:
+      relative: afternoon/Experiments/010_Waiting_for_static_turns
+      full_path: /data/raw/afternoon/Experiments/010_Waiting_for_static_turns
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 001_Synchronisation
+    path: data/raw/afternoon/Experiments/001_Synchronisation
+    type: unknown
+    description: 001 Synchronisation
+    is_static: true
+    paths:
+      relative: afternoon/Experiments/001_Synchronisation
+      full_path: /data/raw/afternoon/Experiments/001_Synchronisation
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 030_Post_flight_sync
+    path: data/raw/afternoon/Experiments/030_Post_flight_sync
+    type: unknown
+    description: 030 Post flight sync
+    is_static: true
+    paths:
+      relative: afternoon/Experiments/030_Post_flight_sync
+      full_path: /data/raw/afternoon/Experiments/030_Post_flight_sync
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+analysis_config:
+  separate_sessions: true
+  orientation_validation_experiments:
+    morning:
+    - 002_Setup
+    - 004_Setup_2
+    afternoon:
+    - 002_Setup
+    - 003_Waiting_for_departure
+  bias_correction:
+    morning: Calculate from morning static experiments
+    afternoon: Calculate from afternoon static experiments
+all_experiments:
+  morning:
+  - name: 003_Rudder_Cals
+    path: data/raw/morning/Experiments/003_Rudder_Cals
+    type: unknown
+    description: 003 Rudder Cals
+    is_static: false
+    paths:
+      relative: morning/Experiments/003_Rudder_Cals
+      full_path: /data/raw/morning/Experiments/003_Rudder_Cals
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 005_Pre_flight_engine_turn_on
+    path: data/raw/morning/Experiments/005_Pre_flight_engine_turn_on
+    type: unknown
+    description: 005 Pre flight engine turn on
+    is_static: false
+    paths:
+      relative: morning/Experiments/005_Pre_flight_engine_turn_on
+      full_path: /data/raw/morning/Experiments/005_Pre_flight_engine_turn_on
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 011_Yaw_speed_1
+    path: data/raw/morning/Experiments/011_Yaw_speed_1
+    type: unknown
+    description: 011 Yaw speed 1
+    is_static: false
+    paths:
+      relative: morning/Experiments/011_Yaw_speed_1
+      full_path: /data/raw/morning/Experiments/011_Yaw_speed_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 012_Yaw_speed_2
+    path: data/raw/morning/Experiments/012_Yaw_speed_2
+    type: unknown
+    description: 012 Yaw speed 2
+    is_static: false
+    paths:
+      relative: morning/Experiments/012_Yaw_speed_2
+      full_path: /data/raw/morning/Experiments/012_Yaw_speed_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 017_Return_to_Ryde
+    path: data/raw/morning/Experiments/017_Return_to_Ryde
+    type: unknown
+    description: 017 Return to Ryde
+    is_static: false
+    paths:
+      relative: morning/Experiments/017_Return_to_Ryde
+      full_path: /data/raw/morning/Experiments/017_Return_to_Ryde
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 003_Rudder_Cals
+    path: data/raw/morning/Experiments/003_Rudder_Cals
+    type: unknown
+    description: 003 Rudder Cals
+    is_static: false
+    paths:
+      relative: morning/Experiments/003_Rudder_Cals
+      full_path: /data/raw/morning/Experiments/003_Rudder_Cals
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 005_Pre_flight_engine_turn_on
+    path: data/raw/morning/Experiments/005_Pre_flight_engine_turn_on
+    type: unknown
+    description: 005 Pre flight engine turn on
+    is_static: false
+    paths:
+      relative: morning/Experiments/005_Pre_flight_engine_turn_on
+      full_path: /data/raw/morning/Experiments/005_Pre_flight_engine_turn_on
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 011_Yaw_speed_1
+    path: data/raw/morning/Experiments/011_Yaw_speed_1
+    type: unknown
+    description: 011 Yaw speed 1
+    is_static: false
+    paths:
+      relative: morning/Experiments/011_Yaw_speed_1
+      full_path: /data/raw/morning/Experiments/011_Yaw_speed_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 012_Yaw_speed_2
+    path: data/raw/morning/Experiments/012_Yaw_speed_2
+    type: unknown
+    description: 012 Yaw speed 2
+    is_static: false
+    paths:
+      relative: morning/Experiments/012_Yaw_speed_2
+      full_path: /data/raw/morning/Experiments/012_Yaw_speed_2
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 017_Return_to_Ryde
+    path: data/raw/morning/Experiments/017_Return_to_Ryde
+    type: unknown
+    description: 017 Return to Ryde
+    is_static: false
+    paths:
+      relative: morning/Experiments/017_Return_to_Ryde
+      full_path: /data/raw/morning/Experiments/017_Return_to_Ryde
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  afternoon:
+  - name: 004_Seaway_departure
+    path: data/raw/afternoon/Experiments/004_Seaway_departure
+    type: unknown
+    description: 004 Seaway departure
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/004_Seaway_departure
+      full_path: /data/raw/afternoon/Experiments/004_Seaway_departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 005_Departure
+    path: data/raw/afternoon/Experiments/005_Departure
+    type: unknown
+    description: 005 Departure
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/005_Departure
+      full_path: /data/raw/afternoon/Experiments/005_Departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 006_Departure_cruise
+    path: data/raw/afternoon/Experiments/006_Departure_cruise
+    type: unknown
+    description: 006 Departure cruise
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/006_Departure_cruise
+      full_path: /data/raw/afternoon/Experiments/006_Departure_cruise
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 008_Interesting_roll_angle
+    path: data/raw/afternoon/Experiments/008_Interesting_roll_angle
+    type: unknown
+    description: 008 Interesting roll angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/008_Interesting_roll_angle
+      full_path: /data/raw/afternoon/Experiments/008_Interesting_roll_angle
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 015_Intermediate_travel
+    path: data/raw/afternoon/Experiments/015_Intermediate_travel
+    type: unknown
+    description: 015 Intermediate travel
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/015_Intermediate_travel
+      full_path: /data/raw/afternoon/Experiments/015_Intermediate_travel
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 017_Slight_turn_1
+    path: data/raw/afternoon/Experiments/017_Slight_turn_1
+    type: unknown
+    description: 017 Slight turn 1
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/017_Slight_turn_1
+      full_path: /data/raw/afternoon/Experiments/017_Slight_turn_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 019_Turn_stbd_1
+    path: data/raw/afternoon/Experiments/019_Turn_stbd_1
+    type: unknown
+    description: 019 Turn stbd 1
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/019_Turn_stbd_1
+      full_path: /data/raw/afternoon/Experiments/019_Turn_stbd_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 025_Tavel_to_sweep
+    path: data/raw/afternoon/Experiments/025_Tavel_to_sweep
+    type: unknown
+    description: 025 Tavel to sweep
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/025_Tavel_to_sweep
+      full_path: /data/raw/afternoon/Experiments/025_Tavel_to_sweep
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 027_Interim
+    path: data/raw/afternoon/Experiments/027_Interim
+    type: unknown
+    description: 027 Interim
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/027_Interim
+      full_path: /data/raw/afternoon/Experiments/027_Interim
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 028_Return_to_ryde
+    path: data/raw/afternoon/Experiments/028_Return_to_ryde
+    type: unknown
+    description: 028 Return to ryde
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/028_Return_to_ryde
+      full_path: /data/raw/afternoon/Experiments/028_Return_to_ryde
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 029_Engine_off_clean_up
+    path: data/raw/afternoon/Experiments/029_Engine_off_clean_up
+    type: unknown
+    description: 029 Engine off clean up
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/029_Engine_off_clean_up
+      full_path: /data/raw/afternoon/Experiments/029_Engine_off_clean_up
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 004_Seaway_departure
+    path: data/raw/afternoon/Experiments/004_Seaway_departure
+    type: unknown
+    description: 004 Seaway departure
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/004_Seaway_departure
+      full_path: /data/raw/afternoon/Experiments/004_Seaway_departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 005_Departure
+    path: data/raw/afternoon/Experiments/005_Departure
+    type: unknown
+    description: 005 Departure
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/005_Departure
+      full_path: /data/raw/afternoon/Experiments/005_Departure
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 006_Departure_cruise
+    path: data/raw/afternoon/Experiments/006_Departure_cruise
+    type: unknown
+    description: 006 Departure cruise
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/006_Departure_cruise
+      full_path: /data/raw/afternoon/Experiments/006_Departure_cruise
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 008_Interesting_roll_angle
+    path: data/raw/afternoon/Experiments/008_Interesting_roll_angle
+    type: unknown
+    description: 008 Interesting roll angle
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/008_Interesting_roll_angle
+      full_path: /data/raw/afternoon/Experiments/008_Interesting_roll_angle
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 015_Intermediate_travel
+    path: data/raw/afternoon/Experiments/015_Intermediate_travel
+    type: unknown
+    description: 015 Intermediate travel
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/015_Intermediate_travel
+      full_path: /data/raw/afternoon/Experiments/015_Intermediate_travel
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 017_Slight_turn_1
+    path: data/raw/afternoon/Experiments/017_Slight_turn_1
+    type: unknown
+    description: 017 Slight turn 1
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/017_Slight_turn_1
+      full_path: /data/raw/afternoon/Experiments/017_Slight_turn_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 019_Turn_stbd_1
+    path: data/raw/afternoon/Experiments/019_Turn_stbd_1
+    type: unknown
+    description: 019 Turn stbd 1
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/019_Turn_stbd_1
+      full_path: /data/raw/afternoon/Experiments/019_Turn_stbd_1
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 025_Tavel_to_sweep
+    path: data/raw/afternoon/Experiments/025_Tavel_to_sweep
+    type: unknown
+    description: 025 Tavel to sweep
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/025_Tavel_to_sweep
+      full_path: /data/raw/afternoon/Experiments/025_Tavel_to_sweep
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 027_Interim
+    path: data/raw/afternoon/Experiments/027_Interim
+    type: unknown
+    description: 027 Interim
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/027_Interim
+      full_path: /data/raw/afternoon/Experiments/027_Interim
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 028_Return_to_ryde
+    path: data/raw/afternoon/Experiments/028_Return_to_ryde
+    type: unknown
+    description: 028 Return to ryde
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/028_Return_to_ryde
+      full_path: /data/raw/afternoon/Experiments/028_Return_to_ryde
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
+  - name: 029_Engine_off_clean_up
+    path: data/raw/afternoon/Experiments/029_Engine_off_clean_up
+    type: unknown
+    description: 029 Engine off clean up
+    is_static: false
+    paths:
+      relative: afternoon/Experiments/029_Engine_off_clean_up
+      full_path: /data/raw/afternoon/Experiments/029_Engine_off_clean_up
+    data_types:
+    - GPS
+    - Sensor_3
+    - Sensor_4
+    - Sensor_5
+    - Sensor_wb
+    - Sensor_wnb
