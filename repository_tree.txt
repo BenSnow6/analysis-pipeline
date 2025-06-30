@@ -2081,6 +2081,22 @@ analysis-pipeline/
 │   │   ├── current_validation_findings.md
 │   │   └── manifest_validation.md
 │   ├── development/
+│   │   ├── alignment/
+│   │   │   └── WEEK1_CHECKLIST.md
+│   │   ├── core/
+│   │   │   └── unreal_sensor_scraper.md
+│   │   ├── orientation/
+│   │   ├── plans/
+│   │   │   ├── alignment_and_orientation.md
+│   │   │   └── thesis_plan.md
+│   │   ├── rpm/
+│   │   │   ├── DEVELOPMENT_CHECKLIST.md
+│   │   │   └── vibration_plan.md
+│   │   ├── scripts/
+│   │   │   ├── debug_interpolation_guide.md
+│   │   │   └── README.md
+│   │   ├── timestamp/
+│   │   │   └── ALIGNMENT_DEVELOPMENT_GUIDE.md
 │   │   ├── dependencies.dot
 │   │   ├── dependencies_mermaid.md
 │   │   └── dependency_analysis.md
@@ -2088,29 +2104,75 @@ analysis-pipeline/
 │   │   ├── experiment_list.md
 │   │   └── plotting_requirements.md
 │   ├── migration/
+│   │   ├── scripts/
+│   │   │   ├── test_phase2_imports.py
+│   │   │   └── update_imports_phase2.py
 │   │   ├── CLEANUP_SUMMARY.md
+│   │   ├── FINAL_MIGRATION_SUMMARY.md
+│   │   ├── MIGRATION_CHECKLIST.md
 │   │   ├── MIGRATION_COMPLETION_SUMMARY.md
 │   │   ├── MIGRATION_CONTINUATION_NOTES.md
 │   │   ├── REORGANIZATION_SUMMARY.md
-│   │   └── REPOSITORY_REORGANIZATION_GUIDE.md
+│   │   ├── REPOSITORY_REORGANIZATION_GUIDE.md
+│   │   ├── REPOSITORY_RESTRUCTURE_SUMMARY.md
+│   │   └── RPM_DOCS_MIGRATION_SUMMARY.md
 │   ├── results/
 │   │   ├── alignment/
+│   │   │   ├── alignment_consistency_007_Fast_stbd_turn_1.png
+│   │   │   ├── alignment_consistency_016_Straight_cruise_1.png
+│   │   │   ├── alignment_consistency_021_Quarter_turn_port.png
+│   │   │   ├── ALIGNMENT_METHODOLOGY_RESULTS.md
+│   │   │   ├── alignment_quality_007_Fast_stbd_turn_1.png
+│   │   │   ├── alignment_quality_016_Straight_cruise_1.png
+│   │   │   ├── alignment_quality_021_Quarter_turn_port.png
+│   │   │   └── README.md
 │   │   ├── attitude_estimation/
 │   │   ├── orientation/
+│   │   │   ├── CURRENT_STATUS_ANALYSIS.md
+│   │   │   ├── FIXES_IMPLEMENTED.md
+│   │   │   ├── NEXT_ACTIONS.md
+│   │   │   ├── orientation_analysis_status.md
+│   │   │   ├── ORIENTATION_ANALYSIS_SUMMARY.md
+│   │   │   ├── orientation_exploration_issues.md
+│   │   │   ├── ORIENTATION_FIXES_SUMMARY.md
+│   │   │   ├── README.md
+│   │   │   └── START_HERE_ORIENTATION_STATUS.md
 │   │   ├── raw_data_analysis/
 │   │   ├── rpm_estimation/
 │   │   │   ├── wp0_exploration/
+│   │   │   │   └── WP0_PLAN.md
 │   │   │   ├── wp1_preprocessing/
+│   │   │   │   ├── WP1_README.md
+│   │   │   │   └── WP1_SANITY_CHECK_RESULTS.md
 │   │   │   ├── wp2_peak_detection/
+│   │   │   │   ├── WP2_IMPLEMENTATION_SUMMARY.md
+│   │   │   │   ├── WP2_README.md
+│   │   │   │   └── WP2_SANITY_CHECK_RESULTS.md
 │   │   │   ├── wp3_stft/
-│   │   │   │   └── wp3_done.flag
+│   │   │   │   ├── WP3_COMPLETION_SUMMARY.md
+│   │   │   │   ├── wp3_done.flag
+│   │   │   │   ├── WP3_PLAN.md
+│   │   │   │   └── WP3_README.md
 │   │   │   ├── wp4_fusion/
-│   │   │   │   └── wp4_done.flag
-│   │   │   └── wp5-7_future/
+│   │   │   │   ├── WP4_COMPLETION_SUMMARY.md
+│   │   │   │   ├── wp4_done.flag
+│   │   │   │   ├── WP4_IMPLEMENTATION_SUMMARY.md
+│   │   │   │   ├── WP4_PLAN.md
+│   │   │   │   ├── WP4_README.md
+│   │   │   │   ├── WP4_READY.md
+│   │   │   │   └── WP4_TESTING_ACTION_PLAN.md
+│   │   │   ├── wp5-7_future/
+│   │   │   └── README.md
 │   │   ├── steering/
+│   │   ├── timestamp/
+│   │   │   ├── FINAL_ANALYSIS_SUMMARY.md
+│   │   │   ├── README.md
+│   │   │   └── TECHNICAL_DOCUMENTATION.md
 │   │   ├── timestamp_analysis/
 │   │   ├── validation/
 │   │   └── README.md
+│   ├── testing/
+│   │   └── failing-tests-analysis.md
 │   ├── _tree.md
 │   ├── architecture.md
 │   ├── conf.py
@@ -2133,9 +2195,6 @@ analysis-pipeline/
 │   ├── Chapter_4_plan.md
 │   ├── Chapter_5_plan.md
 │   └── Hovercraft_simulator_documentation.md
-├── scripts/
-│   ├── test_phase2_imports.py
-│   └── update_imports_phase2.py
 ├── src/
 │   ├── analysis/
 │   │   ├── alignment/
@@ -2143,14 +2202,6 @@ analysis-pipeline/
 │   │   │   ├── align.py
 │   │   │   ├── align_additional_all.py
 │   │   │   ├── align_additional_data.py
-│   │   │   ├── alignment_config.yaml
-│   │   │   ├── alignment_consistency_007_Fast_stbd_turn_1.png
-│   │   │   ├── alignment_consistency_016_Straight_cruise_1.png
-│   │   │   ├── alignment_consistency_021_Quarter_turn_port.png
-│   │   │   ├── ALIGNMENT_METHODOLOGY_RESULTS.md
-│   │   │   ├── alignment_quality_007_Fast_stbd_turn_1.png
-│   │   │   ├── alignment_quality_016_Straight_cruise_1.png
-│   │   │   ├── alignment_quality_021_Quarter_turn_port.png
 │   │   │   ├── analyze_alignment_simple.py
 │   │   │   ├── convert_hdf5_compat.py
 │   │   │   ├── debug_align.ipynb
@@ -2158,10 +2209,8 @@ analysis-pipeline/
 │   │   │   ├── export_static_to_csv.py
 │   │   │   ├── export_to_csv.py
 │   │   │   ├── plot_alignment_simple.py
-│   │   │   ├── README.md
 │   │   │   ├── requirements.txt
-│   │   │   ├── run_alignment.py
-│   │   │   └── WEEK1_CHECKLIST.md
+│   │   │   └── run_alignment.py
 │   │   ├── orientation/
 │   │   │   ├── __init__.py
 │   │   │   ├── add_gyro_to_csv.py
@@ -2174,54 +2223,20 @@ analysis-pipeline/
 │   │   │   ├── check_rotation_matrix.py
 │   │   │   ├── check_sensor3_orientation.py
 │   │   │   ├── check_sensor5_orientation.py
-│   │   │   ├── CURRENT_STATUS_ANALYSIS.md
 │   │   │   ├── debug_orientation.py
 │   │   │   ├── debug_rotation_validation.py
 │   │   │   ├── deduce_sensor_orientation.py
 │   │   │   ├── dynamic_validator.py
-│   │   │   ├── FIXES_IMPLEMENTED.md
-│   │   │   ├── NEXT_ACTIONS.md
-│   │   │   ├── orientation_analysis_status.md
-│   │   │   ├── ORIENTATION_ANALYSIS_SUMMARY.md
 │   │   │   ├── orientation_check.py
-│   │   │   ├── orientation_config.yaml
-│   │   │   ├── orientation_exploration_issues.md
-│   │   │   ├── ORIENTATION_FIXES_SUMMARY.md
 │   │   │   ├── plot_orientation.py
-│   │   │   ├── README.md
 │   │   │   ├── rotation_validator.py
 │   │   │   ├── run_orientation.py
-│   │   │   ├── START_HERE_ORIENTATION_STATUS.md
 │   │   │   └── static_detector.py
 │   │   ├── rpm/
-│   │   │   ├── docs/
-│   │   │   │   └── work_packages/
-│   │   │   │       ├── wp0/
-│   │   │   │       │   └── WP0_PLAN.md
-│   │   │   │       ├── wp1/
-│   │   │   │       │   ├── WP1_README.md
-│   │   │   │       │   └── WP1_SANITY_CHECK_RESULTS.md
-│   │   │   │       ├── wp2/
-│   │   │   │       │   ├── WP2_IMPLEMENTATION_SUMMARY.md
-│   │   │   │       │   ├── WP2_README.md
-│   │   │   │       │   └── WP2_SANITY_CHECK_RESULTS.md
-│   │   │   │       ├── wp3/
-│   │   │   │       │   ├── WP3_COMPLETION_SUMMARY.md
-│   │   │   │       │   ├── WP3_PLAN.md
-│   │   │   │       │   └── WP3_README.md
-│   │   │   │       └── wp4/
-│   │   │   │           ├── WP4_COMPLETION_SUMMARY.md
-│   │   │   │           ├── WP4_IMPLEMENTATION_SUMMARY.md
-│   │   │   │           ├── WP4_PLAN.md
-│   │   │   │           ├── WP4_README.md
-│   │   │   │           ├── WP4_READY.md
-│   │   │   │           └── WP4_TESTING_ACTION_PLAN.md
-│   │   │   ├── results/
 │   │   │   ├── __init__.py
 │   │   │   ├── check_wp2_results.py
 │   │   │   ├── cli.py
 │   │   │   ├── create_unit_test_summary.py
-│   │   │   ├── DEVELOPMENT_CHECKLIST.md
 │   │   │   ├── fusion.py
 │   │   │   ├── generate_wp3_test_plots.py
 │   │   │   ├── io.py
@@ -2229,16 +2244,13 @@ analysis-pipeline/
 │   │   │   ├── preprocess.py
 │   │   │   ├── pytest.ini
 │   │   │   ├── quality.py
-│   │   │   ├── README.md
 │   │   │   ├── requirements.txt
-│   │   │   ├── rpm_config.yaml
 │   │   │   ├── run_wp2_tests.py
 │   │   │   ├── run_wp3_simple.py
 │   │   │   ├── schema.py
 │   │   │   ├── spectral.py
 │   │   │   ├── tracking.py
 │   │   │   ├── validate_wp2.py
-│   │   │   ├── vibration_plan.md
 │   │   │   ├── visualize_unit_tests.py
 │   │   │   ├── wp2_process.py
 │   │   │   ├── wp3_process.py
@@ -2249,14 +2261,10 @@ analysis-pipeline/
 │   │   │   │   └── sensor_specs_corrected.yaml
 │   │   │   ├── __init__.py
 │   │   │   ├── __main__.py
-│   │   │   ├── ALIGNMENT_DEVELOPMENT_GUIDE.md
 │   │   │   ├── data_loader.py
-│   │   │   ├── FINAL_ANALYSIS_SUMMARY.md
 │   │   │   ├── main.py
-│   │   │   ├── README.md
 │   │   │   ├── report_generator.py
 │   │   │   ├── requirements.txt
-│   │   │   ├── TECHNICAL_DOCUMENTATION.md
 │   │   │   ├── timestamp_analyzer.py
 │   │   │   └── visualizer.py
 │   │   └── __init__.py
@@ -2279,11 +2287,9 @@ analysis-pipeline/
 │   │   ├── experiment_manifest.yaml
 │   │   ├── import_analysis_report.json
 │   │   ├── io.py
-│   │   ├── orientation_config.yaml
 │   │   ├── paths.py
 │   │   ├── plotting.py
 │   │   ├── reorganization_summary.json
-│   │   ├── unreal_sensor_scraper.md
 │   │   └── validation_report.py
 │   ├── notebooks/
 │   │   ├── 1a_1.ipynb
@@ -2291,8 +2297,6 @@ analysis-pipeline/
 │   │   ├── experiment_details_real_world_data.ipynb
 │   │   └── folders.ipynb
 │   ├── plans/
-│   │   ├── alignment_and_orientation.md
-│   │   └── thesis_plan.md
 │   ├── scripts/
 │   │   ├── __init__.py
 │   │   ├── basic_timestamp_analysis.py
@@ -2300,9 +2304,13 @@ analysis-pipeline/
 │   │   ├── dashboard_app.py
 │   │   ├── data_sync.py
 │   │   ├── data_utils.py
+│   │   ├── debug_interpolation.py
 │   │   ├── export_static_experiments_to_csv.py
 │   │   ├── frame_definitions.py
 │   │   ├── generate_data_plots.py
+│   │   ├── migrate_all_docs.py
+│   │   ├── migrate_configs.py
+│   │   ├── migrate_rpm_docs.py
 │   │   ├── preprocess_data.py
 │   │   ├── process_all_experiments.py
 │   │   ├── repo_tree.py
@@ -2310,7 +2318,9 @@ analysis-pipeline/
 │   │   ├── run_timestamp_analysis_standalone.py
 │   │   ├── run_week1_complete.py
 │   │   ├── update_experiment_manifest.py
-│   │   └── validate_manifest.py
+│   │   ├── update_old_paths.py
+│   │   ├── validate_manifest.py
+│   │   └── validate_structure.py
 │   └── __init__.py
 ├── tests/
 │   ├── alignment/
@@ -2356,6 +2366,7 @@ analysis-pipeline/
 ├── Makefile
 ├── pyproject.toml
 ├── README.md
+├── REPOSITORY_STRUCTURE.md
 ├── repository_tree.txt
 ├── requirements.txt
 └── SETUP.md
