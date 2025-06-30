@@ -111,8 +111,8 @@ hovercraft-orientation --experiment 011_Static_stbd_1
 ### Python API
 
 ```python
-from hovercraft_analysis.core import load_experiment_data
-from hovercraft_analysis.analysis.alignment import align_experiment_data
+from src.core import load_experiment_data
+from src.analysis.alignment import align_experiment_data
 
 # Load experiment data
 data = load_experiment_data("007_Fast_stbd_turn_1", "afternoon")
@@ -176,7 +176,7 @@ The project uses a unified configuration system. The master configuration file i
 ### Configuration Access
 
 ```python
-from hovercraft_analysis.core import get_config
+from src.core import get_config
 
 config = get_config()
 data_root = config.get('paths.data_root')

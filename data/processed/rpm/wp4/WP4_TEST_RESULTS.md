@@ -25,7 +25,7 @@
 
 ### Test 2.1: Dynamic Maneuver (007_Fast_stbd_turn_1)
 
-**Command**: `python -m code.rpm_estimation.cli --wp 4 --exp 007_Fast_stbd_turn_1 --session afternoon --plot`
+**Command**: `python -m src.analysis.rpm.cli --wp 4 --exp 007_Fast_stbd_turn_1 --session afternoon --plot`
 
 **Results**:
 - ✅ Fusion completed successfully

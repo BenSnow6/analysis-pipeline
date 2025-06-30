@@ -55,11 +55,10 @@ The dashboard will be available at http://localhost:8050
 analysis-pipeline/
 ├── config/           # Configuration files
 ├── src/              # Source code
-│   ├── core/
-│       ├── core/     # Core utilities
-│       ├── analysis/ # Analysis modules
-│       ├── apps/     # Applications (dashboard)
-│       └── scripts/  # CLI scripts
+│   ├── core/         # Core utilities
+│   ├── analysis/     # Analysis modules
+│   ├── apps/         # Applications (dashboard)
+│   └── scripts/      # CLI scripts
 ├── data/             # Experimental data
 │   ├── raw/          # Raw sensor data
 │   └── processed/    # Processed outputs

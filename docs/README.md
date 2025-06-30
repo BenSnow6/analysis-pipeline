@@ -6,13 +6,13 @@ A data analysis pipeline for processing, analyzing, and visualizing data collect
 
 This repository contains the data and tools for analyzing hovercraft performance based on GPS and IMU sensor readings collected during various test maneuvers. Key components include:
 
-- Raw experimental data stored in `02_Evaluation_Experiments/`.
-- A Dash web application for interactive visualization (`hovercraft_data_analysis/dashboard_app/`).
+- Raw experimental data stored in `/data/raw/`.
+- A Dash web application for interactive visualization (`/src/apps/dashboard/`).
 - Supporting Python modules and potentially Jupyter notebooks for specific analyses.
 
-## Data Structure (`02_Evaluation_Experiments/`)
+## Data Structure (`/data/raw/`)
 
-Experimental data is organized within the `02_Evaluation_Experiments/` directory using a nested structure:
+Experimental data is organized within the `/data/raw/` directory using a nested structure:
 
 ```
 Category/

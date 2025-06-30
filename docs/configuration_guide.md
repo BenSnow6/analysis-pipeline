@@ -223,7 +223,7 @@ If you have code using old hardcoded paths:
 
 ```python
 # Old way (don't do this)
-data_path = "../../02_Evaluation_Experiments/afternoon/007_Fast_stbd_turn_1"
+data_path = "../data/raw/afternoon/Experiments/007_Fast_stbd_turn_1"
 
 # New way
 from src.core import get_experiment_path
