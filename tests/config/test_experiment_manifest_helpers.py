@@ -242,14 +242,31 @@ class TestHelperFunctions:
         exp['data_types'] = ['GPS', 'Sensor_wb', 'Sensor_wnb']
         folders = get_expected_data_folders(exp)
         
+        # Since these are mock paths that don't exist, the function will
+        # default to direct paths for morning sessions (no session specified)
         expected_paths = [
+            ('GPS', Path('/test/path/GPS')),
+            ('Sensor_wb', Path('/test/path/Sensor_wb')),
+            ('Sensor_wnb', Path('/test/path/Sensor_wnb'))
+        ]
+        
+        assert len(folders) == 3
+        for (dtype, path), (exp_dtype, exp_path) in zip(folders, expected_paths):
+            assert dtype == exp_dtype
+            assert path == exp_path
+            
+        # Test with afternoon session (should default to IMU paths)
+        exp['session'] = 'afternoon'
+        folders = get_expected_data_folders(exp)
+        
+        expected_paths_afternoon = [
             ('GPS', Path('/test/path/GPS')),
             ('Sensor_wb', Path('/test/path/IMU/Sensor_wb')),
             ('Sensor_wnb', Path('/test/path/IMU/Sensor_wnb'))
         ]
         
         assert len(folders) == 3
-        for (dtype, path), (exp_dtype, exp_path) in zip(folders, expected_paths):
+        for (dtype, path), (exp_dtype, exp_path) in zip(folders, expected_paths_afternoon):
             assert dtype == exp_dtype
             assert path == exp_path
     

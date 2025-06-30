@@ -381,7 +381,23 @@ def get_expected_data_folders(experiment: dict) -> List[Tuple[str, Path]]:
         if data_type == 'GPS':
             data_folders.append((data_type, exp_path / 'GPS'))
         elif data_type.startswith('Sensor_'):
-            sensor_id = data_type.split('_')[1].lower()
-            data_folders.append((data_type, exp_path / 'IMU' / f'Sensor_{sensor_id}'))
+            # Check both possible locations for sensor data
+            # Morning experiments: directly under experiment directory
+            # Afternoon experiments: under IMU subdirectory
+            direct_path = exp_path / data_type
+            imu_path = exp_path / 'IMU' / data_type
+            
+            # Use whichever exists, preferring IMU subdirectory if both exist
+            if imu_path.exists():
+                data_folders.append((data_type, imu_path))
+            elif direct_path.exists():
+                data_folders.append((data_type, direct_path))
+            else:
+                # Default to IMU path for afternoon, direct path for morning
+                session = experiment.get('session', 'morning')
+                if session == 'afternoon':
+                    data_folders.append((data_type, imu_path))
+                else:
+                    data_folders.append((data_type, direct_path))
     
     return data_folders

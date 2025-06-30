@@ -136,16 +136,21 @@ class TestDataAligner:
             'x': np.zeros_like(ref_times)
         })
         
-        # Add 3ms drift to sensor_4
+        # Add drift to both non-reference sensors
         sensor_4 = pd.DataFrame({
+            'time_from_sync': ref_times + 0.002,  # 2ms offset
+            'x': np.zeros_like(ref_times)
+        })
+        
+        sensor_5 = pd.DataFrame({
             'time_from_sync': ref_times + 0.003,  # 3ms offset
             'x': np.zeros_like(ref_times)
         })
         
-        data = {'sensor_3': sensor_3, 'sensor_4': sensor_4}
+        data = {'sensor_3': sensor_3, 'sensor_4': sensor_4, 'sensor_5': sensor_5}
         
         # This should raise an assertion error due to cross-sensor validation
-        with pytest.raises(AssertionError, match="Cross-sensor offset.*exceeds.*limit"):
+        with pytest.raises(AssertionError, match="Cross-sensor time difference.*exceeds tolerance"):
             aligner.align_all_sensors(data)
     
     def test_output_lengths(self, temp_config, sample_data):
