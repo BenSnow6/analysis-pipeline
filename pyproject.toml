@@ -24,17 +24,17 @@ classifiers = [
 
 dependencies = [
     # Core scientific computing
-    "numpy==1.24.4",
-    "scipy==1.10.1",
-    "pandas==2.0.3",
+    "numpy>=1.26.0",  # Python 3.12 support
+    "scipy>=1.11.0",  # Python 3.12 support
+    "pandas>=2.1.0",  # Python 3.12 support
     
     # Data formats
-    "tables>=3.8.0,<3.10",  # 3.10+ requires Python 3.10+
+    "tables>=3.8.0",  # No upper bound needed for Python 3.12
     "h5py>=2.9.0",
     "pyarrow>=10.0.0,<17.0.0",  # Later versions may have compatibility issues
     
     # Visualization
-    "matplotlib==3.7.2",
+    "matplotlib>=3.8.0",  # Python 3.12 support
     "seaborn>=0.13.2",
     "plotly>=5.0",
     
