@@ -172,9 +172,9 @@ class RotationValidator:
         results['R_bs_config_validation'] = self.validate_rotation_matrix(R_bs_config)
         
         # Transform gravity to body frame using both matrices
-        # R_bs should transform from body to sensor, so to go from sensor to body we use R_bs.T
-        gravity_body_current = R_bs_current.T @ gravity_sensor * self.gravity_magnitude
-        gravity_body_config = R_bs_config.T @ gravity_sensor * self.gravity_magnitude
+        # R_bs transforms from sensor to body: v_body = R_bs @ v_sensor
+        gravity_body_current = R_bs_current @ gravity_sensor * self.gravity_magnitude
+        gravity_body_config = R_bs_config @ gravity_sensor * self.gravity_magnitude
         
         # Expected gravity in body frame
         expected_gravity = self.gravity_body
