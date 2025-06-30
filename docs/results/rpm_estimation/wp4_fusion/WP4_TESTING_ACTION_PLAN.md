@@ -30,31 +30,31 @@ The critical RPM sweep test (026) cannot be completed because:
 ### Step 1: Generate Missing WP-1 Data (Priority: HIGH)
 ```bash
 # Generate WP-1 for experiment 003
-python -m code.rpm_estimation.cli --wp 1 --exp 003_Waiting_for_departure --session afternoon
+python -m src.analysis.rpm.cli --wp 1 --exp 003_Waiting_for_departure --session afternoon
 
 # Generate WP-1 for experiment 026 (CRITICAL)
-python -m code.rpm_estimation.cli --wp 1 --exp 026_Engine_rpm_sweep --session afternoon
+python -m src.analysis.rpm.cli --wp 1 --exp 026_Engine_rpm_sweep --session afternoon
 ```
 
 ### Step 2: Generate WP-2 Data for 011
 ```bash
 # Complete WP-2 for static experiment
-python -m code.rpm_estimation.cli --wp 2 --exp 011_Static_stbd_1 --session afternoon
+python -m src.analysis.rpm.cli --wp 2 --exp 011_Static_stbd_1 --session afternoon
 ```
 
 ### Step 3: Generate WP-3 Data
 ```bash
 # After WP-1 is complete, generate STFT results
-python -m code.rpm_estimation.cli --wp 3 --exp 003_Waiting_for_departure --session afternoon
-python -m code.rpm_estimation.cli --wp 3 --exp 026_Engine_rpm_sweep --session afternoon
-python -m code.rpm_estimation.cli --wp 3 --exp 011_Static_stbd_1 --session afternoon
+python -m src.analysis.rpm.cli --wp 3 --exp 003_Waiting_for_departure --session afternoon
+python -m src.analysis.rpm.cli --wp 3 --exp 026_Engine_rpm_sweep --session afternoon
+python -m src.analysis.rpm.cli --wp 3 --exp 011_Static_stbd_1 --session afternoon
 ```
 
 ### Step 4: Run Complete WP-4 Test Suite
 
 #### 4.1 Static Test (003_Waiting_for_departure)
 ```bash
-python -m code.rpm_estimation.cli --wp 4 --exp 003_Waiting_for_departure --session afternoon --plot
+python -m src.analysis.rpm.cli --wp 4 --exp 003_Waiting_for_departure --session afternoon --plot
 ```
 Expected:
 - Steady RPM ~700-800
@@ -64,7 +64,7 @@ Expected:
 
 #### 4.2 Critical RPM Sweep Test (026_Engine_rpm_sweep)
 ```bash
-python -m code.rpm_estimation.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon --plot
+python -m src.analysis.rpm.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon --plot
 ```
 Success Criteria:
 - **<2% NaN frames** (critical metric)
@@ -74,17 +74,17 @@ Success Criteria:
 
 #### 4.3 Additional Static Test (011_Static_stbd_1)
 ```bash
-python -m code.rpm_estimation.cli --wp 4 --exp 011_Static_stbd_1 --session afternoon --plot
+python -m src.analysis.rpm.cli --wp 4 --exp 011_Static_stbd_1 --session afternoon --plot
 ```
 
 ### Step 5: Advanced Feature Testing
 ```bash
 # Test median fusion strategy
-python -m code.rpm_estimation.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon \
+python -m src.analysis.rpm.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon \
     --fusion-strategy median --plot
 
 # Test stricter sensor requirements
-python -m code.rpm_estimation.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon \
+python -m src.analysis.rpm.cli --wp 4 --exp 026_Engine_rpm_sweep --session afternoon \
     --min-sensors 2 --plot
 
 # Test shorter interpolation window
