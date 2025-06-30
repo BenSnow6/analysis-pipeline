@@ -41,8 +41,8 @@ def load_sensor_specs(spec_path: Optional[str] = None) -> Dict[str, Any]:
         Dictionary containing sensor specifications.
     """
     if spec_path is None:
-        # Use default path relative to this file
-        spec_path = Path(__file__).parent / 'config' / 'sensor_specs.yaml'
+        # Use centralized config location
+        spec_path = Path(__file__).parent.parent.parent.parent / 'config' / 'sensors' / 'sensor_specs.yaml'
     
     try:
         with open(spec_path, 'r') as f:

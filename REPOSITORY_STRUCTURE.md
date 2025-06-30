@@ -15,30 +15,74 @@ analysis-pipeline/
 ├── /config                    # Master configuration directory
 │   ├── pipeline.yaml         # Master configuration file
 │   ├── /experiments          # Experiment mappings and metadata
+│   │   ├── experiment_categories.yaml
+│   │   ├── experiment_manifest.yaml
+│   │   └── experiment_mapping.json
 │   ├── /sensors             # Sensor specifications and orientations
+│   │   ├── sensor_orientations.json
+│   │   └── sensor_specs.yaml
 │   └── /processing          # Module-specific processing configs
+│       ├── alignment_config.yaml
+│       ├── orientation_config.yaml
+│       ├── rpm_config.yaml
+│       └── timestamp_config.yaml
 │
 ├── /src                      # All source code (consolidated)
 │   ├── /core                # Core utilities and config management
+│   │   ├── __init__.py
+│   │   ├── config.py        # Configuration management
+│   │   ├── io.py           # Data I/O utilities
+│   │   ├── paths.py        # Path constants and utilities
+│   │   └── utils.py        # General utilities
 │   ├── /analysis            # Analysis modules
 │   │   ├── /alignment       # Time alignment
+│   │   │   ├── __init__.py
+│   │   │   ├── align.py
+│   │   │   └── export.py
 │   │   ├── /orientation     # Sensor orientation
-│   │   ├── /rpm            # RPM estimation (Python code only)
+│   │   │   ├── __init__.py
+│   │   │   ├── core.py
+│   │   │   ├── plotting.py
+│   │   │   └── validation.py
+│   │   ├── /rpm            # RPM estimation
+│   │   │   ├── __init__.py
+│   │   │   ├── fusion.py
+│   │   │   ├── models.py
+│   │   │   ├── peak_detection.py
+│   │   │   ├── preprocess.py
+│   │   │   ├── spectral.py
+│   │   │   └── visualize.py
 │   │   └── /timestamp      # Timestamp analysis
-│   ├── /apps               # Applications (dashboard)
+│   │       ├── __init__.py
+│   │       └── analyze.py
+│   ├── /apps               # Applications
+│   │   └── /dashboard      # Dashboard app modules
 │   ├── /scripts            # Command-line scripts
+│   │   ├── dashboard_app.py
+│   │   ├── run_alignment.py
+│   │   ├── run_orientation.py
+│   │   └── run_timestamp_analysis.py
 │   ├── /notebooks          # Jupyter notebooks
 │   └── /plans              # Development plans
 │
 ├── /data                     # All experimental and processed data
 │   ├── /raw                 # Raw experimental data
-│   │   ├── /morning/Experiments/
-│   │   └── /afternoon/Experiments/
+│   │   ├── /morning/Experiments/  # Morning session experiments
+│   │   └── /afternoon/Experiments/ # Afternoon session experiments
 │   ├── /processed           # All processed outputs
 │   │   ├── /aligned        # Time-aligned sensor data
+│   │   │   ├── /morning    # Aligned morning experiments
+│   │   │   ├── /afternoon  # Aligned afternoon experiments
+│   │   │   └── /static     # Static experiment alignments
 │   │   ├── /orientation    # Orientation analysis results
+│   │   │   └── /validation_results
 │   │   ├── /rpm           # RPM estimation results
+│   │   │   ├── /wp1       # Preprocessing outputs
+│   │   │   ├── /wp2       # Peak detection results
+│   │   │   ├── /wp3       # STFT analysis results
+│   │   │   └── /wp4       # Fusion results
 │   │   └── /timestamp     # Timestamp analysis results
+│   │       └── /timestamp_analysis_results
 │   └── /cache              # Temporary files and cache
 │
 ├── /docs                     # Documentation
@@ -60,12 +104,27 @@ analysis-pipeline/
 │   │   │   └── /wp5-7_future
 │   │   └── /validation
 │   ├── /development         # Development docs
+│   │   ├── /architecture
+│   │   ├── /coding_standards
 │   │   └── /rpm            # RPM-specific development guides
 │   ├── /experimental_setup  # Experiment documentation
 │   └── /migration          # Migration history
 │
 ├── /notes                    # Thesis notes
-└── /tests                    # Centralized test suite
+├── /tests                    # Centralized test suite
+│   ├── /test_alignment
+│   ├── /test_orientation
+│   ├── /test_rpm
+│   └── /test_timestamp
+│
+├── .github/workflows         # CI/CD configuration
+├── pyproject.toml           # Python package configuration
+├── requirements.txt         # Python dependencies
+├── Makefile                # Build automation
+├── README.md               # Project overview
+├── SETUP.md                # Setup instructions
+├── CLAUDE.md              # Development guidelines
+└── repository_tree.txt     # Repository structure listing
 ```
 
 ## Where Things Go
