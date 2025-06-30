@@ -38,7 +38,7 @@ The project uses a unified configuration system centered around a master configu
 ### Basic Usage
 
 ```python
-from hovercraft_analysis.core import get_config
+from src.core import get_config
 
 # Get the global configuration manager
 config = get_config()
@@ -162,7 +162,7 @@ output:
 ### 3. Use in Code
 
 ```python
-from hovercraft_analysis.core import get_config
+from src.core import get_config
 
 config = get_config()
 module_config = config.load_sub_config('processing.my_new_module')
@@ -226,7 +226,7 @@ If you have code using old hardcoded paths:
 data_path = "../../02_Evaluation_Experiments/afternoon/007_Fast_stbd_turn_1"
 
 # New way
-from hovercraft_analysis.core import get_experiment_path
+from src.core import get_experiment_path
 data_path = get_experiment_path("007_Fast_stbd_turn_1", "afternoon")
 ```
 

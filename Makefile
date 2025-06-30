@@ -68,9 +68,9 @@ format:
 
 check-quality:
 	@echo "Checking isort..."
-	isort --check-only src/hovercraft_analysis tests/
+	isort --check-only src/ tests/
 	@echo "Checking black..."
-	black --check src/hovercraft_analysis tests/
+	black --check src/ tests/
 	@echo "Checking flake8..."
 	flake8 src/ tests/ --config=.flake8
 	@echo "Checking mypy..."

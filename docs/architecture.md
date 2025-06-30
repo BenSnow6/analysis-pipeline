@@ -24,7 +24,7 @@ The Hovercraft Analysis Pipeline is a comprehensive system for processing and an
 ### Package Structure
 
 ```
-hovercraft_analysis/
+src/
 ├── core/              # Core utilities and infrastructure
 │   ├── config.py      # Configuration management
 │   ├── paths.py       # Path definitions
@@ -128,7 +128,7 @@ environments:
 ### Configuration Access
 
 ```python
-from hovercraft_analysis.core import get_config
+from src.core import get_config
 
 config = get_config()
 freq = config.get('processing.alignment.target_frequency')
