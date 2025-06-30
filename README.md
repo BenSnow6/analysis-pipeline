@@ -24,11 +24,10 @@ make run-dashboard
 ```
 analysis-pipeline/
 ├── src/                      # Source code
-│   └── hovercraft_analysis/  # Main package
-│       ├── core/            # Core utilities
-│       ├── analysis/        # Analysis modules
-│       ├── apps/           # Applications (dashboard)
-│       └── scripts/        # CLI entry points
+│   ├── core/                # Core utilities
+│   ├── analysis/            # Analysis modules
+│   ├── apps/               # Applications (dashboard)
+│   └── scripts/            # CLI entry points
 ├── config/                  # Configuration files
 │   ├── pipeline.yaml       # Master configuration
 │   ├── experiments/        # Experiment metadata
@@ -53,7 +52,7 @@ analysis-pipeline/
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.12 or higher
 - pip
 - Make (optional but recommended)
 

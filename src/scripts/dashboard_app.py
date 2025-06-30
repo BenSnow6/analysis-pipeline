@@ -9,7 +9,7 @@ import time # For benchmarking if needed
 
 # Import your data loading utilities
 try:
-    from data_utils import (
+    from src.scripts.data_utils import (
         load_experiment_data,
         list_experiment_types,
         list_experiments,

@@ -33,7 +33,7 @@ pip install -e ".[dev,notebook]"
 
 ```bash
 # Test that the package is installed
-python -c "from hovercraft_analysis.core import get_experiment_path; print('✓ Package installed successfully')"
+python -c "from src.core import get_experiment_path; print('✓ Package installed successfully')"
 
 # Run tests
 make test-fast
@@ -55,7 +55,7 @@ The dashboard will be available at http://localhost:8050
 analysis-pipeline/
 ├── config/           # Configuration files
 ├── src/              # Source code
-│   └── hovercraft_analysis/
+│   ├── core/
 │       ├── core/     # Core utilities
 │       ├── analysis/ # Analysis modules
 │       ├── apps/     # Applications (dashboard)
@@ -96,7 +96,7 @@ hovercraft-dashboard                        # Launch analysis dashboard
 
 List available experiments:
 ```python
-from hovercraft_analysis.core import get_available_experiments
+from src.core import get_available_experiments
 
 experiments = get_available_experiments()
 for exp in experiments:
@@ -106,7 +106,7 @@ for exp in experiments:
 ### Loading Experiment Data
 
 ```python
-from hovercraft_analysis.core import load_experiment_data
+from src.core import load_experiment_data
 
 # Load all data for an experiment
 data = load_experiment_data("007_Fast_stbd_turn_1", "afternoon")
@@ -119,7 +119,7 @@ accel_data = data['Sensor_3_accel']
 ### Running Analysis
 
 ```python
-from hovercraft_analysis.analysis.alignment import align_experiment_data
+from src.analysis.alignment import align_experiment_data
 
 # Align sensor data
 aligned_data = align_experiment_data("007_Fast_stbd_turn_1", "afternoon")
@@ -137,7 +137,7 @@ The project uses a unified configuration system. Main configuration file: `/conf
 ### Accessing Configuration
 
 ```python
-from hovercraft_analysis.core import get_config
+from src.core import get_config
 
 config = get_config()
 data_root = config.get('paths.data_root')
