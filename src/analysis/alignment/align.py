@@ -97,18 +97,32 @@ class DataAligner:
     
     def _find_experiment_path(self, experiment_name: str, base_path: Path) -> Optional[Path]:
         """Find experiment directory by searching through the data structure."""
-        # Search in common experiment locations
-        # base_path should already point to the data directory
-        search_paths = [
-            base_path,
-            base_path / "morning" / "Experiments",
-            base_path / "afternoon" / "Experiments"
-        ]
+        # If base_path already contains morning/afternoon, only search there
+        base_path_str = str(base_path)
+        if "morning" in base_path_str:
+            # Only search in morning directory
+            search_paths = [base_path]
+        elif "afternoon" in base_path_str:
+            # Only search in afternoon directory
+            search_paths = [base_path]
+        else:
+            # Original behavior: search in all locations
+            search_paths = [
+                base_path,
+                base_path / "morning" / "Experiments",
+                base_path / "afternoon" / "Experiments"
+            ]
         
         for search_path in search_paths:
             if not search_path.exists():
                 continue
                 
+            # Direct path check first
+            exp_path = search_path / experiment_name
+            if exp_path.exists() and exp_path.is_dir():
+                return exp_path
+                
+            # Then recursive search if needed
             for path in search_path.rglob(experiment_name):
                 if path.is_dir():
                     return path
@@ -186,6 +200,11 @@ class DataAligner:
         Returns:
             Aligned DataFrame or None if alignment fails
         """
+        # Check if sensor has any data
+        if len(sensor_df) == 0:
+            print(f"  {sensor_name}: No data available, skipping")
+            return None
+            
         sensor_timestamps = sensor_df['time_from_sync'].values
         sensor_rate = self.sensor_rates.get(sensor_name, 0)
         
